@@ -8,9 +8,9 @@
 </head>
 <body>
 	<%
-		List<DistributionBean> MyHandList = (List<DistributionBean>)request.getAttribute("MyHandList");
-		List<DistributionBean> EnemyHandList = (List<DistributionBean>)request.getAttribute("EnemyHandList");
-		List<DistributionBean> FieldList = (List<DistributionBean>)request.getAttribute("FieldList");
+		List<DistributionBean> MyHandList = (List<DistributionBean>)session.getAttribute("MyHandList");
+		List<DistributionBean> EnemyHandList = (List<DistributionBean>)session.getAttribute("EnemyHandList");
+		List<DistributionBean> FieldList = (List<DistributionBean>)session.getAttribute("FieldList");
 	%>
 	
 	相手の手札：
