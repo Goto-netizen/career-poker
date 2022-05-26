@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.entity.DistributionBean;
+import model.entity.CardBean;
 import model.entity.GeneralProcessing;
 
 /**
@@ -51,10 +51,10 @@ public class ProcessingServlet extends HttpServlet {
 		int index = Integer.parseInt(request.getParameter("index"));
 		boolean endGameFlag = false;
 		
-		List<DistributionBean> playerHandList = new ArrayList<>(); 
-		List<DistributionBean> CPUHandList = new ArrayList<>(); 
-		List<DistributionBean> fieldList = new ArrayList<>(); 
-		List<DistributionBean> discardFieldList = new ArrayList<>();
+		List<CardBean> playerHandList = new ArrayList<>(); 
+		List<CardBean> CPUHandList = new ArrayList<>(); 
+		List<CardBean> fieldList = new ArrayList<>(); 
+		List<CardBean> discardFieldList = new ArrayList<>();
 		
 		/*for(int i=1;i<=3;i++){
 			playerHandList.add(new DistributionBean((i+6),"♤",i));
