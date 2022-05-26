@@ -49,8 +49,9 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-        String user_id = request.getParameter("id");
+        String user_id = request.getParameter("user_id");
         String password = request.getParameter("password");
+        String name = request.getParameter("name");
 	   System.out.println("user"+user_id + password);
 
 		// DAOの生成
@@ -66,13 +67,14 @@ public class LoginServlet extends HttpServlet {
             }else {
             	url="login-failure.html";
             }
+           
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
 		// リクエストスコープへの属性の設定
 		HttpSession session = request.getSession();
-		session.setAttribute("user_id", user_id);
+		session.setAttribute("name", name);
 
 		// リクエストの転送
 		RequestDispatcher rd = request.getRequestDispatcher(url);
