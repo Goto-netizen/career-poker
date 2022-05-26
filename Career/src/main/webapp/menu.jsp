@@ -11,7 +11,6 @@
     <form action="distribution-servlet" method="POST">
     <input type="submit" value="初級"><br>
     <input type="submit" value="上級">
-    あいうえお
 	</form>
 
 </body>
