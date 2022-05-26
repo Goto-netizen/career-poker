@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.entity.DistributionBean;
 import model.entity.GeneralProcessing;
-import model.entity.TestBean;
 
 /**
  * Servlet implementation class ProcessingServlet
@@ -51,24 +51,24 @@ public class ProcessingServlet extends HttpServlet {
 		int index = Integer.parseInt(request.getParameter("index"));
 		boolean endGameFlag = false;
 		
-		List<TestBean> playerHandList = new ArrayList<>(); 
-		List<TestBean> CPUHandList = new ArrayList<>(); 
-		List<TestBean> fieldList = new ArrayList<>(); 
-		List<TestBean> discardFieldList = new ArrayList<>();
+		List<DistributionBean> playerHandList = new ArrayList<>(); 
+		List<DistributionBean> CPUHandList = new ArrayList<>(); 
+		List<DistributionBean> fieldList = new ArrayList<>(); 
+		List<DistributionBean> discardFieldList = new ArrayList<>();
 		
-		for(int i=1;i<=3;i++){
-			playerHandList.add(new TestBean((i+6),"♤",i));
+		/*for(int i=1;i<=3;i++){
+			playerHandList.add(new DistributionBean((i+6),"♤",i));
 		}
 
 		for(int i=1;i<=3;i++){
-			CPUHandList.add(new TestBean((i+6),"♡",i));
-		}
+			CPUHandList.add(new DistributionBean((i+6),"♡",i));
+		}*/
 		
 		/*
 		for(int i=1;i<=3;i++){
 			fieldList.add(new TestBean((i+5),"♦",i-1));
 		}*/
-		fieldList.add(new TestBean(8,"♦",3));
+		/*fieldList.add(new DistributionBean(8,"♦",3));*/
 		
 		
 		boolean canPlayFlag = false;
