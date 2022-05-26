@@ -30,7 +30,7 @@
 	<%int i = 0; %>
 	<% for(CardBean MyHand : MyHandList){ 
 	%>
-	<label><input type="checkbox" name="submission" value="<%= i %>"><%= MyHand.getMark() %><%= MyHand.getNum() %></label><br>
+	<label><input type="checkbox" name="submission" value="<%= i %>"><img src="./trump/<%= MyHand.getCode() %>.png" ></label>
 	<% i++;} %>
 	<input type="checkbox" name="submission" value="-1">パス</label><br>
 	
