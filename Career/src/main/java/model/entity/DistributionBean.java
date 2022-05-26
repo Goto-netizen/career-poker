@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 public class DistributionBean implements Serializable{
 	
+	/**
+	 * カードID
+	 */
 	private int code;
+	
 	/**
 	 * 数字
 	 */
