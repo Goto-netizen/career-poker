@@ -2,7 +2,7 @@ package model.entity;
 
 import java.io.Serializable;
 
-public class DistributionBean implements Serializable{
+public class CardBean implements Serializable{
 	
 	/**
 	 * カードID
@@ -29,7 +29,7 @@ public class DistributionBean implements Serializable{
 	/**
 	 * EmployeeBeanを構築します。
 	 */
-	public DistributionBean() {
+	public CardBean() {
 
 	}
 

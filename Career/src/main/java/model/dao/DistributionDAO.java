@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.entity.DistributionBean;
+import model.entity.CardBean;
 import model.entity.UserBean;
 
 
@@ -68,10 +68,10 @@ public class DistributionDAO {
 		}
 		return user;
 	}
-public List<DistributionBean> selectAll()
+public List<CardBean> selectAll()
 		throws SQLException, ClassNotFoundException {
 
-	List<DistributionBean> distributionList = new ArrayList<DistributionBean>();
+	List<CardBean> distributionList = new ArrayList<CardBean>();
 
 	// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
 	try (Connection con = ConnectionManager.getConnection();
@@ -87,7 +87,7 @@ public List<DistributionBean> selectAll()
 
 
 
-			DistributionBean distribution = new DistributionBean();
+			CardBean distribution = new CardBean();
 			distribution.setCode(code);
 			distribution.setNum(num);
 			distribution.setMark(mark);

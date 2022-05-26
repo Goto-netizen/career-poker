@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.dao.DistributionDAO;
-import model.entity.DistributionBean;
+import model.entity.CardBean;
 
 /**
  * Servlet implementation class EmployeeRegistrationServlet
@@ -40,10 +40,10 @@ public class DistributionServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-	List<DistributionBean> distributionList = null;
-	List<DistributionBean> MyHandList = null;
-	List<DistributionBean> EnemyHandList = null;
-	List<DistributionBean> FieldList = null;
+	List<CardBean> distributionList = null;
+	List<CardBean> MyHandList = null;
+	List<CardBean> EnemyHandList = null;
+	List<CardBean> FieldList = null;
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -69,8 +69,8 @@ public class DistributionServlet extends HttpServlet {
 		EnemyHandList = distributionList.subList(16, 32);
 		
 		//並び替え（昇順）	
-		MyHandList.sort(Comparator.comparing(DistributionBean::getStrength));
-		EnemyHandList.sort(Comparator.comparing(DistributionBean::getStrength));
+		MyHandList.sort(Comparator.comparing(CardBean::getStrength));
+		EnemyHandList.sort(Comparator.comparing(CardBean::getStrength));
 		
 		//先攻後攻の判定
 		Random rand = new Random();
