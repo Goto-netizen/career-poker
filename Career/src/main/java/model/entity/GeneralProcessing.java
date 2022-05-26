@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 public class GeneralProcessing {
-	List<TestBean> playerHandList; 
-	List<TestBean> CPUHandList; 
-	List<TestBean> fieldList; 
-	List<TestBean> discardFieldList;
+	List<DistributionBean> playerHandList; 
+	List<DistributionBean> CPUHandList; 
+	List<DistributionBean> fieldList; 
+	List<DistributionBean> discardFieldList;
 	boolean playerPassFlag;
 	boolean CPUPassFlag;
 	
-	public GeneralProcessing(List<TestBean> playerHandList,List<TestBean> CPUHandList,List<TestBean> fieldList,List<TestBean> discardFieldList){
+	public GeneralProcessing(List<DistributionBean> playerHandList,List<DistributionBean> CPUHandList,List<DistributionBean> fieldList,List<DistributionBean> discardFieldList){
 		this.playerHandList = playerHandList;
 		this.CPUHandList = CPUHandList;
 		this.fieldList = fieldList;
@@ -26,10 +26,10 @@ public class GeneralProcessing {
 			return true;
 			
 		}else {
-			TestBean playerhand = playerHandList.get(selectedIndex);
+			DistributionBean playerhand = playerHandList.get(selectedIndex);
 			int handstrength = playerhand.getStrength();
 			
-			TestBean field = fieldList.get(fieldList.size()-1);
+			DistributionBean field = fieldList.get(fieldList.size()-1);
 			int fieldstrength = field.getStrength();
 			
 			if(fieldstrength < handstrength) {
@@ -41,7 +41,7 @@ public class GeneralProcessing {
 	
 	
 	public void playerProcess(int selectedIndex) {
-		TestBean playerhand = playerHandList.get(selectedIndex);
+		DistributionBean playerhand = playerHandList.get(selectedIndex);
 
 		fieldList.add(playerhand);
 		
@@ -52,13 +52,13 @@ public class GeneralProcessing {
 	
 	
 	public void CPUProcess() throws Exception{
-		List<TestBean> canPlayCardList = new ArrayList<>(); 
+		List<DistributionBean> canPlayCardList = new ArrayList<>(); 
 		int topCardIndex = (fieldList.size()-1);
 		int CPUSelectedIndex = 0;
 		boolean CPUCanPlayFlag = false;
-		TestBean topCard = null;
-		TestBean compareCard = null;
-		TestBean CPUSelectedCard = null;
+		DistributionBean topCard = null;
+		DistributionBean compareCard = null;
+		DistributionBean CPUSelectedCard = null;
 		
 		if(topCardIndex >= 0) {//場にカードがある時
 			topCard = fieldList.get(topCardIndex);
@@ -123,19 +123,19 @@ public class GeneralProcessing {
 	}
 	
 	
-	public List<TestBean> getPlayerHandList(){
+	public List<DistributionBean> getPlayerHandList(){
 		return this.playerHandList;
 	}
 	
-	public List<TestBean> getCPUHandList(){
+	public List<DistributionBean> getCPUHandList(){
 		return this.CPUHandList;
 	}
 	
-	public List<TestBean> getFieldList(){
+	public List<DistributionBean> getFieldList(){
 		return this.fieldList;
 	}
 	
-	public List<TestBean> getDiscardFieldList(){
+	public List<DistributionBean> getDiscardFieldList(){
 		return this.discardFieldList;
 	}
 	
