@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.entity.DistributionBean;
+import model.entity.CardBean;
 import model.entity.GeneralProcessing;
 
 /**
@@ -51,10 +51,15 @@ public class ProcessingServlet extends HttpServlet {
 		int index = Integer.parseInt(request.getParameter("index"));
 		boolean endGameFlag = false;
 		
-		List<DistributionBean> playerHandList = new ArrayList<>(); 
-		List<DistributionBean> CPUHandList = new ArrayList<>(); 
-		List<DistributionBean> fieldList = new ArrayList<>(); 
-		List<DistributionBean> discardFieldList = new ArrayList<>();
+		HttpSession session = request.getSession();
+		List<CardBean> playerHandList = (List<CardBean>) session.getAttribute("MyHandList"); 
+		List<CardBean> CPUHandList = (List<CardBean>) session.getAttribute("EnemyHandList");
+		List<CardBean> fieldList = (List<CardBean>) session.getAttribute("FieldList"); 
+		
+//		List<CardBean> playerHandList = new ArrayList<>(); 
+//		List<CardBean> CPUHandList = new ArrayList<>(); 
+//		List<CardBean> fieldList = new ArrayList<>(); 
+		List<CardBean> discardFieldList = new ArrayList<>();
 		
 		/*for(int i=1;i<=3;i++){
 			playerHandList.add(new DistributionBean((i+6),"♤",i));
@@ -74,7 +79,7 @@ public class ProcessingServlet extends HttpServlet {
 		boolean canPlayFlag = false;
 		
 		
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
 		GeneralProcessing gp = new GeneralProcessing(playerHandList,CPUHandList,fieldList,discardFieldList);
 		
 		canPlayFlag = gp.judge(index);
@@ -125,7 +130,7 @@ public class ProcessingServlet extends HttpServlet {
 		session.setAttribute("dList",discardFieldList);
 		
 		// リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("selectHandTest.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
 		rd.forward(request, response);
 		
 		
