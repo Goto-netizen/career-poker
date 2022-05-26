@@ -46,15 +46,15 @@ public class HandIntegerServlet extends HttpServlet {
 		int number = 0;
 		
 		System.out.println(Arrays.toString(ask));
-		List<Integer> check = new ArrayList<Integer>();
+		List<Integer> indexList = new ArrayList<Integer>();
 		for(int i=0;i<ask.length;i++) {
 		number = Integer.parseInt(ask[i]);
-		check.add(number);
+		indexList.add(number);
 		}
-		System.out.println(check);
+		System.out.println(indexList);
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("check", check);
+		session.setAttribute("index", indexList);
 		
 		//リクエストの転送
 		RequestDispatcher rd = request.getRequestDispatcher("ProcessingServlet");

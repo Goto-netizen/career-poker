@@ -20,7 +20,9 @@ public class GeneralProcessing {
 		
 	}
 	
-	public boolean judge(int selectedIndex) {
+	public boolean judge(int selectedIndex) throws Exception {
+		
+		System.out.println("fieldList.size()の値:"+fieldList.size());
 		
 		if(fieldList.size()==0) {
 			return true;
@@ -40,7 +42,7 @@ public class GeneralProcessing {
 	}
 	
 	
-	public void playerProcess(int selectedIndex) {
+	public void playerProcess(int selectedIndex) throws Exception {
 		CardBean playerhand = playerHandList.get(selectedIndex);
 
 		fieldList.add(playerhand);

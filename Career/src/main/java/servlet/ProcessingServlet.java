@@ -48,13 +48,16 @@ public class ProcessingServlet extends HttpServlet {
 		int  pass = Integer.parseInt(request.getParameter("pass"));
 		boolean cardPlayFlag = false;//カード出せるかどうか判定*/
 		
-		int index = Integer.parseInt(request.getParameter("index"));
+		HttpSession session = request.getSession();
+		List<Integer> index1 = (List<Integer>)session.getAttribute("index");
+		int index = index1.get(0);
 		boolean endGameFlag = false;
 		
-		List<CardBean> playerHandList = new ArrayList<>(); 
-		List<CardBean> CPUHandList = new ArrayList<>(); 
-		List<CardBean> fieldList = new ArrayList<>(); 
+		List<CardBean> playerHandList = (List<CardBean>) session.getAttribute("MyHandList");
+		List<CardBean> CPUHandList = (List<CardBean>) session.getAttribute("EnemyHandList");
+		List<CardBean> fieldList = (List<CardBean>) session.getAttribute("FieldList");
 		List<CardBean> discardFieldList = new ArrayList<>();
+		
 		
 		/*for(int i=1;i<=3;i++){
 			playerHandList.add(new DistributionBean((i+6),"♤",i));
@@ -74,14 +77,13 @@ public class ProcessingServlet extends HttpServlet {
 		boolean canPlayFlag = false;
 		
 		
-		HttpSession session = request.getSession();
 		GeneralProcessing gp = new GeneralProcessing(playerHandList,CPUHandList,fieldList,discardFieldList);
-		
+		try {
 		canPlayFlag = gp.judge(index);
 		
 		/*ここから*/
 		if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
-			try {
+			
 				gp.playerProcess(index);//プレイヤーの処理
 				if(gp.getPlayerPassFlag() == true) {//プレイヤーがパスをした時
 					gp.endRound();
@@ -102,14 +104,17 @@ public class ProcessingServlet extends HttpServlet {
 				}
 			
 			
-			} catch (Exception e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
-			}
+			
 		}
+		
 		else {
 			//出せませんよ表示.jsp
 		}
+		
+		} catch (Exception e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
 		/*ここまで*/
 		
 		playerHandList = gp.getPlayerHandList();
@@ -125,7 +130,7 @@ public class ProcessingServlet extends HttpServlet {
 		session.setAttribute("dList",discardFieldList);
 		
 		// リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("selectHandTest.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
 		rd.forward(request, response);
 		
 		
