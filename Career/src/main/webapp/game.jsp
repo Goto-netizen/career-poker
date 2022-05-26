@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>大富豪</title>
+<link rel="stylesheet" href="game.css">
 </head>
 <body>
 	<%
@@ -13,8 +14,8 @@
 		List<CardBean> FieldList = (List<CardBean>)session.getAttribute("FieldList");
 	%>
 	
-	相手の手札：
-	<%= EnemyHandList.size() %>枚<br>
+	<span id="enemy-hand">相手の手札：
+	<%= EnemyHandList.size() %>枚<br></span>
 	<br>
 	
 	場：
