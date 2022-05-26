@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.DistributionDAO;
 import model.entity.DistributionBean;
@@ -73,7 +74,7 @@ public class DistributionServlet extends HttpServlet {
 		
 		//先攻後攻の判定
 		Random rand = new Random();
-	    int num = rand.nextInt(2);
+	    int num = rand.nextInt(1);
 	    String url = null;
 	    if(num==0) {
 	    	url="game.jsp";
@@ -83,9 +84,10 @@ public class DistributionServlet extends HttpServlet {
 		
 
 		// リクエストスコープへの属性の設定
-		request.setAttribute("MyHandList", MyHandList);
-		request.setAttribute("distributionList", distributionList);
-		request.setAttribute("EnemyHandList", EnemyHandList);
+	    HttpSession session = request.getSession();
+	    session.setAttribute("MyHandList", MyHandList);
+	    session.setAttribute("FieldList", FieldList);
+	    session.setAttribute("EnemyHandList", EnemyHandList);
 	
 
 		// リクエストの転送

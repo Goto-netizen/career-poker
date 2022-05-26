@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class EmployeeRegistrationServlet
@@ -51,10 +52,12 @@ public class HandIntegerServlet extends HttpServlet {
 		check.add(number);
 		}
 		System.out.println(check);
-		request.setAttribute("check", check);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("check", check);
 		
 		//リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("HandCheckServlet.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("ProcessingServlet");
 		rd.forward(request, response);
 
 	}
