@@ -29,9 +29,13 @@ public class Card implements Serializable{
 	/**
 	 * EmployeeBeanを構築します。
 	 */
-	public Card(int card_id) {
+	public Card(int card_id,String num,String mark,int strength) {
+		
+		//メンバ変数の初期化
 		this.card_id = card_id;
-
+		this.num = num;
+		this.mark = mark;
+		this.strength = strength;
 	}
 
 	public int getCard_id() {
