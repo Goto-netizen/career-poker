@@ -57,8 +57,8 @@ public class NewProcessingServlet extends HttpServlet {
 		gp.generalProcess(index);
 		deckList = gp.getDeckList();
 		fieldStack = gp.getFieldStack();
-		/*送信*/
 		
+		/*送信*/
 		session.setAttribute("deck",deckList);
 		session.setAttribute("deque",fieldStack);
 		

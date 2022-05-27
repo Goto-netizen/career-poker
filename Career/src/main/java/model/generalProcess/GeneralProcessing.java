@@ -21,20 +21,19 @@ public class GeneralProcessing {
 	
 	public void generalProcess(int index) {
 		
-		//distributeCard();
-		
-		
-		
 		boolean canPlayFlag = false;
 		
 		try {
 			Player player = new Player(deckList,index,fieldStack);
-			canPlayFlag = player.judge(deckList,index,fieldStack);
+			canPlayFlag = player.judge();
 			System.out.println("canPlayFlagの値:"+canPlayFlag);
 			/*ここから*/
 			if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
 				
-				player.playerProcess(deckList,index,fieldStack);//プレイヤーの処理
+				player.playerProcess();//プレイヤーの処理
+				deckList = player.getDeckList();
+				fieldStack = player.getFieldStack();
+				
 				
 				System.out.println("プレイヤーの処理が行われました。");
 				if(player.getPlayerPassFlag() == true) {//プレイヤーがパスをした時
@@ -65,19 +64,6 @@ public class GeneralProcessing {
 				e.printStackTrace();
 			}
 	}
-	/*
-	public void distributeCard() {
-		for(int i=0;i<deckList.size();i++) {
-			cardFlag = deckList.get(i).getCard_flag();
-			if(cardFlag == 0) {
-				playerHandList.add(deckList.get(i));
-			}
-			if(cardFlag == 1){
-				CPUHandList.add(deckList.get(i));
-			}
-		}
-		
-	}*/
 	
 	public  void endRound() {
 		
