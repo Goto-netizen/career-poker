@@ -35,6 +35,8 @@ public class GeneralProcessing {
 				fieldStack = player.getFieldStack();
 				
 				
+				System.out.println("deckList:"+deckList);
+				System.out.println("fieldStack:"+fieldStack);
 				System.out.println("プレイヤーの処理が行われました。");
 				if(player.getPlayerPassFlag() == true) {//プレイヤーがパスをした時
 					System.out.println("プレイヤーがパスを行いました。");

@@ -21,7 +21,7 @@ public class CPU {
 	public CPU(List<Card>deckList,Stack<Card>fieldStack) {
 		this.deckList = deckList;
 		this.fieldStack = fieldStack;
-		
+		System.out.println("CPUが初期化されました");
 	}
 	
 	
@@ -33,9 +33,11 @@ public class CPU {
 		
 		//Flagが1のカードだけ収集
 		onlyFlag1List = gatherFlag1Card(deckList);
+		System.out.println("onlyFlag1List:"+onlyFlag1List);
+		System.out.println("fieldStack:"+fieldStack);
 		
 		//場のカードより大きいカードだけ収集
-		canPlayCardsList = checkCanPlayCard(onlyFlag1List);
+		canPlayCardsList = checkCanPlayCard(onlyFlag1List);//ここ
 		
 		//場のカードより大きいカードがある
 		if(canPlayCardsList.size() != 0) {
@@ -58,22 +60,26 @@ public class CPU {
 			}
 			
 		}
+		System.out.println("gatherFlag1Cardが実行されました");
+		
 		return onlyFlag1List;
 	}
 	
 	public List<Card> checkCanPlayCard(List<Card>onlyFlag1List){
 		List<Card> canPlayCardsList = new ArrayList<>();
 		if(fieldStack.isEmpty()) {
+			System.out.println("fieldStackは空です");
 			canPlayCardsList = onlyFlag1List;
 		}
 		else {
+			System.out.println("fieldStackは空ではありません。");
 			for(int i=0;i<onlyFlag1List.size();i++) {
-				if(fieldStack.pop().getStrength()<onlyFlag1List.get(i).getStrength()) {
+				if(fieldStack.peek().getStrength()<onlyFlag1List.get(i).getStrength()) {
 					canPlayCardsList.add(onlyFlag1List.get(i));
 				}
 			}
 		}
-		
+		System.out.println("checkCanPlayCardが実行されました");
 		return canPlayCardsList;
 	}
 	
