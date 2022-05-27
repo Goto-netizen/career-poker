@@ -51,7 +51,7 @@ public class NewDistributionServlet extends HttpServlet {
 	    session.setAttribute("cardList", cardList);
 		
 	 // リクエストの転送
-	 		RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
+	 		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
 	 		rd.forward(request, response);
 	}
 	

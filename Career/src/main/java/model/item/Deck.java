@@ -27,7 +27,7 @@ public class Deck {
 		cardList.add(new Card(12, "seven", "club", 7));
 		cardList.add(new Card(13, "eight", "heart", 8));
 		cardList.add(new Card(14, "eight", "diamond", 8));
-		cardList.add(new Card(15, "eight", "spade", 18));
+		cardList.add(new Card(15, "eight", "spade", 8));
 		cardList.add(new Card(16, "eight", "club", 8));
 		cardList.add(new Card(17, "nine", "heart", 9));
 		cardList.add(new Card(18, "nine", "diamond", 9));
