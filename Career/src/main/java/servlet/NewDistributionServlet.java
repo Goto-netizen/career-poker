@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -42,6 +44,7 @@ public class NewDistributionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Deque<Card> deque = new ArrayDeque<>();
 		//Deckの生成
 		Deck deck = new Deck();
 		List<Card> cardList = deck.distribution();
@@ -49,6 +52,8 @@ public class NewDistributionServlet extends HttpServlet {
 		//セッション
 	    HttpSession session = request.getSession();
 	    session.setAttribute("cardList", cardList);
+	    session.setAttribute("deque", deque);
+
 		
 	 // リクエストの転送
 	 		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
