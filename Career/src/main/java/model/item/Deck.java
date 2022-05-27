@@ -1,7 +1,7 @@
 package model.item;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Deck {
@@ -52,17 +52,23 @@ public class Deck {
 		cardList.add(new Card(37, "Joker", "black", 16));
 		cardList.add(new Card(38, "Joker", "red", 16));
 	}
-	/**
-	 * シャッフルと分配
-	 * @return
-	 */
-	public List<Card> suffle(){
-		//シャッフル
-		Collections.shuffle(cardList);
-		//分配
-		((Card) cardList).setCard_flag(0);
-	return cardList;	
+	//シャッフル
+public void distribution(List<Card> cardList) {
+		
+		int i = 0;
+		for(Card card :cardList) {
+			if(i<16) {
+			card.setCard_flag(0);
+			}else if(i<32) {
+			card.setCard_flag(1);
+			}
+			i++;	
+		}
+		//並び替え
+		cardList.sort(Comparator.comparing(Card::getCard_flag).thenComparing(Card::getStrength));
+
 	}
+
 	
 
 }
