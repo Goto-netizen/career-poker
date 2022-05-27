@@ -50,7 +50,7 @@ public class NewProcessingServlet extends HttpServlet {
 		int index = indexList.get(0);
 		//index = 0;//テスト用の値
 		
-		List<Card> deckList = (List<Card>)session.getAttribute("cardList");
+		List<Card> deckList = (List<Card>)session.getAttribute("deckList");
 		Stack<Card> fieldStack =(Stack<Card>)session.getAttribute("fieldStack");
 		
 		/*処理の依頼*/
@@ -61,7 +61,7 @@ public class NewProcessingServlet extends HttpServlet {
 		fieldStack = gp.getFieldStack();
 		
 		/*送信*/
-		session.setAttribute("cardList",deckList);
+		session.setAttribute("deckList",deckList);
 		session.setAttribute("fieldStack",fieldStack);
 		
 		//リクエストの転送
