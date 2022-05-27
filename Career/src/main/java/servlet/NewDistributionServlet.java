@@ -1,13 +1,17 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.item.Card;
 import model.item.Deck;
 
 /**
@@ -40,8 +44,16 @@ public class NewDistributionServlet extends HttpServlet {
 		
 		//Deckの生成
 		Deck deck = new Deck();
+		List<Card> cardList = deck.distribution();
 		
+		//セッション
+	    HttpSession session = request.getSession();
+	    session.setAttribute("cardList", cardList);
 		
+	 // リクエストの転送
+	 		RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
+	 		rd.forward(request, response);
 	}
+	
 
 }

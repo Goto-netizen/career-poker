@@ -51,9 +51,11 @@ public class Deck {
 		cardList.add(new Card(36, "King", "club", 13));
 		cardList.add(new Card(37, "Joker", "black", 16));
 		cardList.add(new Card(38, "Joker", "red", 16));
+		
+
 	}
 	//シャッフル
-public void distribution(List<Card> cardList) {
+public List<Card> distribution() {
 		
 		int i = 0;
 		for(Card card :cardList) {
@@ -66,7 +68,7 @@ public void distribution(List<Card> cardList) {
 		}
 		//並び替え
 		cardList.sort(Comparator.comparing(Card::getCard_flag).thenComparing(Card::getStrength));
-
+		return cardList;
 	}
 
 	
