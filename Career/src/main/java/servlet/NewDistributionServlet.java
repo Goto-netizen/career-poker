@@ -55,7 +55,7 @@ public class NewDistributionServlet extends HttpServlet {
 
 		
 	 // リクエストの転送
-	 		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
+	 		RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
 	 		rd.forward(request, response);
 	}
 	
