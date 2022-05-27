@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,20 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.generalProcess.GeneralProcessing;
 import model.item.Card;
-import model.item.Deck;
 
 /**
- * Servlet implementation class NewDistributionServlet
+ * Servlet implementation class NewProcessingServlet
  */
-@WebServlet("/new-distribution-servlet")
-public class NewDistributionServlet extends HttpServlet {
+@WebServlet("/NewProcessingServlet")
+public class NewProcessingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewDistributionServlet() {
+    public NewProcessingServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,22 +41,26 @@ public class NewDistributionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
-		Deque<Card> deque = new ArrayDeque<>();
-		//Deckの生成
-		Deck deck = new Deck();
-		List<Card> cardList = deck.distribution();
+		/*受け取り*/
+		HttpSession session = request.getSession();
+		List<Card> deckList = (List<Card>)session.getAttribute("deck");
+		int index = Integer.parseInt(request.getParameter("index"));
+		index = 0;//テスト用の値
 		
-		//セッション
-	    HttpSession session = request.getSession();
-	    session.setAttribute("cardList", cardList);
-	    session.setAttribute("deque", deque);
-
+		/*処理の依頼*/
+		GeneralProcessing gp = new GeneralProcessing(deckList);
 		
-	 // リクエストの転送
-	 		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
-	 		rd.forward(request, response);
+		gp.generalProcess(index);
+		
+		/*送信*/
+		//リクエストの転送
+		RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
+		rd.forward(request, response);
+		
+		
+		
 	}
 	
-
 }
