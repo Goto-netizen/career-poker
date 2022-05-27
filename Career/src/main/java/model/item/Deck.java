@@ -60,9 +60,11 @@ public List<Card> distribution() {
 		int i = 0;
 		for(Card card :cardList) {
 			if(i<16) {
-			card.setCard_flag(0);
+				card.setCard_flag(0);
 			}else if(i<32) {
-			card.setCard_flag(1);
+				card.setCard_flag(1);
+			}else {
+				card.setCard_flag(-1);
 			}
 			i++;	
 		}
