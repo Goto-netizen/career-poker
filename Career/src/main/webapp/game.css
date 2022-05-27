@@ -5,13 +5,20 @@ body{
 	background-image: url(back-ground.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center;
+	background-position: center center;
 }
 
+#cpu-hand{
+	width: 1200px;
+	margin-top: 90px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: auto;
+	padding-left: auto;
+}
 
-
-#enemy-hand{
-	text-align: center;
-	margin: 30px auto 70px;
-	border-style: solid;
+#field-list{
+	margin-top: 50px;
+	margin-right: auto;
+	margin-left: auto;
 }

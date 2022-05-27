@@ -57,7 +57,7 @@ public class HandIntegerServlet extends HttpServlet {
 		session.setAttribute("index", indexList);
 		
 		//リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("ProcessingServlet");
+		RequestDispatcher rd = request.getRequestDispatcher("NewProcessingServlet");
 		rd.forward(request, response);
 
 	}

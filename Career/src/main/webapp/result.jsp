@@ -24,6 +24,7 @@
 		session.removeAttribute("neme");
 		session.removeAttribute("cardList");
 		session.removeAttribute("fieldStack");
+		session.removeAttribute("index");
 		session.removeAttribute("winner");
 	%>
 		<a href="menu.jsp">メニューに戻る</a>
