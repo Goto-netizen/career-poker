@@ -21,11 +21,11 @@
 <%= fieldStack %><br></div>
 
 <form action="hand-integer-servlet" method="POST">
-<%int i = 6; %>
+<%int i = 0; %>
 	<% for(Card card : deckList){ %>
 		<% if(card.getCard_flag() == 0){ %>
 		<label><input type="checkbox" name="submission" value="<%= i %>"><img src="./trump/<%= card.getCard_id() %>.png" width=50 height =50 ></label>
-	<% i++;} } %>
+	<% }i++; } %>
 	<input type="checkbox" name="submission" value="-1">パス<br>
 	
 	<input type="submit" value="出す">
