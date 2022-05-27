@@ -1,8 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Deque;
 import java.util.List;
+import java.util.Stack;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,15 +48,20 @@ public class NewProcessingServlet extends HttpServlet {
 		int index = Integer.parseInt(request.getParameter("index"));
 		index = 0;//テスト用の値
 		HttpSession session = request.getSession();
-		List<Card> deckList = (List<Card>)session.getAttribute("deck");
-		Deque<Card> deque =(Deque<Card>)session.getAttribute("deque");
+		List<Card> deckList = (List<Card>)session.getAttribute("cardList");
+		Stack<Card> fieldStack =(Stack<Card>)session.getAttribute("fieldStack");
 		
 		/*処理の依頼*/
-		GeneralProcessing gp = new GeneralProcessing(deckList);
+		GeneralProcessing gp = new GeneralProcessing(deckList,fieldStack);
 		
-		gp.generalProcess(deckList,index,deque);
-		
+		gp.generalProcess(index);
+		deckList = gp.getDeckList();
+		fieldStack = gp.getFieldStack();
 		/*送信*/
+		
+		session.setAttribute("deck",deckList);
+		session.setAttribute("deque",fieldStack);
+		
 		//リクエストの転送
 		if(gp.getEndGameFlag() == true) {
 			RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
