@@ -29,7 +29,8 @@ public class Card implements Serializable{
 	/**
 	 * EmployeeBeanを構築します。
 	 */
-	public Card() {
+	public Card(int card_id) {
+		this.card_id = card_id;
 
 	}
 
