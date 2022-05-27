@@ -2,7 +2,6 @@ package model.item;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.item.Card;
 
 public class Deck {
 	/**
@@ -13,7 +12,7 @@ public class Deck {
 	 * コンストラクタ
 	 */
 	public Deck() {
-		cardList.add(Card(setCard_id(1), setNum("")))
+		cardList.add(1, "ace", "heart", 14);
 	}
 
 }
