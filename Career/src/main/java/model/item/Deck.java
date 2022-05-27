@@ -12,7 +12,7 @@ public class Deck {
 	 * コンストラクタ
 	 */
 	public Deck() {
-		cardList.add(1, "ace", "heart", 14);
+		cardList.add(Card(1, "ace", "heart", 14));
 	}
 
 }
