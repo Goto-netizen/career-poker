@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Deque;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -44,20 +45,28 @@ public class NewProcessingServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		/*受け取り*/
-		HttpSession session = request.getSession();
-		List<Card> deckList = (List<Card>)session.getAttribute("deck");
 		int index = Integer.parseInt(request.getParameter("index"));
 		index = 0;//テスト用の値
+		HttpSession session = request.getSession();
+		List<Card> deckList = (List<Card>)session.getAttribute("deck");
+		Deque<Card> deque =(Deque<Card>)session.getAttribute("deque");
 		
 		/*処理の依頼*/
 		GeneralProcessing gp = new GeneralProcessing(deckList);
 		
-		gp.generalProcess(index);
+		gp.generalProcess(deckList,index,deque);
 		
 		/*送信*/
 		//リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
-		rd.forward(request, response);
+		if(gp.getEndGameFlag() == true) {
+			RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
+			rd.forward(request, response);
+		}
+		else {
+			RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
+			rd.forward(request, response);
+		}
+		
 		
 		
 		
