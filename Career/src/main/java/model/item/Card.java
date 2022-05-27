@@ -1,8 +1,6 @@
 package model.item;
 
-import java.io.Serializable;
-
-public class Card implements Serializable{
+public class Card {
 	
 	/**
 	 * カードID
