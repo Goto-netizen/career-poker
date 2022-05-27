@@ -1,6 +1,6 @@
 package model.players;
 
-import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 import model.item.Card;
@@ -11,29 +11,45 @@ public class Player {
 	/*
 	 *フィールド
 	 */
-	List<Card> playerHandList;
+	List<Card> deckList;
+	int index;
+	Deque<Card>deque;
 	
 	/*
 	 * コンストラクタ
 	 */
-	public Player(List<Card>playerHandList) {
-		this.playerHandList = playerHandList;
+	public Player(List<Card> deckList ,int index,Deque<Card> deque) {
+		this.deckList = deckList;
+		this.index = index;
+		this.deque = deque;
 	}
 	
 	
-	public List<Card> PlayerProcess(int selectedIndex)throws Exception {
-		Card playerhand = playerHandList.get(selectedIndex);
+	public void playerProcess(List<Card> deckList ,int index,Deque<Card> deque)throws Exception {
+		//List<Card> deck = new ArrayList<Card>();
+		Card hand = deckList.get(index);
 		
-		/*
-		 * fieldList保留　テスト用
-		 */
-		List<Card>fieldList = new ArrayList();
-		fieldList.add(playerhand);
+		hand.setCard_flag(3);
 		
-		playerHandList.remove(selectedIndex);
+		deque.push(hand);
+		
+	}
+	
+	public boolean judge(List<Card> deckList ,int index,Deque<Card> deque) {
+		Card hand = deckList.get(index);
+		int handstrength = hand.getStrength();
+		
+		Card fieldtop = deque.peek();
+		int fieldstrength = fieldtop.getStrength();
+		
+		if(deque.isEmpty()==true) {			
+			return true;
+			
+		}else if(handstrength > fieldstrength) {
+			return true;
+		}
+		return false;
 
-		return playerHandList;
-		
 	}
 	
 	
