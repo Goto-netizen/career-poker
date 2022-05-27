@@ -1,7 +1,7 @@
 package model.generalProcess;
 
-import java.util.Deque;
 import java.util.List;
+import java.util.Stack;
 
 import model.item.Card;
 import model.players.CPU;
@@ -9,31 +9,31 @@ import model.players.Player;
 
 public class GeneralProcessing {
 	List<Card> deckList;
+	Stack<Card> fieldStack;
 	int cardFlag = 0;
 	boolean endGameFlag;
 	
-	public GeneralProcessing(List<Card> deckList){
+	public GeneralProcessing(List<Card> deckList,Stack<Card> fieldStack){
 		this.deckList = deckList;
-		
+		this.fieldStack = fieldStack;
 		
 	}
 	
-	public void generalProcess(List<Card> deckList ,int index,Deque<Card> deque) {
-		
-		distributeCard();
-		Player player = new Player(deckList,index,deque);
-		CPU cpu = new CPU(deckList,index,deque);
+	public void generalProcess(int index) {
 		
 		boolean canPlayFlag = false;
-		boolean endGameFlag = false;
 		
 		try {
-			canPlayFlag = player.judge(deckList,index,deque);
+			Player player = new Player(deckList,index,fieldStack);
+			canPlayFlag = player.judge();
 			System.out.println("canPlayFlagの値:"+canPlayFlag);
 			/*ここから*/
 			if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
 				
-				player.playerProcess(deckList,index,deque);//プレイヤーの処理
+				player.playerProcess();//プレイヤーの処理
+				deckList = player.getDeckList();
+				fieldStack = player.getFieldStack();
+				
 				
 				System.out.println("プレイヤーの処理が行われました。");
 				if(player.getPlayerPassFlag() == true) {//プレイヤーがパスをした時
@@ -46,7 +46,12 @@ public class GeneralProcessing {
 				
 				System.out.println("endGameFlagの値:"+endGameFlag);
 				
+				CPU cpu = new CPU(deckList,fieldStack);
+				
 				cpu.CPUProcess();//CPUの処理
+				
+				deckList = cpu.getDeckList();
+				fieldStack = cpu.getFieldStack();
 				System.out.println("CPUの処理が行われました。");
 				if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
 					endRound();
@@ -60,19 +65,6 @@ public class GeneralProcessing {
 			}
 	}
 	
-	public void distributeCard() {
-		for(int i=0;i<deckList.size();i++) {
-			cardFlag = deckList.get(i).getCard_flag();
-			if(cardFlag == 0) {
-				playerHandList.add(deckList.get(i));
-			}
-			if(cardFlag == 1){
-				CPUHandList.add(deckList.get(i));
-			}
-		}
-		
-	}
-	
 	public  void endRound() {
 		
 	}
@@ -81,6 +73,14 @@ public class GeneralProcessing {
 		
 		return false;
 	}
+	
+	public List<Card> getDeckList(){
+		return this.deckList;
+	}
+	public Stack<Card> getFieldStack(){
+		return this.fieldStack;
+	}
+	
 	
 	public boolean getEndGameFlag() {
 		return this.endGameFlag;
