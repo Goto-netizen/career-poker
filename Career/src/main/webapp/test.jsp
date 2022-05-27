@@ -18,17 +18,15 @@
 
 <%= fieldStack %><br>
 
-<table>
-<%for(Card card : cardList){ %>
-<% if(card.getCard_flag() == 0) { %>
-	<tr>
-	<td><%=card.getCard_id() %></td>
-	<td><%=card.getNum() %></td>
-	<td><%=card.getMark() %></td>
-	<td><%=card.getStrength() %></td>
-	<td><%=card.getCard_flag() %></td>
-	</tr><% } %>
-	<% } %>
-</table>
+<form action="hand-integer-servlet" method="POST">
+<%int i = 6; %>
+	<% for(Card card : cardList){ %>
+		<% if(card.getCard_flag() == 0){ %>
+		<label><input type="checkbox" name="submission" value="<%= i %>"><%= card.getNum() %> <%= card.getMark() %></label><br>
+	<% i++;} } %>
+	<input type="checkbox" name="submission" value="-1">パス<br>
+	
+	<input type="submit" value="出す">
+</form>
 </body>
 </html>
