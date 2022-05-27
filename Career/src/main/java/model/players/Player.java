@@ -36,18 +36,22 @@ public class Player {
 	}
 	
 	public boolean judge() {
-		Card hand = deckList.get(index);
-		int handstrength = hand.getStrength();
 		
-		Card fieldtop = fieldstack.peek();
-		int fieldstrength = fieldtop.getStrength();
-		
-		if(fieldstack.isEmpty()==true) {			
+		if(fieldstack.isEmpty()) {			
 			return true;
 			
-		}else if(handstrength > fieldstrength) {
-			return true;
+		}else {
+			Card hand = deckList.get(index);
+			int handstrength = hand.getStrength();
+			
+			Card fieldtop = fieldstack.peek();
+			int fieldstrength = fieldtop.getStrength();
+			
+			if(handstrength > fieldstrength) {
+				return true;
+			}
 		}
+		
 		return false;
 
 	}
