@@ -44,7 +44,7 @@ public class NewDistributionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Deque<Card> deque = new ArrayDeque<>();
+		Deque<Card> fieldStack = new ArrayDeque<>();
 		//Deckの生成
 		Deck deck = new Deck();
 		List<Card> cardList = deck.distribution();
@@ -52,7 +52,7 @@ public class NewDistributionServlet extends HttpServlet {
 		//セッション
 	    HttpSession session = request.getSession();
 	    session.setAttribute("cardList", cardList);
-	    session.setAttribute("deque", deque);
+	    session.setAttribute("fieldStack", fieldStack);
 
 		
 	 // リクエストの転送
