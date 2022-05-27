@@ -1,9 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.List;
+import java.util.Stack;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,7 +43,7 @@ public class NewDistributionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Deque<Card> fieldStack = new ArrayDeque<>();
+		Stack<Card> fieldStack = new Stack<Card>();
 		//Deckの生成
 		Deck deck = new Deck();
 		List<Card> cardList = deck.distribution();
