@@ -1,6 +1,6 @@
 package model.item;
 
-public class Card {
+public class Card{
 	
 	/**
 	 * カードID
