@@ -22,7 +22,7 @@
 	
 	<%
 		session.removeAttribute("neme");
-		session.removeAttribute("cardList");
+		session.removeAttribute("deckList");
 		session.removeAttribute("fieldStack");
 		session.removeAttribute("index");
 		session.removeAttribute("winner");

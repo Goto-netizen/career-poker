@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="game.css">
 </head>
 <body>
-<% List<Card> cardList = (List<Card>)session.getAttribute("cardList"); 
+<% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); 
    Stack<Card> fieldStack = (Stack<Card>)session.getAttribute("fieldStack"); %>
 
 <div id="cpu-hand">
-<%	for(Card card : cardList){
+<%	for(Card card : deckList){
 	if(card.getCard_flag() == 1){ %>
 		<img src="./trump/card_back.png" width=68 height=100 >
 		<% }} %></div>
@@ -22,7 +22,7 @@
 
 <form action="hand-integer-servlet" method="POST">
 <%int i = 6; %>
-	<% for(Card card : cardList){ %>
+	<% for(Card card : deckList){ %>
 		<% if(card.getCard_flag() == 0){ %>
 		<label><input type="checkbox" name="submission" value="<%= i %>"><img src="./trump/<%= card.getCard_id() %>.png" width=50 height =50 ></label>
 	<% i++;} } %>
