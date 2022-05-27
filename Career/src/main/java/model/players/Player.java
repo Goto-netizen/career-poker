@@ -1,7 +1,7 @@
 package model.players;
 
-import java.util.Deque;
 import java.util.List;
+import java.util.Stack;
 
 import model.item.Card;
 
@@ -13,36 +13,36 @@ public class Player {
 	 */
 	List<Card> deckList;
 	int index;
-	Deque<Card>deque;
+	Stack<Card>fieldstack;
 	
 	/*
 	 * コンストラクタ
 	 */
-	public Player(List<Card> deckList ,int index,Deque<Card> deque) {
+	public Player(List<Card> deckList ,int index,Stack<Card> fieldstack) {
 		this.deckList = deckList;
 		this.index = index;
-		this.deque = deque;
+		this.fieldstack = fieldstack;
 	}
 	
 	
-	public void playerProcess(List<Card> deckList ,int index,Deque<Card> deque)throws Exception {
+	public void playerProcess()throws Exception {
 		//List<Card> deck = new ArrayList<Card>();
 		Card hand = deckList.get(index);
 		
 		hand.setCard_flag(3);
 		
-		deque.push(hand);
+		fieldstack.push(hand);
 		
 	}
 	
-	public boolean judge(List<Card> deckList ,int index,Deque<Card> deque) {
+	public boolean judge() {
 		Card hand = deckList.get(index);
 		int handstrength = hand.getStrength();
 		
-		Card fieldtop = deque.peek();
+		Card fieldtop = fieldstack.peek();
 		int fieldstrength = fieldtop.getStrength();
 		
-		if(deque.isEmpty()==true) {			
+		if(fieldstack.isEmpty()==true) {			
 			return true;
 			
 		}else if(handstrength > fieldstrength) {
@@ -51,6 +51,15 @@ public class Player {
 		return false;
 
 	}
+	
+	public List<Card> getDeckList(){
+		return deckList;
+	}
+	
+	public Stack<Card> getFieldStack(){
+		return fieldstack;
+	}
+	
 	
 	public boolean getPlayerPassFlag() {
 		return true;
