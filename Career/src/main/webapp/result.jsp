@@ -22,11 +22,9 @@
 	
 	<%
 		session.removeAttribute("neme");
-		session.removeAttribute("index");
-		session.removeAttribute("pList");
-		session.removeAttribute("cpuList");
-		session.removeAttribute("fList");
-		session.removeAttribute("dList");
+		session.removeAttribute("cardList");
+		session.removeAttribute("fieldStack");
+		session.removeAttribute("winner");
 	%>
 		<a href="menu.jsp">メニューに戻る</a>
 </body>
