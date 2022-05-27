@@ -13,15 +13,15 @@ public class Player {
 	 */
 	List<Card> deckList;
 	int index;
-	Stack<Card>fieldstack;
+	Stack<Card>fieldStack;
 	
 	/*
 	 * コンストラクタ
 	 */
-	public Player(List<Card> deckList ,int index,Stack<Card> fieldstack) {
+	public Player(List<Card> deckList ,int index,Stack<Card> fieldStack) {
 		this.deckList = deckList;
 		this.index = index;
-		this.fieldstack = fieldstack;
+		this.fieldStack = fieldStack;
 	}
 	
 	
@@ -31,20 +31,20 @@ public class Player {
 		
 		hand.setCard_flag(3);
 		
-		fieldstack.push(hand);
+		fieldStack.push(hand);
 		
 	}
 	
 	public boolean judge() {
 		
-		if(fieldstack.isEmpty()) {			
+		if(fieldStack.isEmpty()) {			
 			return true;
 			
 		}else {
 			Card hand = deckList.get(index);
 			int handstrength = hand.getStrength();
 			
-			Card fieldtop = fieldstack.peek();
+			Card fieldtop = fieldStack.peek();
 			int fieldstrength = fieldtop.getStrength();
 			
 			if(handstrength > fieldstrength) {
@@ -61,7 +61,7 @@ public class Player {
 	}
 	
 	public Stack<Card> getFieldStack(){
-		return fieldstack;
+		return fieldStack;
 	}
 	
 	
