@@ -42,7 +42,7 @@ public class NewDistributionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//フィールドスタックの宣言
 		Stack<Card> fieldStack = new Stack<Card>();
 		//Deckの生成
 		Deck deck = new Deck();
