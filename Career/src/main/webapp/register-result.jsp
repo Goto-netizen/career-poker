@@ -28,6 +28,6 @@
 	%>
 
 
-	<a href="login.html">ログイン画面へ戻る</a>
+	<a href="login1.html">ログイン画面へ戻る</a>
 </body>
 </html>
