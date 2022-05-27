@@ -45,9 +45,11 @@ public class NewProcessingServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		/*受け取り*/
-		int index = Integer.parseInt(request.getParameter("index"));
-		index = 0;//テスト用の値
 		HttpSession session = request.getSession();
+		List<Integer> indexList = (List<Integer>)session.getAttribute("index");
+		int index = indexList.get(0);
+		//index = 0;//テスト用の値
+		
 		List<Card> deckList = (List<Card>)session.getAttribute("cardList");
 		Stack<Card> fieldStack =(Stack<Card>)session.getAttribute("fieldStack");
 		
