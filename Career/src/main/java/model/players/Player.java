@@ -52,6 +52,10 @@ public class Player {
 
 	}
 	
+	public boolean getPlayerPassFlag() {
+		return true;
+	}
+	
 	
 
 
