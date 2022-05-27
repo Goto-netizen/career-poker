@@ -23,6 +23,11 @@ public class Card implements Serializable{
 	 * 強さ
 	 */
 	private int strength;
+	
+	/**
+	 * カードフラグ
+	 */
+	private int card_flag;
 
 
 
@@ -77,6 +82,22 @@ public class Card implements Serializable{
 		return strength;
 	}
 	public void setStrength(int strength) {
-		this.strength=strength;
+		this.strength = strength;
+	}
+	
+	/**
+	 * フィールドcard_flagの値を返します。
+	 * @return カードフラグ
+	 */
+	public int getCard_flag() {
+		return card_flag;
+	}
+	
+	/**
+	 * フィールドcard_flagに値をセット。
+	 * @param card_flag
+	 */
+	public void setCard_flag(int card_flag) {
+		this.card_flag = card_flag;
 	}
 }
