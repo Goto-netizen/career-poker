@@ -12,7 +12,7 @@
 
 <%	for(Card card : cardList){
 	if(card.getCard_flag() == 1){ %>
-		a
+		<img src="./trump/card_back.png" width=47 height=70 >
 		<% }} %>
 <br>
 
