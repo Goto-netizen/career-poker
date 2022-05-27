@@ -1,6 +1,7 @@
 package model.entity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -13,16 +14,17 @@ public class GeneralProcessing {
 	boolean CPUPassFlag;
 	
 	public GeneralProcessing(List<CardBean> playerHandList,List<CardBean> CPUHandList,List<CardBean> fieldList,List<CardBean> discardFieldList){
-		this.playerHandList = playerHandList;
-		this.CPUHandList = CPUHandList;
-		this.fieldList = fieldList;
+		this.playerHandList = Collections.synchronizedList(playerHandList);
+		this.CPUHandList = Collections.synchronizedList(CPUHandList);
+		this.fieldList = Collections.synchronizedList(fieldList);
 		this.discardFieldList = discardFieldList;
 		
 	}
 	
-	public boolean judge(int selectedIndex) throws Exception {
+	public synchronized boolean judge(int selectedIndex) throws Exception {
 		
 		System.out.println("fieldList.size()の値:"+fieldList.size());
+		System.out.println("fieldListの値:"+fieldList);
 		
 		if(fieldList.size()==0) {
 			return true;
@@ -42,18 +44,25 @@ public class GeneralProcessing {
 	}
 	
 	
-	public void playerProcess(int selectedIndex) throws Exception {
+	public synchronized void playerProcess(int selectedIndex) throws Exception {
 		CardBean playerhand = playerHandList.get(selectedIndex);
+		System.out.println("playerhandの値："+playerhand);
 
 		fieldList.add(playerhand);
+		System.out.println("fieldListの値："+fieldList);
+		
+		System.out.println("playerHandListの値："+playerHandList);
+		System.out.println("playerHandList.size()の値："+playerHandList.size());
 		
 		playerHandList.remove(selectedIndex);
 		
+		System.out.println("playerHandList.size()の値："+playerHandList.size());
+		System.out.println("playerHandListの値："+playerHandList);
 		
 	}
 	
 	
-	public void CPUProcess() throws Exception{
+	public synchronized void CPUProcess() throws Exception{
 		List<CardBean> canPlayCardList = new ArrayList<>(); 
 		int topCardIndex = (fieldList.size()-1);
 		int CPUSelectedIndex = 0;
@@ -101,51 +110,51 @@ public class GeneralProcessing {
 			//CPUが選んだカードを手札から除去
 			CPUHandList.remove(CPUSelectedIndex);
 		}
-		
-		
-		
-		
-		
 	}
 	
-	public void endRound() {
+	public synchronized void endRound() {
 		discardFieldList.addAll(fieldList);
 		fieldList.clear();
 	}
 	
-	public boolean checkHandSize() {
+	public synchronized boolean checkHandSize() {
+		
+		System.out.println("playerHandList.size()の値："+playerHandList.size());
+		
 		if(playerHandList.size()==0) {
 			return true;
 		}
-		
+		/**/
+		System.out.println("CPUHandList.size()の値："+CPUHandList.size());
 		if(CPUHandList.size()==0){
 			return true;
 		}
+		
 		return false;
 	}
 	
 	
-	public List<CardBean> getPlayerHandList(){
+	public synchronized List<CardBean> getPlayerHandList(){
 		return this.playerHandList;
 	}
 	
-	public List<CardBean> getCPUHandList(){
+	public synchronized List<CardBean> getCPUHandList(){
 		return this.CPUHandList;
 	}
 	
-	public List<CardBean> getFieldList(){
+	public synchronized List<CardBean> getFieldList(){
 		return this.fieldList;
 	}
 	
-	public List<CardBean> getDiscardFieldList(){
+	public synchronized List<CardBean> getDiscardFieldList(){
 		return this.discardFieldList;
 	}
 	
-	public boolean getPlayerPassFlag(){
+	public synchronized boolean getPlayerPassFlag(){
 		return this.playerPassFlag;
 	}
 	
-	public boolean getCPUPassFlag(){
+	public synchronized boolean getCPUPassFlag(){
 		return this.CPUPassFlag;
 	}
 }

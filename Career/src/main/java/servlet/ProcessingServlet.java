@@ -56,6 +56,9 @@ public class ProcessingServlet extends HttpServlet {
 		List<CardBean> playerHandList = (List<CardBean>) session.getAttribute("MyHandList");
 		List<CardBean> CPUHandList = (List<CardBean>) session.getAttribute("EnemyHandList");
 		List<CardBean> fieldList = (List<CardBean>) session.getAttribute("FieldList");
+		if(fieldList ==null) {
+			fieldList = new ArrayList<>();
+		}
 		List<CardBean> discardFieldList = new ArrayList<>();
 		
 		
@@ -78,22 +81,31 @@ public class ProcessingServlet extends HttpServlet {
 		
 		
 		GeneralProcessing gp = new GeneralProcessing(playerHandList,CPUHandList,fieldList,discardFieldList);
-		try {
-		canPlayFlag = gp.judge(index);
 		
-		/*ここから*/
-		if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
-			
+		try {
+			canPlayFlag = gp.judge(index);
+			System.out.println("canPlayFlagの値:"+canPlayFlag);
+			/*ここから*/
+			if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
+				
 				gp.playerProcess(index);//プレイヤーの処理
+				
+				System.out.println("プレイヤーの処理が行われました。");
 				if(gp.getPlayerPassFlag() == true) {//プレイヤーがパスをした時
+					System.out.println("プレイヤーがパスを行いました。");
 					gp.endRound();
+					System.out.println("場をリセットしました。");
 				}
+				
 				endGameFlag = gp.checkHandSize();//プレイヤーの手札が無くなったか判定
+				
+				System.out.println("endGameFlagの値:"+endGameFlag);
 				if(endGameFlag == true) {//プレイヤーの手札が0の時
 					//session.setAttribute("勝者");
 					//終了.jspへ
 				}
 				gp.CPUProcess();//CPUの処理
+				System.out.println("CPUの処理が行われました。");
 				if(gp.getCPUPassFlag() == true) {//CPUがパスをした時
 					gp.endRound();
 				}
@@ -102,15 +114,7 @@ public class ProcessingServlet extends HttpServlet {
 					//session.setAttribute("勝者");
 					//終了.jspへ
 				}
-			
-			
-			
-		}
-		
-		else {
-			//出せませんよ表示.jsp
-		}
-		
+			}
 		} catch (Exception e) {
 				// TODO 自動生成された catch ブロック
 				e.printStackTrace();
@@ -122,6 +126,10 @@ public class ProcessingServlet extends HttpServlet {
 		fieldList = gp.getFieldList();
 		discardFieldList = gp.getDiscardFieldList();
 		
+		System.out.println("playerHandListの値："+playerHandList);
+		System.out.println("CPUHandListの値："+CPUHandList);
+		System.out.println("fieldListの値："+fieldList);
+		System.out.println("discardFieldListの値："+discardFieldList);
 		
 		session.setAttribute("index",index);
 		session.setAttribute("pList",playerHandList);

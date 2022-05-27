@@ -48,8 +48,8 @@ public class HandIntegerServlet extends HttpServlet {
 		System.out.println(Arrays.toString(ask));
 		List<Integer> indexList = new ArrayList<Integer>();
 		for(int i=0;i<ask.length;i++) {
-		number = Integer.parseInt(ask[i]);
-		indexList.add(number);
+			number = Integer.parseInt(ask[i]);
+			indexList.add(number);
 		}
 		System.out.println(indexList);
 		

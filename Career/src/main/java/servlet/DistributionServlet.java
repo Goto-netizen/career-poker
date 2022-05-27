@@ -40,11 +40,8 @@ public class DistributionServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-	List<CardBean> distributionList = null;
-	List<CardBean> MyHandList = null;
-	List<CardBean> EnemyHandList = null;
-	List<CardBean> FieldList = null;
-
+	
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -52,6 +49,11 @@ public class DistributionServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 
+		List<CardBean> distributionList = null;
+		List<CardBean> MyHandList = null;
+		List<CardBean> EnemyHandList = null;
+		//List<CardBean> FieldList = new ArrayList<>();
+		List<CardBean> FieldList = null;
 		
 		// DAOの生成
 		DistributionDAO dao = new DistributionDAO();
@@ -87,8 +89,9 @@ public class DistributionServlet extends HttpServlet {
 	    HttpSession session = request.getSession();
 	    session.setAttribute("MyHandList", MyHandList);
 	    session.setAttribute("FieldList", FieldList);
+	    //FieldList.add(EnemyHandList.get(0));//中身空だとリクエストの転送で要素番号-1を選択されるため
+	    //System.out.println(FieldList);
 	    session.setAttribute("EnemyHandList", EnemyHandList);
-	
 
 		// リクエストの転送
 		RequestDispatcher rd = request.getRequestDispatcher(url);
