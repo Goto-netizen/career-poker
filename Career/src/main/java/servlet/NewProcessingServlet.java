@@ -61,8 +61,8 @@ public class NewProcessingServlet extends HttpServlet {
 		fieldStack = gp.getFieldStack();
 		
 		/*送信*/
-		session.setAttribute("deck",deckList);
-		session.setAttribute("deque",fieldStack);
+		session.setAttribute("cardList",deckList);
+		session.setAttribute("fieldStack",fieldStack);
 		
 		//リクエストの転送
 		if(gp.getEndGameFlag() == true) {
