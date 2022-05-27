@@ -7,7 +7,7 @@ public class Card implements Serializable{
 	/**
 	 * カードID
 	 */
-	private int code;
+	private int card_id;
 	
 	/**
 	 * 数字
@@ -33,11 +33,11 @@ public class Card implements Serializable{
 
 	}
 
-	public int getCode() {
-		return code;
+	public int getCard_id() {
+		return card_id;
 	}
-	public void setCode(int code) {
-		this.code=code;
+	public void setCard_id(int card_id) {
+		this.card_id = card_id;
 	}
 	/**
 	 * フィールドnumの値を返します。
