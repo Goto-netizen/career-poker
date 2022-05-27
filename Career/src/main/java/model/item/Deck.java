@@ -1,6 +1,7 @@
 package model.item;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -57,6 +58,8 @@ public class Deck {
 	//シャッフル
 public List<Card> distribution() {
 		
+	Collections.shuffle(cardList);
+	
 		int i = 0;
 		for(Card card :cardList) {
 			if(i<16) {
