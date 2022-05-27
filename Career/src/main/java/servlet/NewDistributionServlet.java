@@ -46,11 +46,11 @@ public class NewDistributionServlet extends HttpServlet {
 		Stack<Card> fieldStack = new Stack<Card>();
 		//Deckの生成
 		Deck deck = new Deck();
-		List<Card> cardList = deck.distribution();
+		List<Card> deckList = deck.distribution();
 		
 		//セッション
 	    HttpSession session = request.getSession();
-	    session.setAttribute("cardList", cardList);
+	    session.setAttribute("deckList", deckList);
 	    session.setAttribute("fieldStack", fieldStack);
 
 		
