@@ -15,6 +15,7 @@ public class CPU {
 	boolean CPUPassFlag;
 	List<Card>deckList;
 	Stack<Card>fieldStack;
+	int selectedIndex;
 	/*
 	 * コンストラクタ
 	 */
@@ -32,16 +33,25 @@ public class CPU {
 		int selectedCard_id = 0;
 		
 		//Flagが1のカードだけ収集
-		onlyFlag1List = gatherFlag1Card(deckList);
+		onlyFlag1List = gatherFlag1Card();
 		System.out.println("onlyFlag1List:"+onlyFlag1List);
 		System.out.println("fieldStack:"+fieldStack);
 		
 		//場のカードより大きいカードだけ収集
-		canPlayCardsList = checkCanPlayCard(onlyFlag1List);//ここ
+		canPlayCardsList = checkCanPlayCard(onlyFlag1List);//ok
+		System.out.println("canPlayCardsList:"+canPlayCardsList);
+		System.out.println("fieldStack:"+fieldStack);
 		
 		//場のカードより大きいカードがある
-		if(canPlayCardsList.size() != 0) {
-			selectedCard_id = selectCard_id(canPlayCardsList.size(),canPlayCardsList);
+		if(canPlayCardsList.size() != 0) {//ok
+			selectedCard_id = selectCard_id(canPlayCardsList.size(),canPlayCardsList);//選択した手札のカードID
+			System.out.println("selectedCard_id:"+selectedCard_id);
+			changeCard_Flag(selectedCard_id);//ok
+			//System.out.println("onlyFlag1List:"+onlyFlag1List);
+			
+			playCPUCard();//
+			//System.out.println("onlyFlag1List:"+onlyFlag1List);
+			System.out.println("fieldStack:"+fieldStack);
 		}
 		else {//CPUはパスをする
 			CPUPassFlag = true;
@@ -52,7 +62,7 @@ public class CPU {
 		
 	}
 	
-	public List<Card> gatherFlag1Card(List<Card> deckList){
+	public List<Card> gatherFlag1Card(){
 		List<Card> onlyFlag1List = new ArrayList<>();
 		for(int i=0;i<deckList.size();i++) {
 			if(deckList.get(i).getCard_flag() == 1) {
@@ -84,7 +94,7 @@ public class CPU {
 	}
 	
 	public int selectCard_id(int listSize,List<Card> canPlayCardsList) {
-		Card CPUSelectedCard = null;
+		Card CPUSelectedCard = null;//9
 		int CPUSelectedCard_id = 0;
 		Random rd = new Random();
 		int random = rd.nextInt(listSize);
@@ -92,19 +102,26 @@ public class CPU {
 		//出せるカードの中からランダムで選出
 		CPUSelectedCard = canPlayCardsList.get(random);	
 		CPUSelectedCard_id = CPUSelectedCard.getCard_id();
+		System.out.println("selectCard_idが実行されました");
 		return 	CPUSelectedCard_id;
 	}
 	
-	public void changeCardFlag(List<Card> deckList,int selectedCard_id) {
-		int selectedIndex = 0;
+	public void changeCard_Flag(int selectedCard_id) {
+		
 		for(int i=0;i<deckList.size();i++) {
-			if(deckList.get(i).getCard_id() == selectedCard_id) {
+			if(deckList.get(i).getCard_id() == selectedCard_id) {//選んだカードのIDと同じ山札のカードの時
 				selectedIndex = i;
 			}
 		}
 		
-		deckList.get(selectedIndex).setCard_flag(3);
-		
+		deckList.get(selectedIndex).setCard_flag(3);//フラグを3に書き換える
+		System.out.println("書き換え後のdeckListの中身"+deckList);
+		System.out.println("changeCard_Flagが実行されました");
+	}
+	
+	public void playCPUCard() {
+		fieldStack.push(deckList.get(selectedIndex));//余りが入った
+		System.out.println("playCPUCardが実行されました");
 	}
 	
 	public void setDeckList(List<Card> deckList) {

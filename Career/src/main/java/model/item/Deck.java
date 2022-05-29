@@ -9,7 +9,7 @@ public class Deck {
 	/**
 	 * リストを生成
 	 */
-	List<Card> cardList = new ArrayList<Card>();
+	public List<Card> cardList = new ArrayList<Card>();
 	/**
 	 * コンストラクタ
 	 */
@@ -56,7 +56,7 @@ public class Deck {
 
 	}
 	//シャッフル
-public List<Card> distribution() {
+public void distribution() {
 		
 	Collections.shuffle(cardList);
 	
@@ -73,7 +73,7 @@ public List<Card> distribution() {
 		}
 		//並び替え
 		cardList.sort(Comparator.comparing(Card::getCard_flag).thenComparing(Card::getStrength));
-		return cardList;
+		//return cardList;
 	}
 
 	

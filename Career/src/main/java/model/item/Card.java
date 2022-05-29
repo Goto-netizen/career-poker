@@ -98,4 +98,9 @@ public class Card{
 	public void setCard_flag(int card_flag) {
 		this.card_flag = card_flag;
 	}
+	
+	@Override
+	public String toString() {
+		return card_id+":"+num+":"+mark+":"+strength+":"+card_flag;
+	}
 }

@@ -11,6 +11,7 @@ public class Player {
 	/*
 	 *フィールド
 	 */
+	boolean playerPassFlag;
 	List<Card> deckList;
 	int index;
 	Stack<Card>fieldStack;
@@ -66,7 +67,7 @@ public class Player {
 	
 	
 	public boolean getPlayerPassFlag() {
-		return true;
+		return playerPassFlag;
 	}
 	
 	
