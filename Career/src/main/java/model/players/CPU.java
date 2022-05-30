@@ -1,9 +1,9 @@
 package model.players;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 import java.util.Random;
-import java.util.Stack;
 
 import model.item.Card;
 
@@ -14,14 +14,14 @@ public class CPU {
 	 */
 	boolean CPUPassFlag;
 	List<Card>deckList;
-	Stack<Card>fieldStack;
+	Deque<Card>fieldDeque;
 	int selectedIndex;
 	/*
 	 * コンストラクタ
 	 */
-	public CPU(List<Card>deckList,Stack<Card>fieldStack) {
+	public CPU(List<Card>deckList,Deque<Card>fieldDeque) {
 		this.deckList = deckList;
-		this.fieldStack = fieldStack;
+		this.fieldDeque = fieldDeque;
 		System.out.println("CPUが初期化されました");
 	}
 	
@@ -35,12 +35,12 @@ public class CPU {
 		//Flagが1のカードだけ収集
 		onlyFlag1List = gatherFlag1Card();
 		System.out.println("onlyFlag1List:"+onlyFlag1List);
-		System.out.println("fieldStack:"+fieldStack);
+		System.out.println("fieldDeque:"+fieldDeque);
 		
 		//場のカードより大きいカードだけ収集
 		canPlayCardsList = checkCanPlayCard(onlyFlag1List);//ok
 		System.out.println("canPlayCardsList:"+canPlayCardsList);
-		System.out.println("fieldStack:"+fieldStack);
+		System.out.println("fieldDeque:"+fieldDeque);
 		
 		//場のカードより大きいカードがある
 		if(canPlayCardsList.size() != 0) {//ok
@@ -51,7 +51,7 @@ public class CPU {
 			
 			playCPUCard();//
 			//System.out.println("onlyFlag1List:"+onlyFlag1List);
-			System.out.println("fieldStack:"+fieldStack);
+			System.out.println("fieldDeque:"+fieldDeque);
 		}
 		else {//CPUはパスをする
 			CPUPassFlag = true;
@@ -77,14 +77,14 @@ public class CPU {
 	
 	public List<Card> checkCanPlayCard(List<Card>onlyFlag1List){
 		List<Card> canPlayCardsList = new ArrayList<>();
-		if(fieldStack.isEmpty()) {
-			System.out.println("fieldStackは空です");
+		if(fieldDeque.isEmpty()) {
+			System.out.println("fieldDequeは空です");
 			canPlayCardsList = onlyFlag1List;
 		}
 		else {
-			System.out.println("fieldStackは空ではありません。");
+			System.out.println("fieldDequeは空ではありません。");
 			for(int i=0;i<onlyFlag1List.size();i++) {
-				if(fieldStack.peek().getStrength()<onlyFlag1List.get(i).getStrength()) {
+				if(fieldDeque.peek().getStrength()<onlyFlag1List.get(i).getStrength()) {
 					canPlayCardsList.add(onlyFlag1List.get(i));
 				}
 			}
@@ -120,7 +120,7 @@ public class CPU {
 	}
 	
 	public void playCPUCard() {
-		fieldStack.push(deckList.get(selectedIndex));//余りが入った
+		fieldDeque.push(deckList.get(selectedIndex));//余りが入った
 		System.out.println("playCPUCardが実行されました");
 	}
 	
@@ -132,12 +132,12 @@ public class CPU {
 		return this.deckList;
 	}
 	
-	public void setFeildStack(Stack<Card>fieldStack) {
-		this.fieldStack = fieldStack;
+	public void setFeildDeque(Deque<Card>fieldDeque) {
+		this.fieldDeque = fieldDeque;
 	}
 	
-	public Stack<Card> getFieldStack(){
-		return this.fieldStack;
+	public Deque<Card> getFieldDeque(){
+		return this.fieldDeque;
 	}
 	
 	public boolean getCPUPassFlag() {

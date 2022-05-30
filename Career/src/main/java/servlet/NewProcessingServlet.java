@@ -1,8 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Deque;
 import java.util.List;
-import java.util.Stack;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,18 +51,18 @@ public class NewProcessingServlet extends HttpServlet {
 		//index = 0;//テスト用の値
 		
 		List<Card> deckList = (List<Card>)session.getAttribute("deckList");
-		Stack<Card> fieldStack =(Stack<Card>)session.getAttribute("fieldStack");
+		Deque<Card> fieldDeque =(Deque<Card>)session.getAttribute("fieldDeque");
 		
 		/*処理の依頼*/
-		GeneralProcessing gp = new GeneralProcessing(deckList,fieldStack);
+		GeneralProcessing gp = new GeneralProcessing(deckList,fieldDeque);
 		
 		gp.generalProcess(index);
 		deckList = gp.getDeckList();
-		fieldStack = gp.getFieldStack();
+		fieldDeque = gp.getFieldDeque();
 		
 		/*送信*/
 		session.setAttribute("deckList",deckList);
-		session.setAttribute("fieldStack",fieldStack);
+		session.setAttribute("fieldDeque",fieldDeque);
 		session.setAttribute("winner", "CPU");
 		
 		//リクエストの転送

@@ -1,30 +1,23 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Deque;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import model.item.Card;
-import model.item.Deck;
 
 /**
- * Servlet implementation class NewDistributionServlet
+ * Servlet implementation class Distribution_withOptionServlet
  */
-@WebServlet("/new-distribution-servlet")
-public class NewDistributionServlet extends HttpServlet {
+@WebServlet("/Distribution_withOptionServlet")
+public class Distribution_withOptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewDistributionServlet() {
+    public Distribution_withOptionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,25 +34,8 @@ public class NewDistributionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//フィールドデキューの宣言
-		Deque<Card> fieldDeque = new Deque<Card>();
-		//Deckの生成
-		Deck deck = new Deck();
-		//List<Card> deckList = deck.distribution();
-		deck.distribution();
-		
-		//セッション
-	    HttpSession session = request.getSession();
-	    //session.setAttribute("deckList", deckList);
-	    session.setAttribute("deckList", deck.cardList);
-	    
-	    session.setAttribute("fieldStack", fieldDeque);
-
-		
-	    // リクエストの転送
-	 	RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
-	 	rd.forward(request, response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
-	
 
 }
