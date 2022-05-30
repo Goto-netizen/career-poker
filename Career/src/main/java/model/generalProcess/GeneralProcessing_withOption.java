@@ -139,7 +139,7 @@ public class GeneralProcessing_withOption {
 		
 		switch(ca.cardNumber){
 			case "seven": 
-				ca.sevenAbility();
+				ca.sevenAbility(this.deckList ,index);
 				break;
 			case "eight":
 				ca.eightAbility();
