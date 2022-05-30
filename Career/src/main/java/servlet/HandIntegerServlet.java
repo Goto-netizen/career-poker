@@ -63,7 +63,7 @@ public class HandIntegerServlet extends HttpServlet {
 		List<Card> deckList = (List<Card>)session.getAttribute("deckList");
 
 		if(index.get(0) == -1) {
-			RequestDispatcher rd = request.getRequestDispatcher("NewProcessingServlet");
+			RequestDispatcher rd = request.getRequestDispatcher("Processing_withOptionServlet");
 			rd.forward(request, response);
 		}else if(deckList.get(index.get(0)).getStrength()==10) {
 			RequestDispatcher rd = request.getRequestDispatcher("ten.jsp");
@@ -72,7 +72,7 @@ public class HandIntegerServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Queen.jsp");
 			rd.forward(request, response);
 		}else {
-			RequestDispatcher rd = request.getRequestDispatcher("NewProcessingServlet");
+			RequestDispatcher rd = request.getRequestDispatcher("Processing_withOptionServlet");
 			rd.forward(request, response);
 		}
 	
