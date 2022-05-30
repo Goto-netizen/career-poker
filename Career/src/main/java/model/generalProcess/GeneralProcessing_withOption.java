@@ -14,6 +14,7 @@ public class GeneralProcessing_withOption {
 	Deque<Card> fieldDeque;
 	int cardFlag = 0;
 	boolean endGameFlag;
+	private boolean OrderCPUPass = false;
 	
 	public GeneralProcessing_withOption(List<Card> deckList,Deque<Card> fieldDeque){
 		this.deckList = deckList;
@@ -84,54 +85,54 @@ public void generalProcess(int index) {
 					}
 					System.out.println("deckList:"+deckList);
 					System.out.println("fieldDeque:"+fieldDeque);
-					System.out.println("プレイヤーの処理が行われました。");
-					if(player.getPlayerPassFlag() == true) {//プレイヤーがパスをした時
-						System.out.println("プレイヤーがパスを行いました。");
-						endRound();
-						System.out.println("場をリセットしました。");
-					}
+					System.out.println("プレイヤーの処理が行われました。");				
 				
 					endGameFlag = checkHandSize();//プレイヤーの手札が無くなったか判定
 					
 					System.out.println("endGameFlagの値:"+endGameFlag);
-					CPU cpu = new CPU(deckList,fieldDeque);
-			
-					cpu.CPUProcess();//CPUの処理
-					
-					/*処理結果を代入*/
-					deckList = cpu.getDeckList();
-					fieldDeque = cpu.getFieldDeque();
-					
-					/*カードの効果発動*/
-					CardAbility ca2 = new CardAbility(fieldDeque.peek());
-					
-					switch(ca2.cardNumber){
-						case 7: 
-							ca2.sevenAbility();
-							break;
-						case 8:
-							ca2.eightAbility();
-							break;
-						case 9:
-							ca2.nineAbility();
-							break;
-						case 10:
-							ca2.tenAbility(deckList,index);
-						case 11:
-							ca2.jackAbility();
-							break;
-						case 12:
-							ca2.queenAbility();
-							break;
-						case 13:
-							ca2.kingAbility();
-							break;
-					
-					}
-					System.out.println("CPUの処理が行われました。");
-					if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
+					if(OrderCPUPass) {
 						endRound();
+					}else {
+						CPU cpu = new CPU(deckList,fieldDeque);
+						
+						cpu.CPUProcess();//CPUの処理
+						
+						/*処理結果を代入*/
+						deckList = cpu.getDeckList();
+						fieldDeque = cpu.getFieldDeque();
+						
+						/*カードの効果発動*/
+						CardAbility ca2 = new CardAbility(fieldDeque.peek());
+						
+						switch(ca2.cardNumber){
+							case 7: 
+								ca2.sevenAbility();
+								break;
+							case 8:
+								ca2.eightAbility();
+								break;
+							case 9:
+								ca2.nineAbility();
+								break;
+							case 10:
+								ca2.tenAbility(deckList,index);
+							case 11:
+								ca2.jackAbility();
+								break;
+							case 12:
+								ca2.queenAbility();
+								break;
+							case 13:
+								ca2.kingAbility();
+								break;
+						
+						}
+						System.out.println("CPUの処理が行われました。");
+						if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
+							endRound();
+						}
 					}
+					
 					endGameFlag = checkHandSize();		
 				}
 				

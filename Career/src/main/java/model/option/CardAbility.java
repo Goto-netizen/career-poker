@@ -8,6 +8,7 @@ public class CardAbility {
 
 	boolean jackFlag;
 	public int cardNumber;
+	private boolean OrderCPUPass;
 	
 	public CardAbility(Card topCard){
 		this.cardNumber = Integer.parseInt(topCard.getNum());
@@ -22,8 +23,9 @@ public class CardAbility {
 		
 	}
 	
-	public void eightAbility() {
-		
+	public boolean eightAbility() {
+		OrderCPUPass = true;
+		return OrderCPUPass;
 		
 	}
 	
