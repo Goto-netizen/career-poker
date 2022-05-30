@@ -21,6 +21,10 @@ public class GeneralProcessing_withOption {
 		
 	}
 	
+	public GeneralProcessing_withOption() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
 	public void generalProcess(int index) {
 		boolean canPlayFlag = false;
 		if(index == -1) {//プレイヤーがパスをした時
@@ -49,7 +53,7 @@ public class GeneralProcessing_withOption {
 		Player player = new Player(this.deckList,index,this.fieldDeque);
 		
 		try {
-			player.playMyCard();//プレイヤーの処理
+			player.playMyHand();//プレイヤーの処理
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -68,25 +72,36 @@ public class GeneralProcessing_withOption {
 	}
 	
 	public void CPUProcess(int index) {
-		CPU cpu = new CPU(this.deckList,this.fieldDeque);
-		
-		try {
-			cpu.CPUProcessSequence();//CPUの処理
-		} catch (Exception e) {
-			e.printStackTrace();
-		 }
-		
-		/*処理結果を代入*/
-		this.deckList = cpu.getDeckList();
-		this.fieldDeque = cpu.getFieldDeque();
-		
-		/*カードの効果発動*/
-		selectCardAbility(index);
-		
-		System.out.println("CPUの処理が行われました。");
-		if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
-			endRound();
+		CardAbility ca = new CardAbility();
+		if(ca.getEightFlag()) {
+			//プレイヤーが８を出してCPUがパス
+		}else {
+			while(ca.getEightFlag()) {   //CPUが８を出すとCPUのターン
+				CPU cpu = new CPU(this.deckList,this.fieldDeque);
+				
+				try {
+					cpu.CPUProcessSequence();//CPUの処理
+				} catch (Exception e) {
+					e.printStackTrace();
+				 }
+				
+				/*処理結果を代入*/
+				this.deckList = cpu.getDeckList();
+				this.fieldDeque = cpu.getFieldDeque();
+				
+				/*カードの効果発動*/
+				selectCardAbility(index);
+				if(!ca.cardNumber.equals("8")) {
+					break;
+				}
+				System.out.println("CPUの処理が行われました。");
+				if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
+					endRound();
+				}
+			}
+			
 		}
+		
 	}
 
 

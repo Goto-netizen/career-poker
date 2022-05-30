@@ -27,7 +27,7 @@ public class Player {
 	}
 	
 	
-	public void playerMyCard()throws Exception {
+	public void playMyHand()throws Exception {
 		//List<Card> deck = new ArrayList<Card>();
 		Card hand = deckList.get(index);
 		
