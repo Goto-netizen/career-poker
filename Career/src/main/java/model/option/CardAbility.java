@@ -7,11 +7,11 @@ import model.item.Card;
 public class CardAbility {
 
 	boolean jackFlag;
-	public int cardNumber;
+	public String cardNumber;
 	private boolean OrderCPUPass;
 	
 	public CardAbility(Card topCard){
-		this.cardNumber = Integer.parseInt(topCard.getNum());
+		this.cardNumber = topCard.getNum();
 	}
 	public CardAbility(){
 		

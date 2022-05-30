@@ -123,24 +123,24 @@ public class GeneralProcessing_withOption {
 		CardAbility ca2 = new CardAbility(this.fieldDeque.peek());
 		
 		switch(ca2.cardNumber){
-			case 7: 
+			case "seven": 
 				ca2.sevenAbility();
 				break;
-			case 8:
+			case "eight":
 				ca2.eightAbility();
 				break;
-			case 9:
+			case "nine":
 				ca2.nineAbility();
 				break;
-			case 10:
+			case "ten":
 				ca2.tenAbility(this.deckList,index);
-			case 11:
+			case "Jack":
 				ca2.jackAbility();
 				break;
-			case 12:
+			case "Queen":
 				ca2.queenAbility();
 				break;
-			case 13:
+			case "King":
 				ca2.kingAbility();
 				break;
 		
