@@ -138,7 +138,7 @@ public class GeneralProcessing_withOption {
 				ca2.jackAbility();
 				break;
 			case "Queen":
-				ca2.queenAbility();
+				ca2.queenAbility(deckList, index);
 				break;
 			case "King":
 				ca2.kingAbility();

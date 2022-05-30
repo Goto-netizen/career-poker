@@ -62,7 +62,10 @@ public class HandIntegerServlet extends HttpServlet {
 		//10を選んだ時に捨てるカード選択画面に行きます
 		List<Card> deckList = (List<Card>)session.getAttribute("deckList");
 
-		if(deckList.get(index.get(0)).getStrength()==10) {
+		if(index.get(0) == -1) {
+			RequestDispatcher rd = request.getRequestDispatcher("NewProcessingServlet");
+			rd.forward(request, response);
+		}else if(deckList.get(index.get(0)).getStrength()==10) {
 			RequestDispatcher rd = request.getRequestDispatcher("ten.jsp");
 			rd.forward(request, response);
 		}else if(deckList.get(index.get(0)).getStrength()==12){
