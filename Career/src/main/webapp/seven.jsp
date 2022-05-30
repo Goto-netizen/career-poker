@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>渡し札選択</title>
+<title>渡すカードの選択</title>
 </head>
 <body>
 	<% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); %>
 	
-	渡し札を選択してください。<br>
+	渡すカードを選択してください。<br>
 	
-<form action="seven-servlet" method="POST">
+<form action="ten-seven-servlet" method="POST">
 	<% int i = 0; %>
 	<% for(Card card : deckList){ %>
 		<% if(card.getCard_flag() == 0){ %>

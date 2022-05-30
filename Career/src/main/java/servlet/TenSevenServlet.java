@@ -13,19 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.item.Card;
-
 /**
  * Servlet implementation class NewDistributionServlet
  */
-@WebServlet("/ten-servlet")
-public class TenServlet extends HttpServlet {
+@WebServlet("/ten-seven-servlet")
+public class TenSevenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TenServlet() {
+    public TenSevenServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -58,8 +56,7 @@ public class TenServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		//セッション
-	
-	    List<Card> deckList = (List<Card>) session.getAttribute("deckList");
+
 		session.setAttribute("throw_index", throw_index);
 
 

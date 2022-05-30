@@ -19,9 +19,10 @@ public class CardAbility {
 
 	}
 	
-	public void sevenAbility() {
+	public List<Card> sevenAbility(List<Card> deckList ,int throw_index) {
 		
-		
+		deckList.get(throw_index).setCard_flag(1);
+		return deckList;
 	}
 	
 	public boolean eightAbility() {
@@ -37,9 +38,9 @@ public class CardAbility {
 	public List<Card> tenAbility(List<Card> deckList ,int throw_index) {
 		
 		deckList.get(throw_index).setCard_flag(4);
-		
 		return deckList;
 	}
+	
 	public void jackAbility() {
 		jackFlag = true;
 		
