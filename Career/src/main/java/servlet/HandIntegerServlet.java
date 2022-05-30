@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.item.Card;
+
 /**
  * Servlet implementation class EmployeeRegistrationServlet
  */
@@ -57,8 +59,18 @@ public class HandIntegerServlet extends HttpServlet {
 		session.setAttribute("index", index);
 		
 		//リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("NewProcessingServlet");
-		rd.forward(request, response);
+		//10を選んだ時に捨てるカード選択画面に行きます
+		List<Card> deckList = (List<Card>)session.getAttribute("deckList");
+
+		if(deckList.get(index.get(0)).getStrength()==10) {
+			RequestDispatcher rd = request.getRequestDispatcher("ten.jsp");
+			rd.forward(request, response);
+		}else {
+			RequestDispatcher rd = request.getRequestDispatcher("NewProcessingServlet");
+			rd.forward(request, response);
+		}
+
+
 
 	}
 

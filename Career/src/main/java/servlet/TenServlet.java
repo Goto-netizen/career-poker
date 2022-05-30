@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.item.Card;
-import model.option.CardAbility;
 
 /**
  * Servlet implementation class NewDistributionServlet
@@ -50,26 +49,23 @@ public class TenServlet extends HttpServlet {
 		int number = 0;
 		
 		System.out.println(Arrays.toString(ask));
-		List<Integer> index = new ArrayList<Integer>();
+		List<Integer> throw_index = new ArrayList<Integer>();
 		for(int i=0;i<ask.length;i++) {
 			number = Integer.parseInt(ask[i]);
-			index.add(number);
+			throw_index.add(number);
 		}
-		System.out.println(index);
+		System.out.println(throw_index);
 		
 		HttpSession session = request.getSession();
 		//セッション
 	
 	    List<Card> deckList = (List<Card>) session.getAttribute("deckList");
-		
-		CardAbility ca = new CardAbility();
-		deckList=ca.tenAbility(deckList,index.get(0));
-		System.out.print(deckList);
+		session.setAttribute("throw_index", throw_index);
 
 
 		
 	    // リクエストの転送
-	 	RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
+	 	RequestDispatcher rd = request.getRequestDispatcher("NewProcessingServlet");
 	 	rd.forward(request, response);
 	}
 	
