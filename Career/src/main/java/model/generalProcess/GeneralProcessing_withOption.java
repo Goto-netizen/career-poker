@@ -70,7 +70,7 @@ public void generalProcess(int index) {
 							ca.nineAbility();
 							break;
 						case 10:
-							ca.tenAbility();
+							ca.tenAbility(deckList,index);
 						case 11:
 							ca.jackAbility();
 							break;
@@ -116,7 +116,7 @@ public void generalProcess(int index) {
 							ca2.nineAbility();
 							break;
 						case 10:
-							ca2.tenAbility();
+							ca2.tenAbility(deckList,index);
 						case 11:
 							ca2.jackAbility();
 							break;
