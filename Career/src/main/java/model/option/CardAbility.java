@@ -43,7 +43,9 @@ public class CardAbility {
 		jackFlag = true;
 		
 	}
-	public void queenAbility() {
+	public List<Card> queenAbility(List<Card> deckList ,int index) {
+		deckList.get(index).setCard_flag(4);
+		return deckList;
 		
 	}
 	public void kingAbility() {
