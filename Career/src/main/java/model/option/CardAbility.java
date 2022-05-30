@@ -3,7 +3,6 @@ package model.option;
 public class CardAbility {
 
 	
-	
 	CardAbility(){
 		
 	}
