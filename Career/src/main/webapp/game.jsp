@@ -18,7 +18,11 @@
 		<% }} %></div>
 <br>
 <div id="field-list">
-<%= fieldStack %><br></div>
+<%int a = 0; %>
+	<% for(Card field : fieldStack){ %>
+		<% if(field.getCard_flag() == 3){ %>
+		<img src="./newTrump/<%= field.getCard_id() %>.png" width=49.5 height =88 >
+		<% }a++; } %></div>
 
 <form action="hand-integer-servlet" method="POST">
 <%int i = 0; %>

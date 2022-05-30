@@ -22,3 +22,6 @@ body{
 	margin-right: auto;
 	margin-left: auto;
 }
+input[type="checkbox"]:checked + label {
+    background-image: url(../image/trump/1.png);
+}
