@@ -57,9 +57,6 @@ public class CPU {
 			CPUPassFlag = true;
 		}
 		
-		
-		
-		
 	}
 	
 	public List<Card> gatherFlag1Card(){
