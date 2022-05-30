@@ -32,7 +32,7 @@ public class GeneralProcessing {
 				
 				CPU cpu = new CPU(deckList,fieldDeque);
 				
-				cpu.CPUProcess();//CPUの処理
+				cpu.CPUProcessSequence();//CPUの処理
 				
 				deckList = cpu.getDeckList();
 				fieldDeque = cpu.getFieldDeque();
@@ -50,7 +50,7 @@ public class GeneralProcessing {
 				/*ここから*/
 				if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
 					
-					player.playerProcess();//プレイヤーの処理
+					player.playerMyCard();//プレイヤーの処理
 					deckList = player.getDeckList();
 					fieldDeque = player.getFieldDeque();
 					
@@ -69,7 +69,7 @@ public class GeneralProcessing {
 					System.out.println("endGameFlagの値:"+endGameFlag);
 					CPU cpu = new CPU(deckList,fieldDeque);
 			
-					cpu.CPUProcess();//CPUの処理
+					cpu.CPUProcessSequence();//CPUの処理
 					
 					deckList = cpu.getDeckList();
 					fieldDeque = cpu.getFieldDeque();
