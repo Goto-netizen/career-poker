@@ -38,9 +38,7 @@ public class CardAbility {
 		return deckList;
 	}
 	public void jackAbility() {
-		
-		
-		
+		jackFlag = true;
 		
 	}
 	public void queenAbility() {
@@ -50,4 +48,7 @@ public class CardAbility {
 		
 	}
 	
+	public boolean getJackFlag() {
+		return this.jackFlag;
+	}
 }

@@ -4,6 +4,7 @@ import java.util.Deque;
 import java.util.List;
 
 import model.item.Card;
+import model.option.CardAbility;
 
 public class Player {
 	
@@ -48,9 +49,19 @@ public class Player {
 			Card fieldtop = fieldDeque.peek();
 			int fieldstrength = fieldtop.getStrength();
 			
-			if(handstrength > fieldstrength) {
-				return true;
+			CardAbility ca = new CardAbility();
+			
+			if(ca.getJackFlag() == true) {
+				if(handstrength < fieldstrength) {
+					return true;
+				}
 			}
+			else {
+				if(handstrength > fieldstrength) {
+					return true;
+				}
+			}
+			
 		}
 		
 		return false;

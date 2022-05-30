@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import model.item.Card;
+import model.option.CardAbility;
 
 public class CPU {
 	
@@ -79,11 +80,20 @@ public class CPU {
 			canPlayCardsList = onlyFlag1List;
 		}
 		else {
+			CardAbility ca = new CardAbility();
 			System.out.println("fieldDequeは空ではありません。");
 			for(int i=0;i<onlyFlag1List.size();i++) {
-				if(fieldDeque.peek().getStrength()<onlyFlag1List.get(i).getStrength()) {
-					canPlayCardsList.add(onlyFlag1List.get(i));
+				if(ca.getJackFlag() == true) {
+					if(fieldDeque.peek().getStrength()>onlyFlag1List.get(i).getStrength()) {
+						canPlayCardsList.add(onlyFlag1List.get(i));
+					}
 				}
+				else {
+					if(fieldDeque.peek().getStrength()<onlyFlag1List.get(i).getStrength()) {
+						canPlayCardsList.add(onlyFlag1List.get(i));
+					}
+				}
+				
 			}
 		}
 		System.out.println("checkCanPlayCardが実行されました");
