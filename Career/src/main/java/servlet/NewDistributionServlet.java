@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.Deque;
 
 import javax.servlet.RequestDispatcher;
@@ -42,7 +43,7 @@ public class NewDistributionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//フィールドデキューの宣言
-		Deque<Card> fieldDeque = new Deque<Card>();
+		Deque<Card> fieldDeque = new ArrayDeque<Card>();
 		//Deckの生成
 		Deck deck = new Deck();
 		//List<Card> deckList = deck.distribution();
@@ -53,7 +54,7 @@ public class NewDistributionServlet extends HttpServlet {
 	    //session.setAttribute("deckList", deckList);
 	    session.setAttribute("deckList", deck.cardList);
 	    
-	    session.setAttribute("fieldStack", fieldDeque);
+	    session.setAttribute("fieldDeque", fieldDeque);
 
 		
 	    // リクエストの転送

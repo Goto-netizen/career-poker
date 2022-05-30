@@ -1,7 +1,7 @@
 package model.players;
 
+import java.util.Deque;
 import java.util.List;
-import java.util.Stack;
 
 import model.item.Card;
 
@@ -14,15 +14,15 @@ public class Player {
 	boolean playerPassFlag;
 	List<Card> deckList;
 	int index;
-	Stack<Card>fieldStack;
+	Deque<Card> fieldDeque;
 	
 	/*
 	 * コンストラクタ
 	 */
-	public Player(List<Card> deckList ,int index,Stack<Card> fieldStack) {
+	public Player(List<Card> deckList ,int index,Deque<Card> fieldDeque) {
 		this.deckList = deckList;
 		this.index = index;
-		this.fieldStack = fieldStack;
+		this.fieldDeque = fieldDeque;
 	}
 	
 	
@@ -32,20 +32,20 @@ public class Player {
 		
 		hand.setCard_flag(3);
 		
-		fieldStack.push(hand);
+		fieldDeque.push(hand);
 		
 	}
 	
 	public boolean judge() {
 		
-		if(fieldStack.isEmpty()) {			
+		if(fieldDeque.isEmpty()) {			
 			return true;
 			
 		}else {
 			Card hand = deckList.get(index);
 			int handstrength = hand.getStrength();
 			
-			Card fieldtop = fieldStack.peek();
+			Card fieldtop = fieldDeque.peek();
 			int fieldstrength = fieldtop.getStrength();
 			
 			if(handstrength > fieldstrength) {
@@ -61,8 +61,8 @@ public class Player {
 		return deckList;
 	}
 	
-	public Stack<Card> getFieldStack(){
-		return fieldStack;
+	public Deque<Card> getFieldDeque(){
+		return fieldDeque;
 	}
 	
 	

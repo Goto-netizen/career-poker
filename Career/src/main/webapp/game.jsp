@@ -9,7 +9,7 @@
 </head>
 <body>
 <% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); 
-	Deque<Card> fieldDeque = (Deque<Card>)session.getAttribute("DequeStack"); %>
+	Deque<Card> fieldDeque = (Deque<Card>)session.getAttribute("fieldDeque"); %>
 
 <div id="cpu-hand">
 <%	for(Card card : deckList){

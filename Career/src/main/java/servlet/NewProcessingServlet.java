@@ -71,8 +71,14 @@ public class NewProcessingServlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else {
-			RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
-			rd.forward(request, response);
+            //10を選んだ時に捨てるカード選択画面に行きます
+			if(deckList.get(index).getStrength()==10) {
+				RequestDispatcher rd = request.getRequestDispatcher("ten.jsp");
+				rd.forward(request, response);
+			}else {
+			    RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
+			    rd.forward(request, response);
+			}
 		}
 		
 		
