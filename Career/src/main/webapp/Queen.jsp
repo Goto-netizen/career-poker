@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>爆破選択</title>
 </head>
 <body>
-	<% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); %>
 
 	爆破するカードの数字を選んでください<br>
-<form action="ten-servlet" method="POST">
+<form action="queen-servlet" method="POST">
 
 
 
