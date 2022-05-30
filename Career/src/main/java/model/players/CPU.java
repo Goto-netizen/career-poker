@@ -27,7 +27,7 @@ public class CPU {
 	}
 	
 	
-	public void CPUProcess()throws Exception {
+	public void CPUProcessSequence()throws Exception {//一連のCPU処理
 		//List<Card> canPlayIdList = new ArrayList<>(); 
 		List<Card> onlyFlag1List = new ArrayList<>();
 		List<Card> canPlayCardsList = new ArrayList<>();
@@ -48,10 +48,7 @@ public class CPU {
 			selectedCard_id = selectCard_id(canPlayCardsList.size(),canPlayCardsList);//選択した手札のカードID
 			System.out.println("selectedCard_id:"+selectedCard_id);
 			changeCard_Flag(selectedCard_id);//ok
-			//System.out.println("onlyFlag1List:"+onlyFlag1List);
-			
-			playCPUCard();//
-			//System.out.println("onlyFlag1List:"+onlyFlag1List);
+			playCPUCard();
 			System.out.println("fieldDeque:"+fieldDeque);
 		}
 		else {//CPUはパスをする
@@ -101,7 +98,7 @@ public class CPU {
 	}
 	
 	public int selectCard_id(int listSize,List<Card> canPlayCardsList) {
-		Card CPUSelectedCard = null;//9
+		Card CPUSelectedCard = null;
 		int CPUSelectedCard_id = 0;
 		Random rd = new Random();
 		int random = rd.nextInt(listSize);

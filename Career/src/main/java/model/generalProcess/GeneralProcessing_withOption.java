@@ -14,7 +14,6 @@ public class GeneralProcessing_withOption {
 	Deque<Card> fieldDeque;
 	int cardFlag = 0;
 	boolean endGameFlag;
-	private boolean OrderCPUPass = false;
 	
 	public GeneralProcessing_withOption(List<Card> deckList,Deque<Card> fieldDeque){
 		this.deckList = deckList;
@@ -22,82 +21,75 @@ public class GeneralProcessing_withOption {
 		
 	}
 	
-public void generalProcess(int index) {
-		
+	public void generalProcess(int index) {
 		boolean canPlayFlag = false;
-		
-		try {
-			Player player = new Player(deckList,index,fieldDeque);
-			if(index == -1) {//プレイヤーがパスをした時
-				System.out.println("プレイヤーがパスを行いました。");
-				endRound();
-				System.out.println("場をリセットしました。");
-				
-				CPU cpu = new CPU(this.deckList,this.fieldDeque);
-				
-				cpu.CPUProcess();//CPUの処理
-				
-				this.deckList = cpu.getDeckList();
-				this.fieldDeque = cpu.getFieldDeque();
-				System.out.println("CPUの処理が行われました。");
-				if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
-					endRound();
-				}
+		if(index == -1) {//プレイヤーがパスをした時
+			System.out.println("プレイヤーがパスを行いました。");
+			endRound();
+			System.out.println("場をリセットしました。");
+			CPUProcess(index);
+			this.endGameFlag = checkHandSize();
+		}
+		else {
+			Player player = new Player(this.deckList,index,this.fieldDeque);
+			canPlayFlag = player.judge();//formデータのindex値チェック
+			System.out.println("P1➡canPlayFlagの値:"+canPlayFlag);
+			/*ここから*/
+			if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
+				playerProcess(index);
+				this.endGameFlag = checkHandSize();//プレイヤーの手札が無くなったか判定
+				System.out.println("endGameFlagの値:"+endGameFlag);
+				CPUProcess(index);
 				this.endGameFlag = checkHandSize();		
-				
-				
 			}
-			else {
-				canPlayFlag = player.judge();
-				System.out.println("P1➡canPlayFlagの値:"+canPlayFlag);
-				/*ここから*/
-				if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
-					
-					player.playerProcess();//プレイヤーの処理
-					/*処理結果を代入*/
-					this.deckList = player.getDeckList();
-					this.fieldDeque = player.getFieldDeque();
-					/*カードの効果発動*/
-					selectCardAbility(index);
-					
-					System.out.println("deckList:"+this.deckList);
-					System.out.println("fieldDeque:"+this.fieldDeque);
-					System.out.println("プレイヤーの処理が行われました。");				
-				
-					this.endGameFlag = checkHandSize();//プレイヤーの手札が無くなったか判定
-					
-					System.out.println("endGameFlagの値:"+endGameFlag);
-					if(OrderCPUPass) {
-						endRound();
-					}else {
-						CPU cpu = new CPU(this.deckList,this.fieldDeque);
-						
-						cpu.CPUProcess();//CPUの処理
-						
-						/*処理結果を代入*/
-						this.deckList = cpu.getDeckList();
-						this.fieldDeque = cpu.getFieldDeque();
-						
-						/*カードの効果発動*/
-						selectCardAbility(index);
-						
-						System.out.println("CPUの処理が行われました。");
-						if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
-							endRound();
-						}
-					}
-					
-					endGameFlag = checkHandSize();		
-				}
-				
-			}
-			
-		} catch (Exception e) {
-					// TODO 自動生成された catch ブロック
-					e.printStackTrace();
-		 }
+		}
 	}
 	
+	public void playerProcess(int index) {
+		Player player = new Player(this.deckList,index,this.fieldDeque);
+		
+		try {
+			player.playerProcess();//プレイヤーの処理
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		/*処理結果を代入*/
+		this.deckList = player.getDeckList();
+		this.fieldDeque = player.getFieldDeque();
+		
+		/*カードの効果発動*/
+		selectCardAbility(index);
+		
+		/*テスト用*/
+		System.out.println("deckList:"+this.deckList);
+		System.out.println("fieldDeque:"+this.fieldDeque);
+		System.out.println("プレイヤーの処理が行われました。");			
+	}
+	
+	public void CPUProcess(int index) {
+		CPU cpu = new CPU(this.deckList,this.fieldDeque);
+		
+		try {
+			cpu.CPUProcessSequence();//CPUの処理
+		} catch (Exception e) {
+			e.printStackTrace();
+		 }
+		
+		/*処理結果を代入*/
+		this.deckList = cpu.getDeckList();
+		this.fieldDeque = cpu.getFieldDeque();
+		
+		/*カードの効果発動*/
+		selectCardAbility(index);
+		
+		System.out.println("CPUの処理が行われました。");
+		if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
+			endRound();
+		}
+	}
+
+
 	public  void endRound() {
 		while(fieldDeque.isEmpty()!= true) {
 			fieldDeque.pop();
