@@ -3,13 +3,14 @@ package model.option;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.generalProcess.GeneralProcessing_withOption;
 import model.item.Card;
 
 public class CardAbility {
 
+	boolean eightFlag = false;
 	boolean jackFlag;
 	public String cardNumber;
-	private boolean OrderCPUPass;
 	
 	public CardAbility(Card topCard){
 		this.cardNumber = topCard.getNum();
@@ -25,9 +26,11 @@ public class CardAbility {
 		return deckList;
 	}
 	
-	public boolean eightAbility() {
-		OrderCPUPass = true;
-		return OrderCPUPass;
+	public void eightAbility() {
+		GeneralProcessing_withOption gpo = new GeneralProcessing_withOption();
+		gpo.endRound();
+		
+		eightFlag = true;
 		
 	}
 	
@@ -64,7 +67,9 @@ public class CardAbility {
 	public void kingAbility() {
 		
 	}
-	
+	public boolean getEightFlag() {
+		return this.eightFlag;
+	}
 	public boolean getJackFlag() {
 		return this.jackFlag;
 	}
