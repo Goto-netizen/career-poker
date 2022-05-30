@@ -23,7 +23,7 @@
 	<%
 		session.removeAttribute("neme");
 		session.removeAttribute("deckList");
-		session.removeAttribute("fieldStack");
+		session.removeAttribute("fieldDeque");
 		session.removeAttribute("index");
 		session.removeAttribute("winner");
 	%>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.List,model.item.Card,java.util.Stack"%>
+    pageEncoding="UTF-8" import="java.util.List,model.item.Card,java.util.Deque"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
 </head>
 <body>
 <% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); 
-   Stack<Card> fieldStack = (Stack<Card>)session.getAttribute("fieldStack"); %>
+	Deque<Card> fieldDeque = (Deque<Card>)session.getAttribute("DequeStack"); %>
 
 <div id="cpu-hand">
 <%	for(Card card : deckList){
@@ -19,7 +19,7 @@
 <br>
 <div id="field-list">
 <%int a = 0; %>
-	<% for(Card field : fieldStack){ %>
+	<% for(Card field : fieldDeque){ %>
 		<% if(field.getCard_flag() == 3){ %>
 		<img src="./newTrump/<%= field.getCard_id() %>.png" width=49.5 height =88 >
 		<% }a++; } %></div>
