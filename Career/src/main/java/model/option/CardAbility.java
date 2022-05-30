@@ -7,7 +7,7 @@ import model.item.Card;
 public class CardAbility {
 
 	
-	CardAbility(){
+	public CardAbility(){
 		
 	}
 	
