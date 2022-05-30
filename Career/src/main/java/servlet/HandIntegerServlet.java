@@ -65,6 +65,9 @@ public class HandIntegerServlet extends HttpServlet {
 		if(index.get(0) == -1) {
 			RequestDispatcher rd = request.getRequestDispatcher("Processing_withOptionServlet");
 			rd.forward(request, response);
+		}else if(deckList.get(index.get(0)).getStrength()==7) {
+			RequestDispatcher rd = request.getRequestDispatcher("seven.jsp");
+			rd.forward(request, response);
 		}else if(deckList.get(index.get(0)).getStrength()==10) {
 			RequestDispatcher rd = request.getRequestDispatcher("ten.jsp");
 			rd.forward(request, response);
