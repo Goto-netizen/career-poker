@@ -30,7 +30,7 @@ public class GeneralProcessing_withOption {
 			CPUProcess(index);
 			this.endGameFlag = checkHandSize();
 		}
-		else {
+		else {//プレイヤーがパス以外を選択した時
 			Player player = new Player(this.deckList,index,this.fieldDeque);
 			canPlayFlag = player.judge();//formデータのindex値チェック
 			System.out.println("P1➡canPlayFlagの値:"+canPlayFlag);
@@ -40,7 +40,7 @@ public class GeneralProcessing_withOption {
 				this.endGameFlag = checkHandSize();//プレイヤーの手札が無くなったか判定
 				System.out.println("endGameFlagの値:"+endGameFlag);
 				CPUProcess(index);
-				this.endGameFlag = checkHandSize();		
+				this.endGameFlag = checkHandSize();	
 			}
 		}
 	}
@@ -49,7 +49,7 @@ public class GeneralProcessing_withOption {
 		Player player = new Player(this.deckList,index,this.fieldDeque);
 		
 		try {
-			player.playerProcess();//プレイヤーの処理
+			player.playMyCard();//プレイヤーの処理
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -120,28 +120,28 @@ public class GeneralProcessing_withOption {
 	}
 	
 	public void selectCardAbility(int index) {
-		CardAbility ca2 = new CardAbility(this.fieldDeque.peek());
+		CardAbility ca = new CardAbility(this.fieldDeque.peek());
 		
-		switch(ca2.cardNumber){
+		switch(ca.cardNumber){
 			case "seven": 
-				ca2.sevenAbility();
+				ca.sevenAbility();
 				break;
 			case "eight":
-				ca2.eightAbility();
+				ca.eightAbility();
 				break;
 			case "nine":
-				ca2.nineAbility();
+				ca.nineAbility();
 				break;
 			case "ten":
-				ca2.tenAbility(this.deckList,index);
+				ca.tenAbility(this.deckList,index);
 			case "Jack":
-				ca2.jackAbility();
+				ca.jackAbility();
 				break;
 			case "Queen":
-				ca2.queenAbility(deckList, index);
+				ca.queenAbility(this.deckList,index);
 				break;
 			case "King":
-				ca2.kingAbility();
+				ca.kingAbility();
 				break;
 		
 		}
