@@ -50,7 +50,7 @@ public class GeneralProcessing {
 				/*ここから*/
 				if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
 					
-					player.playerMyCard();//プレイヤーの処理
+					player.playMyHand();//プレイヤーの処理
 					deckList = player.getDeckList();
 					fieldDeque = player.getFieldDeque();
 					
