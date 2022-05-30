@@ -1,17 +1,23 @@
 package model.option;
 
+import model.item.Card;
+
 public class CardAbility {
 
+	boolean jackFlag;
+	public int cardNumber;
 	
-	CardAbility(){
-		
+	public CardAbility(Card topCard){
+		this.cardNumber = Integer.parseInt(topCard.getNum());
 	}
 	
 	public void sevenAbility() {
 		
+		
 	}
 	
 	public void eightAbility() {
+		
 		
 	}
 	
@@ -23,6 +29,9 @@ public class CardAbility {
 		
 	}
 	public void jackAbility() {
+		
+		
+		
 		
 	}
 	public void queenAbility() {
