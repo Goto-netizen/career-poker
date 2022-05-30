@@ -24,7 +24,7 @@
 <%int i = 0; %>
 	<% for(Card card : deckList){ %>
 		<% if(card.getCard_flag() == 0){ %>
-		<label><input type="checkbox" name="submission" value="<%= i %>"><img src="./trump/<%= card.getCard_id() %>.png" width=50 height =50 ></label>
+		<label><input type="checkbox" name="submission" value="<%= i %>"><img src="./newTrump/<%= card.getCard_id() %>.png" width=49.5 height =88 ></label>
 	<% }i++; } %>
 	<input type="checkbox" name="submission" value="-1">パス<br>
 	
