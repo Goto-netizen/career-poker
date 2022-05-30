@@ -65,7 +65,7 @@ public class TenServlet extends HttpServlet {
 
 		
 	    // リクエストの転送
-	 	RequestDispatcher rd = request.getRequestDispatcher("NewProcessingServlet");
+	 	RequestDispatcher rd = request.getRequestDispatcher("Processing_withOptionServlet");
 	 	rd.forward(request, response);
 	}
 	
