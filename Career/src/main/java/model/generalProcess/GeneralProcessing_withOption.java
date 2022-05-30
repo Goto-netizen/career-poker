@@ -33,17 +33,17 @@ public void generalProcess(int index) {
 				endRound();
 				System.out.println("場をリセットしました。");
 				
-				CPU cpu = new CPU(deckList,fieldDeque);
+				CPU cpu = new CPU(this.deckList,this.fieldDeque);
 				
 				cpu.CPUProcess();//CPUの処理
 				
-				deckList = cpu.getDeckList();
-				fieldDeque = cpu.getFieldDeque();
+				this.deckList = cpu.getDeckList();
+				this.fieldDeque = cpu.getFieldDeque();
 				System.out.println("CPUの処理が行われました。");
 				if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
 					endRound();
 				}
-				endGameFlag = checkHandSize();		
+				this.endGameFlag = checkHandSize();		
 				
 				
 			}
@@ -55,78 +55,32 @@ public void generalProcess(int index) {
 					
 					player.playerProcess();//プレイヤーの処理
 					/*処理結果を代入*/
-					deckList = player.getDeckList();
-					fieldDeque = player.getFieldDeque();
+					this.deckList = player.getDeckList();
+					this.fieldDeque = player.getFieldDeque();
 					/*カードの効果発動*/
-					CardAbility ca = new CardAbility(fieldDeque.peek());
+					selectCardAbility(index);
 					
-					switch(ca.cardNumber){
-						case 7: 
-							ca.sevenAbility();
-							break;
-						case 8:
-							ca.eightAbility();
-							break;
-						case 9:
-							ca.nineAbility();
-							break;
-						case 10:
-							ca.tenAbility(deckList,index);
-						case 11:
-							ca.jackAbility();
-							break;
-						case 12:
-							ca.queenAbility();
-							break;
-						case 13:
-							ca.kingAbility();
-							break;
-					
-					}
-					System.out.println("deckList:"+deckList);
-					System.out.println("fieldDeque:"+fieldDeque);
+					System.out.println("deckList:"+this.deckList);
+					System.out.println("fieldDeque:"+this.fieldDeque);
 					System.out.println("プレイヤーの処理が行われました。");				
 				
-					endGameFlag = checkHandSize();//プレイヤーの手札が無くなったか判定
+					this.endGameFlag = checkHandSize();//プレイヤーの手札が無くなったか判定
 					
 					System.out.println("endGameFlagの値:"+endGameFlag);
 					if(OrderCPUPass) {
 						endRound();
 					}else {
-						CPU cpu = new CPU(deckList,fieldDeque);
+						CPU cpu = new CPU(this.deckList,this.fieldDeque);
 						
 						cpu.CPUProcess();//CPUの処理
 						
 						/*処理結果を代入*/
-						deckList = cpu.getDeckList();
-						fieldDeque = cpu.getFieldDeque();
+						this.deckList = cpu.getDeckList();
+						this.fieldDeque = cpu.getFieldDeque();
 						
 						/*カードの効果発動*/
-						CardAbility ca2 = new CardAbility(fieldDeque.peek());
+						selectCardAbility(index);
 						
-						switch(ca2.cardNumber){
-							case 7: 
-								ca2.sevenAbility();
-								break;
-							case 8:
-								ca2.eightAbility();
-								break;
-							case 9:
-								ca2.nineAbility();
-								break;
-							case 10:
-								ca2.tenAbility(deckList,index);
-							case 11:
-								ca2.jackAbility();
-								break;
-							case 12:
-								ca2.queenAbility();
-								break;
-							case 13:
-								ca2.kingAbility();
-								break;
-						
-						}
 						System.out.println("CPUの処理が行われました。");
 						if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
 							endRound();
@@ -171,6 +125,34 @@ public void generalProcess(int index) {
 			return false;//ゲーム続行
 		}
 		
+	}
+	
+	public void selectCardAbility(int index) {
+		CardAbility ca2 = new CardAbility(this.fieldDeque.peek());
+		
+		switch(ca2.cardNumber){
+			case 7: 
+				ca2.sevenAbility();
+				break;
+			case 8:
+				ca2.eightAbility();
+				break;
+			case 9:
+				ca2.nineAbility();
+				break;
+			case 10:
+				ca2.tenAbility(this.deckList,index);
+			case 11:
+				ca2.jackAbility();
+				break;
+			case 12:
+				ca2.queenAbility();
+				break;
+			case 13:
+				ca2.kingAbility();
+				break;
+		
+		}
 	}
 	
 	public List<Card> getDeckList(){
