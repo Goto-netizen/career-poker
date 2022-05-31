@@ -19,9 +19,9 @@ public class CardAbility {
 
 	}
 	
-	public List<Card> sevenAbility(List<Card> deckList ,int throw_index) {
+	public List<Card> sevenAbility(List<Card> deckList ,int abilityIndex) {
 		
-		deckList.get(throw_index).setCard_flag(1);
+		deckList.get(abilityIndex).setCard_flag(1);
 		return deckList;
 	}
 	
@@ -36,9 +36,9 @@ public class CardAbility {
 		
 	}
 	
-	public List<Card> tenAbility(List<Card> deckList ,int throw_index) {
+	public List<Card> tenAbility(List<Card> deckList ,int abilityIndex) {
 		
-		deckList.get(throw_index).setCard_flag(4);
+		deckList.get(abilityIndex).setCard_flag(4);
 		return deckList;
 	}
 	
@@ -46,13 +46,13 @@ public class CardAbility {
 		jackFlag = true;
 		
 	}
-	public List<Card> queenAbility(List<Card> deckList ,int blast_index) {
+	public List<Card> queenAbility(List<Card> deckList ,int abilityIndex) {
 		List<Card> newDeckList = new ArrayList<Card>();
 		for(Card card : deckList){
 			
 			
 			Card deck = new Card(card.getCard_id(),card.getNum(),card.getMark(),card.getStrength());
-			if(card.getStrength()==blast_index) {
+			if(card.getStrength()==abilityIndex) {
 				deck.setCard_flag(4);
 			}else {
 				deck.setCard_flag(card.getCard_flag());
