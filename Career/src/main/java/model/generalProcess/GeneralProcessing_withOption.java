@@ -74,6 +74,7 @@ public class GeneralProcessing_withOption {
 	public void CPUProcess(int index) {
 		System.out.println("CPUProcessを行います");
 		CardAbility ca = new CardAbility();
+		System.out.println("ca.getEightflagの値："+ca.getEightFlag());
 		if(ca.getEightFlag()) {
 			System.out.println("ca.getEightflagの値："+ca.getEightFlag());
 			//プレイヤーが８を出してCPUがパス
