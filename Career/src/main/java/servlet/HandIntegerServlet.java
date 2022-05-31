@@ -47,13 +47,13 @@ public class HandIntegerServlet extends HttpServlet {
 		String[] ask = request.getParameterValues("submission");
 		int number = 0;
 		
-		System.out.println(Arrays.toString(ask));
+		System.out.println("Arrays.toString"+Arrays.toString(ask));
 		List<Integer> index = new ArrayList<Integer>();
 		for(int i=0;i<ask.length;i++) {
 			number = Integer.parseInt(ask[i]);
 			index.add(number);
 		}
-		System.out.println("手札dリストの要素番号:"+index);
+		System.out.println("手札リストの要素番号:"+index);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("index", index);
