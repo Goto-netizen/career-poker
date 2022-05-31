@@ -19,11 +19,11 @@
 		<% b++;}} %></div>
 <br>
 <div id="field-list">
-<%int a = 0; %>
+<%int a = 0;%>
 	<% for(Card field : fieldDeque){ %>
 		<% if(field.getCard_flag() == 3){ %>
-		<img src="./newTrump/<%= field.getCard_id() %>.png" width=49.5 height =88 >
-		<% }a++; } %></div>
+		<img src="./newTrump/<%= field.getCard_id() %>.png" width=72 height =128 class="a<%=a %>" >
+		<% }a++;} %></div>
 
 <form action="hand-integer-servlet" method="POST">
 <%int i = 0; %>

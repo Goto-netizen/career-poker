@@ -1,76 +1,193 @@
 @charset "UTF-8";
 .b0{
-	position:absolute;
+	position:relative;
 	    right:  0px;
 	
 }
 .b1{
-	position:absolute;
+	position:relative;
     right:  30px;
 }
 .b2{
-	position:absolute;
+	position:relative;
     right:  60px;
 }
 .b3{
-	position:absolute;
+	position:relative;
     right:  90px;
 }
 .b4{
-	position:absolute;
+	position:relative;
     right:  120px;
 }
 .b5{
-	position:absolute;
+	position:relative;
     right:  150px;
 }
 .b6{
-	position:absolute;
+	position:relative;
     right:  180px;
 }
 .b7{
-	position:absolute;
+	position:relative;
     right:  210px;
 }
 .b8{
-	position:absolute;
+	position:relative;
     right:  240px;
 }
 .b9{
-	position:absolute;
+	position:relative;
     right:  270px;
 }
 .b10{
-	position:absolute;
+	position:relative;
     right:  300px;
 }
 .b11{
-	position:absolute;
+	position:relative;
     right:  330px;
 }
 .b12{
-	position:absolute;
+	position:relative;
     right:  360px;
 }
 .b13{
-	position:absolute;
+	position:relative;
     right:  390px;
 }
 .b14{
-	position:absolute;
+	position:relative;
     right:  420px;
 }
 .b15{
-	position:absolute;
+	position:relative;
     right:  450px;
 }
 .b16{
-	position:absolute;
+	position:relative;
     right:  480px;
 }
 .b17{
-	position:absolute;
+	position:relative;
     right:  520px;
+}
+
+
+.a0{
+	position:relative;
+	    right:  0px;
+	      z-index: 17;
+        filter: drop-shadow(4px 6px 8px #777);
+          stroke: #8000ff;
+  stroke-width: 1;
+  fill:#ff80ff;
+  fill-opacity: 0;
+          animation: SVG-anim01 3s 1s ease 1;
+          animation-fill-mode: forwards;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;}
+.a1{
+	position:relative;
+    right:  30px;
+      z-index: 16;
+    
+}
+.a2{
+	position:relative;
+    right:  60px;
+      z-index: 15;
+    
+}
+.a3{
+	position:relative;
+    right:  90px;
+      z-index: 14;
+    
+}
+.a4{
+	position:relative;
+    right:  120px;
+      z-index: 13;
+    
+}
+.a5{
+	position:relative;
+    right:  150px;
+      z-index: 12;
+    
+}
+.a6{
+	position:relative;
+    right:  180px;
+      z-index: 11;
+    
+}
+.a7{
+	position:relative;
+    right:  210px;
+      z-index: 10;
+    
+}
+.a8{
+	position:relative;
+    right:  240px;
+      z-index: 9;
+    
+}
+.a9{
+	position:relative;
+    right:  270px;
+      z-index: 8;
+    
+}
+.a10{
+	position:relative;
+    right:  300px;
+      z-index: 7;
+    
+}
+.a11{
+	position:relative;
+    right:  330px;
+          z-index: 6;
+    
+}
+.a12{
+	position:relative;
+    right:  360px;
+          z-index: 5;
+    
+}
+.a13{
+	position:relative;
+    right:  390px;
+          z-index: 4;
+    
+}
+.a14{
+	position:relative;
+    right:  420px;
+          z-index: 3;
+    
+}
+.a15{
+	position:relative;
+    right:  450px;
+          z-index: 2;
+    
+}
+.a16{
+	position:relative;
+    right:  480px;
+          z-index: 1;
+    
+}
+.a17{
+	position:relative;
+    right:  520px;
+          z-index: 0;
+    
 }
 body{
 	width: 100%;
@@ -94,7 +211,7 @@ body{
 #field-list{
 	margin-top: 50px;
 	margin-right: auto;
-	margin-left: auto;
+	margin-left: 300px;
 }
 input[type="checkbox"]:checked + label {
     background-image: url(../image/trump/1.png);
