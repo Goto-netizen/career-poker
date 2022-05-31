@@ -10,11 +10,12 @@ body{
 }
 
 .player{
-	position: relative;
+	position: fixed;
 	text-align:center;
   	height:60px;
   	line-height:60px;
   	margin-top: 270px;
+  	margin-left: 450px;
   	
   	font-size:5em;
 	text-align:center;
@@ -25,11 +26,12 @@ body{
 }
 
 .cpu{
-	position: relative;
+	position: fixed;
 	text-align:center;
   	height:60px;
   	line-height:60px;
   	margin-top: 270px;
+  	margin-left: 450px;
   	
   	font-size:5em;
 	text-align:center;
@@ -40,8 +42,10 @@ body{
 }
 
 .return{
-	position: relative;
+	position: fixed;
 	text-align:center;
   	height:60px;
   	line-height:60px;
+  	margin-top: 380px;
+  	margin-left: 660px;
 }
