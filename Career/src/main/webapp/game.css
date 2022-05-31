@@ -1,10 +1,76 @@
 @charset "UTF-8";
 .b0{
-	position:relative;
+	position:absolute;
+	    right:  30px;
+	
 }
 .b1{
 	position:absolute;
-    right:  50px;
+    right:  30px;
+}
+.b2{
+	position:absolute;
+    right:  60px;
+}
+.b3{
+	position:absolute;
+    right:  90px;
+}
+.b4{
+	position:absolute;
+    right:  120px;
+}
+.b5{
+	position:absolute;
+    right:  150px;
+}
+.b6{
+	position:absolute;
+    right:  180px;
+}
+.b7{
+	position:absolute;
+    right:  210px;
+}
+.b8{
+	position:absolute;
+    right:  240px;
+}
+.b9{
+	position:absolute;
+    right:  270px;
+}
+.b10{
+	position:absolute;
+    right:  300px;
+}
+.b11{
+	position:absolute;
+    right:  330px;
+}
+.b12{
+	position:absolute;
+    right:  360px;
+}
+.b13{
+	position:absolute;
+    right:  390px;
+}
+.b14{
+	position:absolute;
+    right:  420px;
+}
+.b15{
+	position:absolute;
+    right:  450px;
+}
+.b16{
+	position:absolute;
+    right:  480px;
+}
+.b17{
+	position:absolute;
+    right:  520px;
 }
 body{
 	width: 100%;
