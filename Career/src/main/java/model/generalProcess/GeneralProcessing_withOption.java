@@ -44,9 +44,13 @@ public class GeneralProcessing_withOption {
 				this.endGameFlag = checkHandSize();	
 			}
 		}
+		System.out.println("============================================");
 	}
 	
 	public void playerProcess(int index) {
+		System.out.println("============================================");
+		System.out.println("playerProcessを行います");
+		System.out.println("============================================");
 		Player player = new Player(this.deckList,index,this.fieldDeque);
 		
 		try {
@@ -72,7 +76,9 @@ public class GeneralProcessing_withOption {
 	}
 	
 	public void CPUProcess(int index) {
+		System.out.println("============================================");
 		System.out.println("CPUProcessを行います");
+		System.out.println("============================================");
 		//CardAbility ca = new CardAbility(this.fieldDeque.peek());
 		System.out.println("ca.getEightflagの値："+ca.getEightFlag());
 		if(ca.getEightFlag()) {
