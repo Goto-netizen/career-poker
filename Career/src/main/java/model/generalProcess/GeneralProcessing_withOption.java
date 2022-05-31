@@ -1,6 +1,7 @@
 package model.generalProcess;
 
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.List;
 
 import model.item.Card;
@@ -20,6 +21,24 @@ public class GeneralProcessing_withOption {
 		this.deckList = deckList;
 		this.fieldDeque = fieldDeque;
 		ca = new CardAbility();
+		System.out.println("CardAbilityインスタンスを生成しました");
+		if(!fieldDeque.isEmpty()) {//fieldDequeが空じゃなかったら
+			Iterator<Card> itr = fieldDeque.descendingIterator();
+			while (itr.hasNext()) {
+				System.out.println(fieldDeque);
+				if(itr.next().getNum().equals("Jack")) {//.nexr()➡要素を見たら次の要素に移る
+					ca.setJackFlag(true);
+					System.out.print("fieldDequeにJackが含まれていました");
+				}
+				else {
+					System.out.print("fieldDequeはJackではありませんでした");
+				}
+				
+			}
+		}
+		
+	    
+		
 	}
 
 	public void generalProcess(int index)throws Exception {
@@ -65,8 +84,8 @@ public class GeneralProcessing_withOption {
 		ca.setCardNumber(fieldDeque.peek());
 		
 		/*テスト用*/
-		System.out.println("deckList:"+this.deckList);
-		System.out.println("fieldDeque:"+this.fieldDeque);
+		System.out.println("デッキの状態:deckList:"+this.deckList);
+		System.out.println("出したカード:fieldDeque:"+this.fieldDeque);
 		
 		/*カードの効果発動*/
 		selectCardAbility(index);
@@ -92,6 +111,9 @@ public class GeneralProcessing_withOption {
 				CPU cpu = new CPU(this.deckList,this.fieldDeque);
 				
 				try {
+					System.out.println("============================================");
+					System.out.println("CPUの処理を行います");
+					System.out.println("============================================");
 					cpu.CPUProcessSequence(ca);//CPUの処理
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -108,6 +130,11 @@ public class GeneralProcessing_withOption {
 					this.fieldDeque = cpu.getFieldDeque();
 					ca.setCardNumber(fieldDeque.peek());
 					
+					/*テスト用*/
+					System.out.println("デッキの状態:deckList:"+this.deckList);
+					System.out.println("出したカード:fieldDeque:"+this.fieldDeque);
+					
+					
 					/*カードの効果発動*/
 					selectCardAbility(index);
 					
@@ -117,6 +144,9 @@ public class GeneralProcessing_withOption {
 					break;
 				}else if(checkHandSize()) {
 					break;
+				}
+				else {
+					endRound();
 				}
 				
 			}
@@ -130,6 +160,8 @@ public class GeneralProcessing_withOption {
 		while(fieldDeque.isEmpty()!= true) {
 			fieldDeque.pop();
 		}
+		ca.setJackFlag(false);
+		System.out.println("ca.getJackFlag():"+ca.getJackFlag());
 	}
 	
 	public  boolean checkHandSize() {

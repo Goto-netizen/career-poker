@@ -79,7 +79,7 @@ public class CPU {
 		else {
 			System.out.println("fieldDequeは空ではありません。");
 			for(int i=0;i<onlyFlag1List.size();i++) {
-				if(ca.getJackFlag() == true) {
+				if(ca.getJackFlag() == true) {//jackFlagがtrueの時
 					if(fieldDeque.peek().getStrength()>onlyFlag1List.get(i).getStrength()) {
 						canPlayCardsList.add(onlyFlag1List.get(i));
 					}

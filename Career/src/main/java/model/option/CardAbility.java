@@ -24,7 +24,7 @@ public class CardAbility {
 	public void eightAbility() {
 		//this.eightFlag = true;
 		setEightFlag(true);
-		System.out.println("this.eightFlag:"+this.eightFlag);
+		System.out.println("eightFlag:"+this.eightFlag);
 		
 	}
 	
@@ -39,9 +39,10 @@ public class CardAbility {
 	}
 	
 	public void jackAbility() {
-		jackFlag = true;
-		
+		setJackFlag(true);
+		System.out.println("jackFlag:"+this.jackFlag);
 	}
+	
 	public List<Card> queenAbility(List<Card> deckList ,int blast_index) {
 		List<Card> newDeckList = new ArrayList<Card>();
 		for(Card card : deckList){
@@ -77,6 +78,11 @@ public class CardAbility {
 	public boolean getEightFlag() {
 		return this.eightFlag;
 	}
+	
+	public void setJackFlag(boolean jackFlag) {
+		this.jackFlag = jackFlag;
+	}
+	
 	public boolean getJackFlag() {
 		return this.jackFlag;
 	}

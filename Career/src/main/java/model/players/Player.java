@@ -50,7 +50,7 @@ public class Player {
 			
 			Card fieldtop = fieldDeque.peek();
 			int fieldstrength = fieldtop.getStrength();
-			
+			System.out.println("ca.getJackFlag()"+ca.getJackFlag());
 			if(ca.getJackFlag() == true) {
 				if(handstrength < fieldstrength) {
 					return true;
