@@ -3,7 +3,6 @@ package model.option;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.generalProcess.GeneralProcessing_withOption;
 import model.item.Card;
 
 public class CardAbility {
@@ -27,8 +26,7 @@ public class CardAbility {
 	}
 	
 	public void eightAbility() {
-		GeneralProcessing_withOption gpo = new GeneralProcessing_withOption();
-		gpo.endRound();
+		
 		
 		eightFlag = true;
 		
