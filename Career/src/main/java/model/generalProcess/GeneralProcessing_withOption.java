@@ -115,6 +115,8 @@ public class GeneralProcessing_withOption {
 				
 				if(!ca.cardNumber.equals("eight")) {
 					break;
+				}else if(checkHandSize()) {
+					break;
 				}
 				
 			}
