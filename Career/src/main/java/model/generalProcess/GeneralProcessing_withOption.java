@@ -28,7 +28,7 @@ public class GeneralProcessing_withOption {
 				System.out.println(fieldDeque);
 				if(itr.next().getNum().equals("Jack")) {//.nexr()➡要素を見たら次の要素に移る
 					ca.setJackFlag(true);
-					System.out.println("fieldDequeにJackが含まれていました");
+					System.out.println("fieldDequeにJackが含まれていましたaa");
 				}
 //				else {
 //					System.out.println("fieldDequeの値はJackではありませんでした");
