@@ -12,10 +12,11 @@
 	Deque<Card> fieldDeque = (Deque<Card>)session.getAttribute("fieldDeque"); %>
 
 <div id="cpu-hand">
-<%	for(Card card : deckList){
+<%	int b = 0;
+    for(Card card : deckList){
 	if(card.getCard_flag() == 1){ %>
-		<img src="./trump/card_back.png" width=68 height=100 >
-		<% }} %></div>
+		<img src="./trump/card_back.png" width=68 height=100 class="b<%=b%>">
+		<% b++;}} %></div>
 <br>
 <div id="field-list">
 <%int a = 0; %>
