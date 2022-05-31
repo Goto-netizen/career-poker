@@ -36,10 +36,10 @@ public class Player {
 		fieldDeque.push(hand);
 		System.out.println("フィールドデキューに"+hand+"を追加しました");
 		
-		System.out.println("playMyHandが実行されました");
+		
 	}
 	
-	public boolean judge() {
+	public boolean judge(CardAbility ca) {
 		
 		if(fieldDeque.isEmpty()) {			
 			return true;
@@ -50,8 +50,6 @@ public class Player {
 			
 			Card fieldtop = fieldDeque.peek();
 			int fieldstrength = fieldtop.getStrength();
-			
-			CardAbility ca = new CardAbility();
 			
 			if(ca.getJackFlag() == true) {
 				if(handstrength < fieldstrength) {
@@ -66,7 +64,6 @@ public class Player {
 			
 		}
 		
-		System.out.println("judgeが実行されました");
 		return false;
 
 	}

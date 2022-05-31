@@ -27,7 +27,7 @@ public class CPU {
 	}
 	
 	
-	public void CPUProcessSequence()throws Exception {//一連のCPU処理
+	public void CPUProcessSequence(CardAbility ca)throws Exception {//一連のCPU処理
 		//List<Card> canPlayIdList = new ArrayList<>(); 
 		List<Card> onlyFlag1List = new ArrayList<>();
 		List<Card> canPlayCardsList = new ArrayList<>();
@@ -39,7 +39,7 @@ public class CPU {
 		System.out.println("fieldDeque:"+fieldDeque);
 		
 		//場のカードより大きいカードだけ収集
-		canPlayCardsList = checkCanPlayCard(onlyFlag1List);//ok
+		canPlayCardsList = checkCanPlayCard(onlyFlag1List,ca);//ok
 		System.out.println("canPlayCardsList:"+canPlayCardsList);
 		System.out.println("fieldDeque:"+fieldDeque);
 		
@@ -70,14 +70,13 @@ public class CPU {
 		return onlyFlag1List;
 	}
 	
-	public List<Card> checkCanPlayCard(List<Card>onlyFlag1List){
+	public List<Card> checkCanPlayCard(List<Card>onlyFlag1List,CardAbility ca){
 		List<Card> canPlayCardsList = new ArrayList<>();
 		if(fieldDeque.isEmpty()) {
 			System.out.println("fieldDequeは空です");
 			canPlayCardsList = onlyFlag1List;
 		}
 		else {
-			CardAbility ca = new CardAbility();
 			System.out.println("fieldDequeは空ではありません。");
 			for(int i=0;i<onlyFlag1List.size();i++) {
 				if(ca.getJackFlag() == true) {

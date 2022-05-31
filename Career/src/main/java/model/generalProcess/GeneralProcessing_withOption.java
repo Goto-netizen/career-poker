@@ -14,15 +14,12 @@ public class GeneralProcessing_withOption {
 	Deque<Card> fieldDeque;
 	int cardFlag = 0;
 	boolean endGameFlag;
+	CardAbility ca;
 	
 	public GeneralProcessing_withOption(List<Card> deckList,Deque<Card> fieldDeque){
 		this.deckList = deckList;
 		this.fieldDeque = fieldDeque;
-		
-	}
-	
-	public GeneralProcessing_withOption() {
-		// TODO 自動生成されたコンストラクター・スタブ
+		ca = new CardAbility();
 	}
 
 	public void generalProcess(int index)throws Exception {
@@ -36,7 +33,7 @@ public class GeneralProcessing_withOption {
 		}
 		else {//プレイヤーがパス以外を選択した時
 			Player player = new Player(this.deckList,index,this.fieldDeque);
-			canPlayFlag = player.judge();//formデータのindex値チェック
+			canPlayFlag = player.judge(ca);//formデータのindex値チェック
 			System.out.println("P1➡canPlayFlagの値:"+canPlayFlag);
 			/*ここから*/
 			if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
@@ -61,6 +58,7 @@ public class GeneralProcessing_withOption {
 		/*処理結果を代入*/
 		this.deckList = player.getDeckList();
 		this.fieldDeque = player.getFieldDeque();
+		ca.setCardNumber(fieldDeque.peek());
 		
 		/*テスト用*/
 		System.out.println("deckList:"+this.deckList);
@@ -75,19 +73,20 @@ public class GeneralProcessing_withOption {
 	
 	public void CPUProcess(int index) {
 		System.out.println("CPUProcessを行います");
-		CardAbility ca = new CardAbility(this.fieldDeque.peek());
+		//CardAbility ca = new CardAbility(this.fieldDeque.peek());
 		System.out.println("ca.getEightflagの値："+ca.getEightFlag());
 		if(ca.getEightFlag()) {
 			System.out.println("if内ca.getEightflagの値："+ca.getEightFlag());
+			endRound();
 			//プレイヤーが８を出してCPUがパス
 		}else {
 			while(true) {   //CPUが８を出すとCPUのターン
-				System.out.println("else内ca.getEightflagの値："+ca.getEightFlag());
+				System.out.println("else内ca2.getEightflagの値："+ca.getEightFlag());
 				
 				CPU cpu = new CPU(this.deckList,this.fieldDeque);
 				
 				try {
-					cpu.CPUProcessSequence();//CPUの処理
+					cpu.CPUProcessSequence(ca);//CPUの処理
 				} catch (Exception e) {
 					e.printStackTrace();
 				 }
@@ -101,10 +100,11 @@ public class GeneralProcessing_withOption {
 					/*処理結果を代入*/
 					this.deckList = cpu.getDeckList();
 					this.fieldDeque = cpu.getFieldDeque();
-				
+					ca.setCardNumber(fieldDeque.peek());
+					
 					/*カードの効果発動*/
 					selectCardAbility(index);
-					System.out.println("selectCardAbilityが実行されました");
+					
 				}
 				
 				if(!ca.cardNumber.equals("eight")) {
@@ -148,14 +148,15 @@ public class GeneralProcessing_withOption {
 	}
 	
 	public void selectCardAbility(int index) {
-		CardAbility ca = new CardAbility(this.fieldDeque.peek());
+		//CardAbility ca = new CardAbility(this.fieldDeque.peek());
 		
-		switch(ca.cardNumber){
+		switch(ca.getCardNumber()){
 			case "seven": 
 				ca.sevenAbility(this.deckList ,index);
 				break;
 			case "eight":
 				ca.eightAbility();
+				System.out.println("ca.getEightFlag"+ca.getEightFlag());
 				break;
 			case "nine":
 				ca.nineAbility();
