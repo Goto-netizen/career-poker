@@ -52,6 +52,9 @@ public class Player {
 			int fieldstrength = fieldtop.getStrength();
 			System.out.println("ca.getJackFlag()"+ca.getJackFlag());
 			if(ca.getJackFlag() == true) {
+				if(hand.getNum().equals("Joker")) {
+					hand.setStrength(6);
+				}
 				if(handstrength < fieldstrength) {
 					return true;
 				}
