@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>渡すカードの選択</title>
+<link rel="stylesheet" href="seven.css">
 </head>
 <body>
 	<% List<Card> deckList = (List<Card>)session.getAttribute("deckList");

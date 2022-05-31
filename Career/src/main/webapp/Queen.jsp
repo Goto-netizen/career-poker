@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>爆破選択</title>
+<link rel="stylesheet" href="queen.css">
 </head>
 <body>
 
