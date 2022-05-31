@@ -56,7 +56,12 @@ request.setCharacterEncoding("UTF-8");
 		/*処理の依頼*/
 		GeneralProcessing_withOption gp = new GeneralProcessing_withOption(deckList,fieldDeque);
 		
-		gp.generalProcess(index);
+		try {
+			gp.generalProcess(index);
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
 		deckList = gp.getDeckList();
 		fieldDeque = gp.getFieldDeque();
 		

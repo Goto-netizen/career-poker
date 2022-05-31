@@ -32,8 +32,10 @@ public class Player {
 		Card hand = deckList.get(index);
 		
 		hand.setCard_flag(3);
-		
+		System.out.println("deckListの要素番号"+index+"のフラグを3に変えました");
 		fieldDeque.push(hand);
+		System.out.println("フィールドデキューに"+hand+"を追加しました");
+		
 		
 	}
 	

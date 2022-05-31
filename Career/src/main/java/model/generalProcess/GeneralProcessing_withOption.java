@@ -25,7 +25,7 @@ public class GeneralProcessing_withOption {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
-	public void generalProcess(int index) {
+	public void generalProcess(int index)throws Exception {
 		boolean canPlayFlag = false;
 		if(index == -1) {//プレイヤーがパスをした時
 			System.out.println("プレイヤーがパスを行いました。");
@@ -68,15 +68,17 @@ public class GeneralProcessing_withOption {
 		/*テスト用*/
 		System.out.println("deckList:"+this.deckList);
 		System.out.println("fieldDeque:"+this.fieldDeque);
-		System.out.println("プレイヤーの処理が行われました。");			
+		System.out.println("playerProcessが実行されました。");			
 	}
 	
 	public void CPUProcess(int index) {
 		CardAbility ca = new CardAbility();
 		if(ca.getEightFlag()) {
+			System.out.println("ca.getEightflagの値："+ca.getEightFlag());
 			//プレイヤーが８を出してCPUがパス
 		}else {
 			while(ca.getEightFlag()) {   //CPUが８を出すとCPUのターン
+				System.out.println("ca.getEightflagの値："+ca.getEightFlag());
 				CPU cpu = new CPU(this.deckList,this.fieldDeque);
 				
 				try {
@@ -91,7 +93,7 @@ public class GeneralProcessing_withOption {
 				
 				/*カードの効果発動*/
 				selectCardAbility(index);
-				if(!ca.cardNumber.equals("8")) {
+				if(!ca.cardNumber.equals("eight")) {
 					break;
 				}
 				System.out.println("CPUの処理が行われました。");

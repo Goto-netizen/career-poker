@@ -53,7 +53,7 @@ public class HandIntegerServlet extends HttpServlet {
 			number = Integer.parseInt(ask[i]);
 			index.add(number);
 		}
-		System.out.println(index);
+		System.out.println("手札dリストの要素番号:"+index);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("index", index);
