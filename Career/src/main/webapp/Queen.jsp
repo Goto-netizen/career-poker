@@ -9,7 +9,7 @@
 <body>
 
 	爆破するカードの数字を選んでください<br>
-<form action="queen-servlet" method="POST">
+<form action="throw-servlet" method="POST">
 
 
 

@@ -16,14 +16,14 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class NewDistributionServlet
  */
-@WebServlet("/ten-seven-servlet")
-public class TenSevenServlet extends HttpServlet {
+@WebServlet("/throw-servlet")
+public class ThrowServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TenSevenServlet() {
+    public ThrowServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
