@@ -10,7 +10,7 @@
 	<% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); %>
 
 	捨て札を選択してください。<br>
-<form action="ten-seven-servlet" method="POST">
+<form action="throw-servlet" method="POST">
 <%int i = 0; %>
 	<% for(Card card : deckList){ %>
 		<% if(card.getCard_flag() == 0){ %>
