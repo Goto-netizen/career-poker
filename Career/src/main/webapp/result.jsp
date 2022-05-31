@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>結果</title>
+<link rel="stylesheet" href="result.css">
 </head>
 <body>
 	<% 
@@ -15,9 +16,9 @@
 	<% if(winner == null){ 
 		winner = (String)session.getAttribute("neme");
 		%>
-		<%= winner %>の勝ちです。<br>
+		<div class="player"><%= winner %>の勝ちです。</div><br>
 	<% }else{ %>
-		<%= winner %>の勝ちです。<br>
+		<div class="cpu"><%= winner %>の勝ちです。</div><br>
 	<% } %>
 	
 	<%
@@ -27,6 +28,6 @@
 		session.removeAttribute("index");
 		session.removeAttribute("winner");
 	%>
-		<a href="menu.jsp">メニューに戻る</a>
+		<div class="return"><a href="menu.jsp">メニューに戻る</a></div>
 </body>
 </html>
