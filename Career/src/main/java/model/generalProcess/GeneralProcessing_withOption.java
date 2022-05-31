@@ -62,25 +62,28 @@ public class GeneralProcessing_withOption {
 		this.deckList = player.getDeckList();
 		this.fieldDeque = player.getFieldDeque();
 		
-		/*カードの効果発動*/
-		selectCardAbility(index);
-		
 		/*テスト用*/
 		System.out.println("deckList:"+this.deckList);
 		System.out.println("fieldDeque:"+this.fieldDeque);
+		
+		/*カードの効果発動*/
+		selectCardAbility(index);
+		
+		
 		System.out.println("playerProcessが実行されました。");			
 	}
 	
 	public void CPUProcess(int index) {
 		System.out.println("CPUProcessを行います");
-		CardAbility ca = new CardAbility();
+		CardAbility ca = new CardAbility(this.fieldDeque.peek());
 		System.out.println("ca.getEightflagの値："+ca.getEightFlag());
 		if(ca.getEightFlag()) {
-			System.out.println("ca.getEightflagの値："+ca.getEightFlag());
+			System.out.println("if内ca.getEightflagの値："+ca.getEightFlag());
 			//プレイヤーが８を出してCPUがパス
 		}else {
-			while(ca.getEightFlag()) {   //CPUが８を出すとCPUのターン
-				System.out.println("ca.getEightflagの値："+ca.getEightFlag());
+			while(true) {   //CPUが８を出すとCPUのターン
+				System.out.println("else内ca.getEightflagの値："+ca.getEightFlag());
+				
 				CPU cpu = new CPU(this.deckList,this.fieldDeque);
 				
 				try {
@@ -89,19 +92,25 @@ public class GeneralProcessing_withOption {
 					e.printStackTrace();
 				 }
 				
-				/*処理結果を代入*/
-				this.deckList = cpu.getDeckList();
-				this.fieldDeque = cpu.getFieldDeque();
-				
-				/*カードの効果発動*/
-				selectCardAbility(index);
-				if(!ca.cardNumber.equals("eight")) {
-					break;
-				}
 				System.out.println("CPUの処理が行われました。");
+				
 				if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
 					endRound();
 				}
+				else {
+					/*処理結果を代入*/
+					this.deckList = cpu.getDeckList();
+					this.fieldDeque = cpu.getFieldDeque();
+				
+					/*カードの効果発動*/
+					selectCardAbility(index);
+					System.out.println("selectCardAbilityが実行されました");
+				}
+				
+				if(!ca.cardNumber.equals("eight")) {
+					break;
+				}
+				
 			}
 			
 		}
@@ -164,6 +173,7 @@ public class GeneralProcessing_withOption {
 				break;
 		
 		}
+		System.out.println("selectCardAbilityが実行されました");
 	}
 	
 	public List<Card> getDeckList(){

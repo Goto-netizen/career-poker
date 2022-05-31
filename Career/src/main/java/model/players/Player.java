@@ -36,7 +36,7 @@ public class Player {
 		fieldDeque.push(hand);
 		System.out.println("フィールドデキューに"+hand+"を追加しました");
 		
-		
+		System.out.println("playMyHandが実行されました");
 	}
 	
 	public boolean judge() {
@@ -66,6 +66,7 @@ public class Player {
 			
 		}
 		
+		System.out.println("judgeが実行されました");
 		return false;
 
 	}
