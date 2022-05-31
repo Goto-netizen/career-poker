@@ -30,9 +30,9 @@ public class GeneralProcessing_withOption {
 					ca.setJackFlag(true);
 					System.out.println("fieldDequeにJackが含まれていました");
 				}
-				else {
-					System.out.println("fieldDequeはJackではありませんでした");
-				}
+//				else {
+//					System.out.println("fieldDequeの値はJackではありませんでした");
+//				}
 				
 			}
 		}
@@ -162,6 +162,7 @@ public class GeneralProcessing_withOption {
 		}
 		ca.setJackFlag(false);
 		System.out.println("ca.getJackFlag():"+ca.getJackFlag());
+		System.out.println("endRoundが実行されました");
 	}
 	
 	public  boolean checkHandSize() {
@@ -177,7 +178,7 @@ public class GeneralProcessing_withOption {
 				count2++;
 			}
 		}
-		
+		System.out.println("checkHandSizeが実行されました");
 		if((count1 == 0)||(count2 == 0)) {
 			return true;//ゲーム終了
 		}
