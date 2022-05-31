@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>menu</title>
+<link rel="stylesheet" href="menu.css">
 </head>
 <body>
 <h2>Let's大富豪!!</h2>
     <form action="new-distribution-servlet" method="POST">
-    <input type="submit" value="初級"><br>
-    <input type="submit" value="上級">
+    <input type="submit" value="初級" class="easy"><br>
+    <input type="submit" value="上級" class="hard">
 	</form>
 
 </body>
