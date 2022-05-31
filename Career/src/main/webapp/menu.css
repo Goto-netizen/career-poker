@@ -37,6 +37,14 @@ h2{
 	
 	margin-left: 700px;
 }
+.easy {
+    opacity: 0;
+    animation: fadein 6s ease forwards;
+    animation-delay: 7s;
+}
+@keyframes fadein {
+    100% {  opacity: 1;}
+}
 
 .easy:hover{
 	box-shadow    : none;        /* カーソル時の影消去 */

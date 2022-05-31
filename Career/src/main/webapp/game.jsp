@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="game.css">
+<style>
+</style>
 </head>
 <body>
 <% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); 
@@ -26,6 +28,7 @@
 		<% }a++;} %></div>
 
 <form action="hand-integer-servlet" method="POST">
+<div id="player-hand">
 <%int i = 0; %>
 	<% for(Card card : deckList){ %>
 		<% if(card.getCard_flag() == 0){ %>
@@ -34,6 +37,7 @@
 	<input type="checkbox" name="submission" value="-1">パス<br>
 	
 	<input type="submit" value="出す">
+	</div>
 </form>
 </body>
 </html>

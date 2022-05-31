@@ -213,6 +213,8 @@ body{
 	margin-right: auto;
 	margin-left: 300px;
 }
-input[type="checkbox"]:checked + label {
-    background-image: url(../image/trump/1.png);
+input[type="checkbox"]:checked{
+    background-color:black;
+     border: 5px #ff0000 solid;
 }
+
