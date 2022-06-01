@@ -45,6 +45,7 @@ public class HandIntegerServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		String[] ask = request.getParameterValues("submission");
+		
 		int number = 0;
 		
 		System.out.println("Arrays.toString"+Arrays.toString(ask));
@@ -57,6 +58,9 @@ public class HandIntegerServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("index", index);
+		int x = (Integer)session.getAttribute("x");
+		x++;
+		session.setAttribute("x", x);
 		
 		//7,10,12の捨てるカード用
 		List<Integer> abilityIndex = new ArrayList<Integer>();

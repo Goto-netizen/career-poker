@@ -11,7 +11,8 @@
 </head>
 <body>
 <% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); 
-	Deque<Card> fieldDeque = (Deque<Card>)session.getAttribute("fieldDeque"); %>
+	Deque<Card> fieldDeque = (Deque<Card>)session.getAttribute("fieldDeque");
+	int x = (Integer)session.getAttribute("x");%>
 
 <div id="cpu-hand">
 <%	int b = 0;
@@ -48,9 +49,9 @@
 		<% }
 	}
 } %>
-<% if(fieldDeque.isEmpty() || fieldDeque.size() ==1){ %>
+<% if(fieldDeque.isEmpty() || fieldDeque.size() ==1){ if(x!=0){%>
 	<span class="console">場が流れました。</span><br>
-<% } %>
+<% } }%>
 
 </form>
 </body>
