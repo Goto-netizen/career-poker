@@ -29,7 +29,7 @@
 		<% }a++;} %></div>
 
 <form action="hand-integer-servlet" method="POST">
-<div id="player-hand">
+<div id="player-hand" style="width:790px">
 <%int i = 0; %>
 	<% for(Card card : deckList){ %>
 		<% if(card.getCard_flag() == 0){ %>
