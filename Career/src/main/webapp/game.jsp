@@ -21,6 +21,7 @@
 		<% b++;}} %></div>
 <br>
 <div id="field-list">
+<img src="./newTrump/kara.png" width=72 height =128 class="" >
 <%int a = 0;%>
 	<% for(Card field : fieldDeque){ %>
 		<% if(field.getCard_flag() == 3){ %>
