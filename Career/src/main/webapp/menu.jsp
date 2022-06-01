@@ -13,6 +13,8 @@
     <input type="submit" value="初級" class="easy"><br>
     <input type="submit" value="上級" class="hard">
 	</form>
-
+	<div id="video-area">
+<video id="video" poster="menu_video.mp4" webkit-playsinline playsinline muted autoplay loop>
+<source src="menu_video.mp4" type="video/mp4">
 </body>
 </html>
