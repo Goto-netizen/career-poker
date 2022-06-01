@@ -1,6 +1,5 @@
 package model.option;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model.item.Card;
@@ -37,9 +36,8 @@ public class CardAbility {
 		
 	}
 	
-	public List<Card> tenAbility(List<Card> deckList ,int abilityIndex) {
+	public void tenAbility(List<Card> deckList ,int abilityIndex) {
 		deckList.get(abilityIndex).setCard_flag(4);
-		return deckList;
 	}
 	
 	public void jackAbility() {
@@ -47,21 +45,14 @@ public class CardAbility {
 		System.out.println("jackFlag:"+this.jackFlag);
 	}
 	
-	public List<Card> queenAbility(List<Card> deckList ,int blast_index) {
-		List<Card> newDeckList = new ArrayList<Card>();
+	public void queenAbility(List<Card> deckList ,int abilityIndex) {
 		for(Card card : deckList){
-			
-			
-			Card deck = new Card(card.getCard_id(),card.getNum(),card.getMark(),card.getStrength());
-			if(card.getStrength()==blast_index) {
-				deck.setCard_flag(4);
+			if(card.getStrength() == abilityIndex) {
+				card.setCard_flag(4);
 			}else {
-				deck.setCard_flag(card.getCard_flag());
+				card.setCard_flag(card.getCard_flag());
 			}
-			newDeckList.add(deck);
 		}
-		return newDeckList;
-		
 	}
 	public void kingAbility() {
 		

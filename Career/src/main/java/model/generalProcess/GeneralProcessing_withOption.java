@@ -42,13 +42,13 @@ public class GeneralProcessing_withOption {
 		
 	}
 
-	public void generalProcess(int index)throws Exception {
+	public void generalProcess(int index,int abilityIndex)throws Exception {
 		boolean canPlayFlag = false;
 		if(index == -1) {//プレイヤーがパスをした時
 			System.out.println("プレイヤーがパスを行いました。");
 			endRound();
 			System.out.println("場をリセットしました。");
-			CPUProcess(index);
+			CPUProcess(index,abilityIndex);
 			this.endGameFlag = checkHandSize();
 		}
 		else {//プレイヤーがパス以外を選択した時
@@ -57,17 +57,17 @@ public class GeneralProcessing_withOption {
 			System.out.println("P1➡canPlayFlagの値:"+canPlayFlag);
 			/*ここから*/
 			if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
-				playerProcess(index);
+				playerProcess(index,abilityIndex);
 				this.endGameFlag = checkHandSize();//プレイヤーの手札が無くなったか判定
 				System.out.println("endGameFlagの値:"+endGameFlag);
-				CPUProcess(index);
+				CPUProcess(index,abilityIndex);
 				this.endGameFlag = checkHandSize();	
 			}
 		}
 		System.out.println("============================================");
 	}
 	
-	public void playerProcess(int index) {
+	public void playerProcess(int index,int abilityIndex) {
 		System.out.println("============================================");
 		System.out.println("playerProcessを行います");
 		System.out.println("============================================");
@@ -89,13 +89,13 @@ public class GeneralProcessing_withOption {
 		System.out.println("出したカード:fieldDeque:"+this.fieldDeque);
 		
 		/*カードの効果発動*/
-		selectCardAbility(index);
+		selectCardAbility(index,abilityIndex);
 		
 		
 		System.out.println("playerProcessが実行されました。");			
 	}
 	
-	public void CPUProcess(int index) {
+	public void CPUProcess(int index,int abilityIndex) {
 		System.out.println("============================================");
 		System.out.println("CPUProcessを行います");
 		System.out.println("============================================");
@@ -137,7 +137,7 @@ public class GeneralProcessing_withOption {
 					
 					
 					/*カードの効果発動*/
-					selectCardAbility(index);
+					selectCardAbility(index,abilityIndex);
 					
 				}
 				
@@ -189,12 +189,12 @@ public class GeneralProcessing_withOption {
 		
 	}
 	
-	public void selectCardAbility(int index) {
+	public void selectCardAbility(int index,int abilityIndex) {
 		//CardAbility ca = new CardAbility(this.fieldDeque.peek());
 		
 		switch(ca.getCardNumber()){
 			case "seven": 
-				ca.sevenAbility(this.deckList ,index,this.sevenFlag);
+				ca.sevenAbility(this.deckList ,abilityIndex,this.sevenFlag);
 				break;
 			case "eight":
 				ca.eightAbility();
@@ -204,12 +204,13 @@ public class GeneralProcessing_withOption {
 				ca.nineAbility();
 				break;
 			case "ten":
-				ca.tenAbility(this.deckList,index);
+				ca.tenAbility(this.deckList,abilityIndex);
+				break;
 			case "Jack":
 				ca.jackAbility();
 				break;
 			case "Queen":
-				ca.queenAbility(this.deckList,index);
+				ca.queenAbility(this.deckList,abilityIndex);
 				break;
 			case "King":
 				ca.kingAbility();

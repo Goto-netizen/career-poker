@@ -58,6 +58,12 @@ public class HandIntegerServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("index", index);
 		
+		//7,10,12の捨てるカード用
+		List<Integer> abilityIndex = new ArrayList<Integer>();
+		abilityIndex.add(number);
+		session.setAttribute("abilityIndex", abilityIndex);
+
+		
 		//リクエストの転送
 		//10を選んだ時に捨てるカード選択画面に行きます
 		List<Card> deckList = (List<Card>)session.getAttribute("deckList");

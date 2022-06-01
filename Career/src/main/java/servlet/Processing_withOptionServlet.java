@@ -49,6 +49,8 @@ request.setCharacterEncoding("UTF-8");
 		List<Integer> indexList = (List<Integer>)session.getAttribute("index");
 		int index = indexList.get(0);
 		//index = 0;//テスト用の値
+		List<Integer> abilityIndexList = (List<Integer>)session.getAttribute("abilityIndex");
+		int abilityIndex = abilityIndexList.get(0);
 		
 		List<Card> deckList = (List<Card>)session.getAttribute("deckList");
 		Deque<Card> fieldDeque =(Deque<Card>)session.getAttribute("fieldDeque");
@@ -57,7 +59,7 @@ request.setCharacterEncoding("UTF-8");
 		GeneralProcessing_withOption gp = new GeneralProcessing_withOption(deckList,fieldDeque);
 		
 		try {
-			gp.generalProcess(index);
+			gp.generalProcess(index,abilityIndex);
 		} catch (Exception e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
