@@ -24,10 +24,10 @@
         <label><input type="checkbox" name="submission" value="14"><img src="./newTrump/1.png" width=49.5 height =88 ></label>
         <label><input type="checkbox" name="submission" value="15"><img src="./newTrump/5.png" width=49.5 height =88 ></label>
         <label><input type="checkbox" name="submission" value="16"><img src="./newTrump/37.png" width=49.5 height =88 ></label>
-        
+        <label><input type="checkbox" name="submission" value="0">爆破しない</label>
         
 	
-	<input type="submit" value="爆破">
+	<input type="submit" value="決定">
 </form>
 
 </body>

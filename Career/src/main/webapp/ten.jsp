@@ -19,8 +19,8 @@
 		<% if(card.getCard_flag() == 0 && i != index){ %>
 		<label><input type="checkbox" name="submission" value="<%= i %>"><img src="./newTrump/<%= card.getCard_id() %>.png" width=49.5 height =88 ></label>
 	<% }i++; } %>
-	
-	<input type="submit" value="捨てる">
+	<label><input type="checkbox" name="submission" value="0">捨てない</label>
+	<input type="submit" value="決定">
 </form>
 </body>
 </html>

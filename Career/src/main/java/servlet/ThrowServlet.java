@@ -48,14 +48,10 @@ public class ThrowServlet extends HttpServlet {
 		
 		System.out.println(Arrays.toString(ask));
 		List<Integer> abilityIndex = new ArrayList<Integer>();
-		if(ask == null) {
-			ask = new String[0];
-		}else {
 			for(int i=0;i<ask.length;i++) {
 				number = Integer.parseInt(ask[i]);
 				abilityIndex.add(number);
 			}
-		}
 		System.out.println(abilityIndex);
 		
 		HttpSession session = request.getSession();
