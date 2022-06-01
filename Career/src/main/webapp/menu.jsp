@@ -13,6 +13,7 @@
     <input type="submit" value="初級" class="easy"><br>
     <input type="submit" value="上級" class="hard">
 	</form>
+		<a href="login1.jsp" >ログアウト</a><br>
 	<div id="video-area">
 <video id="video" poster="menu_video1.mp4" webkit-playsinline playsinline muted autoplay loop>
 <source src="menu_video1.mp4" type="video/mp4">
