@@ -215,6 +215,7 @@ body{
 }
 input[type="checkbox"]:checked{
     background-color:black;
-     border: 5px #ff0000 solid;
+     border: 5px rgb(128, 64, 64) solid;
+     background: #31A9EE;
 }
 
