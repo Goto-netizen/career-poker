@@ -36,7 +36,7 @@
 		<% } %>
 		<div class="aa"style="margin-left:500px:margin-top:500px;">
 	<a href="menu.jsp" >メニューに戻る</a><br>
-	<a href="login1.jsp" >ログアウト</a><br>
+	<a href="login1.html" >ログアウト</a><br>
 	</div>
 
 	<%
