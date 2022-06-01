@@ -36,7 +36,6 @@ public class Player {
 		fieldDeque.push(hand);
 		System.out.println("フィールドデキューに"+hand+"を追加しました");
 		
-		
 	}
 	
 	public boolean judge(CardAbility ca) {
@@ -52,16 +51,28 @@ public class Player {
 			Card fieldTop = fieldDeque.peek();
 			int fieldStrength = fieldTop.getStrength();
 			System.out.println("ca.getJackFlag():"+ca.getJackFlag());
-			if(ca.getJackFlag() == true) {
-				if(hand.getNum().equals("Joker")) {
-					hand.setStrength(6);
-					handStrength = hand.getStrength();
+			if(ca.getJackFlag() == true) {//イレブンバックの時
+				if(hand.getNum().equals("Joker")) {//プレイヤーが選んだ手札がjokerの時
+					hand.setStrength(6);//手札のjokerの強さを6にする
+					handStrength = hand.getStrength();//手札の強さを更新
+				}
+				if(fieldTop.getNum_id() == 14) {//場のトップがjokerの時
+					if(hand.getCard_id() == 7) {//でかつ選択されているFlag1のカードがスペードの2の時
+						hand.setStrength(5);
+						return true;//そのカードも出すことができる
+					}
 				}
 				if(handStrength < fieldStrength) {
 					return true;
 				}
 			}
 			else {
+				if(fieldTop.getNum_id() == 14) {//場のトップがjokerの時
+					if(hand.getCard_id() == 11) {//でかつ選択されているFlag1のカードがスペードの7の時
+						hand.setStrength(17);
+						return true;//そのカードも出すことができる
+					}
+				}
 				if(handStrength > fieldStrength) {
 					return true;
 				}

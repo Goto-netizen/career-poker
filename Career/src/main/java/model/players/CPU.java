@@ -84,19 +84,30 @@ public class CPU {
 			System.out.println("  -fieldDequeは空ではありません。");
 			for(int i=0;i<onlyFlag1List.size();i++) {
 				if(ca.getJackFlag() == true) {//jackFlagがtrueの時
-					if(onlyFlag1List.get(i).getNum().equals("Joker")) {
-						onlyFlag1List.get(i).setStrength(6);
+					if(onlyFlag1List.get(i).getNum().equals("Joker")) {//手札のjokerを指している時
+						onlyFlag1List.get(i).setStrength(6);//手札のjokerの強さを6にする
 					}
 					if(fieldDeque.peek().getStrength()>onlyFlag1List.get(i).getStrength()) {
 						canPlayCardsList.add(onlyFlag1List.get(i));
 					}
-				}
-				else {
-					if(fieldDeque.peek().getStrength()<onlyFlag1List.get(i).getStrength()) {
-						canPlayCardsList.add(onlyFlag1List.get(i));
+					if(fieldDeque.peek().getNum_id() == 14) {//場のトップがjokerの時
+						if(onlyFlag1List.get(i).getCard_id() == 7) {//でかつforループで選択されているFlag1のカードがスペードの2の時
+							onlyFlag1List.get(i).setStrength(5);
+							canPlayCardsList.add(onlyFlag1List.get(i));//そのカードも出すことができる
+						}
 					}
 				}
-				
+				else {//イレブンバックでない時
+					if(fieldDeque.peek().getStrength()<onlyFlag1List.get(i).getStrength()) {//手札のカードが場のカードより強さが大きい時
+						canPlayCardsList.add(onlyFlag1List.get(i));
+					}
+					if(fieldDeque.peek().getNum_id() == 14) {//場のトップがjokerの時
+						if(onlyFlag1List.get(i).getCard_id() == 11) {//でかつforループで選択されているFlag1のカードがスペードの7の時
+							onlyFlag1List.get(i).setStrength(17);
+							canPlayCardsList.add(onlyFlag1List.get(i));//そのカードも出すことができる
+						}
+					}
+				}
 			}
 		}
 		System.out.println("  -checkCanPlayCardが実行されました");
