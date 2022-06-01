@@ -129,8 +129,15 @@ public class GeneralProcessing_withOption {
 					this.fieldDeque = cpu.getFieldDeque();
 					ca.setCardNumber(fieldDeque.peek());
 					this.sevenFlag = 2;//1:プレイヤー 2:CPU
-					cpu.selectAbilityIndex(this.deckList);
-					abilityIndex = cpu.getAbilityIndex();
+					if(fieldDeque.peek().getNum_id() == 12) {
+						cpu.selectNum_id(this.deckList);
+						abilityIndex = cpu.getSelectedNum_id();
+					}
+					else {
+						cpu.selectHandIndex(this.deckList);
+						abilityIndex = cpu.getHandIndex();
+					}
+					
 					
 					/*テスト用*/
 					System.out.println("デッキの状態:deckList:"+this.deckList);
