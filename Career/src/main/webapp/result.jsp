@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.List,model.item.Card,java.util.Deque" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,18 +9,26 @@
 </head>
 <body>
 	<% 
-		String winner = null;
-		winner = (String)session.getAttribute("winner");
+		List<Card> deckList = (List<Card>)session.getAttribute("deckList");
 	%>
 	
-	<% if(winner == null){ 
-		winner = (String)session.getAttribute("neme");
-		%>
-		<div class="player"><%= winner %>の勝ちです。</div><br>
-	<% }else{ %>
-		<div class="cpu"><%= winner %>の勝ちです。</div><br>
-	<% } %>
+	<%int count1 = 0;
+		int count2 = 0;
 	
+		for(int i=0;i<deckList.size();i++) {
+			if(deckList.get(i).getCard_flag()==0) {//山札に自分のカードが残っていない
+				count1++;
+			}
+			if(deckList.get(i).getCard_flag()==1) {//山札にCPUのカードが残っていない
+				count2++;
+			}
+		}
+		if(count1 == 0){ %>
+			<div class="player">あなたの勝ちです。</div><br>
+		<% }else{ %>
+			<div class="cpu">CPUの勝ちです。</div><br>
+		<% } %>
+
 	<%
 		session.removeAttribute("neme");
 		session.removeAttribute("deckList");
