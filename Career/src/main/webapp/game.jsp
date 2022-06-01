@@ -39,6 +39,16 @@
 	
 	<input type="submit" value="出す">
 	</div>
+	
+	<% if(fieldDeque.size() == 0){ %>
+		場が流れました。
+		<% }else{ %>
+		<% for(Card field : fieldDeque){ %>
+			<% if(field.getCard_flag() == 3){ %>
+					<%= field.getNum() %>が出ました。
+			<% }
+			}
+		} %>
 </form>
 </body>
 </html>
