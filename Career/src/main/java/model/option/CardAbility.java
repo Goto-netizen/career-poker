@@ -14,11 +14,16 @@ public class CardAbility {
 	public CardAbility(){
 		
 	}
-	
-	public List<Card> sevenAbility(List<Card> deckList ,int throw_index) {
+	//プレイヤーかCPUの処理が終わった後
+	public void sevenAbility(List<Card> deckList ,int abilityIndex,int sevenFlag) {
+		//仮引数 int sevenFlag = 0//初期値 1//プレイヤー 2//CPU
+		if(sevenFlag == 1) {
+			deckList.get(abilityIndex).setCard_flag(1);
+		}
+		else if(sevenFlag == 2) {
+			deckList.get(abilityIndex).setCard_flag(0);
+		}
 		
-		deckList.get(throw_index).setCard_flag(1);
-		return deckList;
 	}
 	
 	public void eightAbility() {
@@ -32,9 +37,8 @@ public class CardAbility {
 		
 	}
 	
-	public List<Card> tenAbility(List<Card> deckList ,int throw_index) {
-		
-		deckList.get(throw_index).setCard_flag(4);
+	public List<Card> tenAbility(List<Card> deckList ,int abilityIndex) {
+		deckList.get(abilityIndex).setCard_flag(4);
 		return deckList;
 	}
 	

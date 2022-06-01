@@ -15,6 +15,7 @@ public class GeneralProcessing_withOption {
 	Deque<Card> fieldDeque;
 	int cardFlag = 0;
 	boolean endGameFlag;
+	int sevenFlag;
 	CardAbility ca;
 	
 	public GeneralProcessing_withOption(List<Card> deckList,Deque<Card> fieldDeque){
@@ -193,7 +194,7 @@ public class GeneralProcessing_withOption {
 		
 		switch(ca.getCardNumber()){
 			case "seven": 
-				ca.sevenAbility(this.deckList ,index);
+				ca.sevenAbility(this.deckList ,index,this.sevenFlag);
 				break;
 			case "eight":
 				ca.eightAbility();
