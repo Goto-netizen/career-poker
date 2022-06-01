@@ -49,3 +49,12 @@ body{
   	margin-top: 380px;
   	margin-left: 660px;
 }
+.winner{
+	height:100px;
+	width:600px;
+}
+a{
+	position:absolute;
+	margin-top: 375px;
+	margin-left: 500px;
+}
