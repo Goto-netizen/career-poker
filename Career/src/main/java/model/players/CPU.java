@@ -17,7 +17,8 @@ public class CPU {
 	List<Card>deckList;
 	Deque<Card>fieldDeque;
 	int selectedIndex;
-	int abilityIndex;
+	int handIndex;
+	int selectedNum_id;
 	/*
 	 * コンストラクタ
 	 */
@@ -135,28 +136,56 @@ public class CPU {
 		System.out.println("  -playCPUCardが実行されました");
 	}
 	
-	public void selectAbilityIndex(List<Card> deckList) {
-		System.out.println("・selectAbilityIndex");
+	public void selectHandIndex(List<Card> deckList) {
+		System.out.println("・selectHandIndex");
 		Random rd = new Random();
 		List<Card> onlyFlag1List = new ArrayList<>();
 		Card selectedCard = null;
+		
 		//Flagが1のカードだけ収集
 		onlyFlag1List = gatherFlag1Card();
 
 		int random = (rd.nextInt(onlyFlag1List.size()));
 		selectedCard = onlyFlag1List.get(random);
 		
-		setAbilityIndex(deckList.indexOf(selectedCard));
+		setHandIndex(deckList.indexOf(selectedCard));
 		
-		System.out.println("  -selectAbilityIndexが実行されました");
+		System.out.println("  -selectHandIndexが実行されました");
 	}
 	
-	public void setAbilityIndex(int abilityIndex) {
-		this.abilityIndex = abilityIndex;
+	public void selectNum_id(List<Card> deckList) {
+		System.out.println("・selectNum_id");
+		Random rd = new Random();
+		int random = (rd.nextInt());
+		
+		/*1,2,7～16をランダムで選択*/
+		while(true) {
+			random = rd.nextInt(16)+1;
+			if((random<3)||(random>6)) {
+				break;
+			}
+		}
+		
+		setSelectedNum_id(random);
+		System.out.println("  -CPUはカード番号"+random+"を選択しました");
+		
+		System.out.println("  -selectNum_idが実行されました");
 	}
 	
-	public int getAbilityIndex(){
-		return this.abilityIndex;
+	public void setSelectedNum_id(int selectedNum_id) {
+		this.selectedNum_id = selectedNum_id;
+	}
+	
+	public int getSelectedNum_id(){
+		return this.selectedNum_id;
+	}
+	
+	public void setHandIndex(int handIndex) {
+		this.handIndex = handIndex;
+	}
+	
+	public int getHandIndex(){
+		return this.handIndex;
 	}
 	
 	public void setDeckList(List<Card> deckList) {
