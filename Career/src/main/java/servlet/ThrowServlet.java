@@ -47,17 +47,21 @@ public class ThrowServlet extends HttpServlet {
 		int number = 0;
 		
 		System.out.println(Arrays.toString(ask));
-		List<Integer> throw_index = new ArrayList<Integer>();
-		for(int i=0;i<ask.length;i++) {
-			number = Integer.parseInt(ask[i]);
-			throw_index.add(number);
+		List<Integer> abilityIndex = new ArrayList<Integer>();
+		if(ask == null) {
+			ask = new String[0];
+		}else {
+			for(int i=0;i<ask.length;i++) {
+				number = Integer.parseInt(ask[i]);
+				abilityIndex.add(number);
+			}
 		}
-		System.out.println(throw_index);
+		System.out.println(abilityIndex);
 		
 		HttpSession session = request.getSession();
 		//セッション
 
-		session.setAttribute("throw_index", throw_index);
+		session.setAttribute("abilityIndex", abilityIndex);
 
 
 		
