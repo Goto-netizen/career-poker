@@ -48,7 +48,7 @@ public class CardAbility {
 	
 	public void queenAbility(List<Card> deckList ,int abilityIndex) {
 		for(Card card : deckList){
-			if(card.getStrength() == abilityIndex) {
+			if(card.getNum_id() == abilityIndex) {
 				card.setCard_flag(4);
 			}else {
 				card.setCard_flag(card.getCard_flag());

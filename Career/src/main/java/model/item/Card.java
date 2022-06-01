@@ -26,19 +26,25 @@ public class Card{
 	 * カードフラグ
 	 */
 	private int card_flag;
+	
+	/**
+	 * カードの数字（Jokerは14）
+	 */
+	private int num_id;
 
 
 
 	/**
 	 * EmployeeBeanを構築します。
 	 */
-	public Card(int card_id,String num,String mark,int strength) {
+	public Card(int card_id,String num,String mark,int strength, int num_id) {
 		
 		//メンバ変数の初期化
 		this.card_id = card_id;
 		this.num = num;
 		this.mark = mark;
 		this.strength = strength;
+		this.num_id = num_id;
 	}
 
 	public int getCard_id() {
@@ -98,7 +104,20 @@ public class Card{
 	public void setCard_flag(int card_flag) {
 		this.card_flag = card_flag;
 	}
+	/**
+	 * フィールドnum_idの値を返します。
+	 * @return カードフラグ
+	 */
+	public int getNum_id() {
+		return num_id;
+	}
 	
+	/**
+	 * フィールドnum_idに値をセット。
+	 */
+	public void setNum_id(int num_id) {
+		this.num_id = num_id;
+	}
 	@Override
 	public String toString() {
 		return card_id+":"+num+":"+mark+":"+strength+":"+card_flag;
