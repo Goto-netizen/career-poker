@@ -13,7 +13,7 @@
 	int index = indexList.get(0);%>
 
 	捨て札を選択してください。<br>
-<form action="ability-hand-integer-servlet" method="POST">
+<form action="throw-servlet" method="POST">
 <%int i = 0; %>
 	<% for(Card card : deckList){ %>
 		<% if(card.getCard_flag() == 0 && i != index){ %>

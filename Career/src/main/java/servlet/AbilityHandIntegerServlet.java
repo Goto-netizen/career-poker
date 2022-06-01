@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class NewDistributionServlet
  */
-@WebServlet("/ability-hand-integer-servlet")
+@WebServlet("/throw-servlet")
 public class AbilityHandIntegerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
