@@ -10,7 +10,7 @@
 <body>
 
 	爆破するカードの数字を選んでください<br>
-<form action="throw-servlet" method="POST">
+<form action="ability-hand-integer-servlet" method="POST">
 
 
 
