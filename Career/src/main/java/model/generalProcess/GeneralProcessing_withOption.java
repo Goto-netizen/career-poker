@@ -22,19 +22,16 @@ public class GeneralProcessing_withOption {
 		this.deckList = deckList;
 		this.fieldDeque = fieldDeque;
 		ca = new CardAbility();
+		System.out.println("・GeneralProcessing_withOption");
 		System.out.println("CardAbilityインスタンスを生成しました");
 		if(!fieldDeque.isEmpty()) {//fieldDequeが空じゃなかったら
 			Iterator<Card> itr = fieldDeque.descendingIterator();
 			while (itr.hasNext()) {
-				System.out.println(fieldDeque);
+				System.out.println("while(itr.hasNext())内fieldDeque:"+fieldDeque);
 				if(itr.next().getNum().equals("Jack")) {//.nexr()➡要素を見たら次の要素に移る
 					ca.setJackFlag(true);
-					System.out.println("fieldDequeにJackが含まれていましたaa");
+					System.out.println("fieldDequeにJackが含まれていました。");
 				}
-//				else {
-//					System.out.println("fieldDequeの値はJackではありませんでした");
-//				}
-				
 			}
 		}
 		
@@ -83,6 +80,8 @@ public class GeneralProcessing_withOption {
 		this.deckList = player.getDeckList();
 		this.fieldDeque = player.getFieldDeque();
 		ca.setCardNumber(fieldDeque.peek());
+		this.sevenFlag = 1;//1:プレイヤー 2:CPU
+		
 		
 		/*テスト用*/
 		System.out.println("デッキの状態:deckList:"+this.deckList);
@@ -99,7 +98,6 @@ public class GeneralProcessing_withOption {
 		System.out.println("============================================");
 		System.out.println("CPUProcessを行います");
 		System.out.println("============================================");
-		//CardAbility ca = new CardAbility(this.fieldDeque.peek());
 		System.out.println("ca.getEightflagの値："+ca.getEightFlag());
 		if(ca.getEightFlag()) {
 			System.out.println("if内ca.getEightflagの値："+ca.getEightFlag());
@@ -130,6 +128,9 @@ public class GeneralProcessing_withOption {
 					this.deckList = cpu.getDeckList();
 					this.fieldDeque = cpu.getFieldDeque();
 					ca.setCardNumber(fieldDeque.peek());
+					this.sevenFlag = 2;//1:プレイヤー 2:CPU
+					cpu.selectAbilityIndex(this.deckList);
+					abilityIndex = cpu.getAbilityIndex();
 					
 					/*テスト用*/
 					System.out.println("デッキの状態:deckList:"+this.deckList);
@@ -190,7 +191,6 @@ public class GeneralProcessing_withOption {
 	}
 	
 	public void selectCardAbility(int index,int abilityIndex) {
-		//CardAbility ca = new CardAbility(this.fieldDeque.peek());
 		
 		switch(ca.getCardNumber()){
 			case "seven": 
@@ -198,7 +198,7 @@ public class GeneralProcessing_withOption {
 				break;
 			case "eight":
 				ca.eightAbility();
-				System.out.println("ca.getEightFlag"+ca.getEightFlag());
+				System.out.println("ca.getEightFlag:"+ca.getEightFlag());
 				break;
 			case "nine":
 				ca.nineAbility();

@@ -46,21 +46,23 @@ public class Player {
 			
 		}else {
 			Card hand = deckList.get(index);
-			int handstrength = hand.getStrength();
+			int handStrength = hand.getStrength();
+			System.out.println("hand:"+hand);
 			
-			Card fieldtop = fieldDeque.peek();
-			int fieldstrength = fieldtop.getStrength();
-			System.out.println("ca.getJackFlag()"+ca.getJackFlag());
+			Card fieldTop = fieldDeque.peek();
+			int fieldStrength = fieldTop.getStrength();
+			System.out.println("ca.getJackFlag():"+ca.getJackFlag());
 			if(ca.getJackFlag() == true) {
 				if(hand.getNum().equals("Joker")) {
 					hand.setStrength(6);
+					handStrength = hand.getStrength();
 				}
-				if(handstrength < fieldstrength) {
+				if(handStrength < fieldStrength) {
 					return true;
 				}
 			}
 			else {
-				if(handstrength > fieldstrength) {
+				if(handStrength > fieldStrength) {
 					return true;
 				}
 			}

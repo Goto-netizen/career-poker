@@ -17,12 +17,12 @@ public class CardAbility {
 	public void sevenAbility(List<Card> deckList ,int abilityIndex,int sevenFlag) {
 		//仮引数 int sevenFlag = 0//初期値 1//プレイヤー 2//CPU
 		if(sevenFlag == 1) {
-			deckList.get(abilityIndex).setCard_flag(1);
+			deckList.get(abilityIndex).setCard_flag(1);//プレイヤーのカード情報をCPUに書き換える
 		}
 		else if(sevenFlag == 2) {
-			deckList.get(abilityIndex).setCard_flag(0);
+			deckList.get(abilityIndex).setCard_flag(0);//CPUのカード情報をプレイヤーに書き換える
 		}
-		
+		System.out.println(deckList.get(abilityIndex)+"を渡しました");
 	}
 	
 	public void eightAbility() {
@@ -38,6 +38,7 @@ public class CardAbility {
 	
 	public void tenAbility(List<Card> deckList ,int abilityIndex) {
 		deckList.get(abilityIndex).setCard_flag(4);
+		System.out.println(deckList.get(abilityIndex)+"を捨てました");
 	}
 	
 	public void jackAbility() {
