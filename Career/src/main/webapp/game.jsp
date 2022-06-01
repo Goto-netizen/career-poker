@@ -35,20 +35,23 @@
 		<% if(card.getCard_flag() == 0){ %>
 		<label><input type="checkbox" name="submission" value="<%= i %>"><img src="./newTrump/<%= card.getCard_id() %>.png" width=72 height =128 ></label>
 	<% }i++; } %>
-	<input type="checkbox" name="submission" value="-1">パス<br>
+	<label><input type="checkbox" name="submission" value="-1">パス</label><br>
 	
 	<input type="submit" value="出す">
 	</div>
-	
-	<% if(fieldDeque.size() == 0){ %>
-		場が流れました。
-		<% }else{ %>
-		<% for(Card field : fieldDeque){ %>
-			<% if(field.getCard_flag() == 3){ %>
-					<%= field.getNum() %>が出ました。
-			<% }
-			}
-		} %>
+
+<% for(Card field : fieldDeque){
+	if(field.getCard_flag() == 3){ %>
+		<span class="console"><%= field.getNum() %>が出ました。</span><br>
+		<% if(field.getNum().equals("Jack")){ %>
+			<span class="console">イレブンバック発動中<br></span>
+		<% }
+	}
+} %>
+<% if(fieldDeque.isEmpty() || fieldDeque.size() ==1){ %>
+	<span class="console">場が流れました。</span><br>
+<% } %>
+
 </form>
 </body>
 </html>

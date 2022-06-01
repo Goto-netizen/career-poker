@@ -219,3 +219,8 @@ input[type="checkbox"]:checked{
      background: #31A9EE;
 }
 
+.console{
+	margin-right: 0px;
+	font-family: sans-serif;
+	color: white;
+}
