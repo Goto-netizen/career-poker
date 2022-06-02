@@ -12,15 +12,17 @@
 	List<Integer> indexList = (List<Integer>)session.getAttribute("index");
 	int index = indexList.get(0);%>
 	
-	渡すカードを選択してください。<br>
+	<div style="color:white;font-weight:bold;">渡すカードを選択してください。<br>
 	
 <form action="throw-servlet" method="POST">
+<div id="player-hand" style="width:790px">
 	<% int i = 0; %>
 	<% for(Card card : deckList){ %>
 		<% if(card.getCard_flag() == 0 && i != index){ %>
-		<label><input type="checkbox" name="submission" value="<%= i %>"><img src="./newTrump/<%= card.getCard_id() %>.png" width=49.5 height =88 ></label>
+		<label><input type="checkbox" name="submission" value="<%= i %>"><img src="./newTrump/<%= card.getCard_id() %>.png" width=72 height =128 ></label>
 	<% }i++; } %>	
 	<label><input type="checkbox" name="submission" value="0">渡さない</label>
+	</div>
 	<input type="submit" value="決定">
 </form>
 </body>
