@@ -9,7 +9,7 @@
 </head>
 <body>
 <% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); %>
-	<div style="color:white;font-weight:bold;">爆破するカードの数字を選んでください<br></div>
+	<div style="color:white;font-weight:bold;">爆破するカードの数字を選んでください<br>
 <form action="throw-servlet" method="POST" style="width:790px">
 
 
@@ -24,7 +24,7 @@
         <label><input type="checkbox" name="submission" value="1"><img src="./newTrump/1.png" width=72 height =128 ></label>
         <label><input type="checkbox" name="submission" value="2"><img src="./newTrump/5.png" width=72 height =128 ></label>
         <label><input type="checkbox" name="submission" value="14"><img src="./newTrump/37.png" width=72 height =128 ></label>
-        <label><input type="checkbox" name="submission" value="0" style="color:white;font-weight:bold;">爆破しない</label>
+        <label><input type="checkbox" name="submission" value="0" >爆破しない</label>
         
 	
 	<input type="submit" value="決定">
