@@ -41,6 +41,7 @@ $(function () {
 <body>
 <% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); 
 	Deque<Card> fieldDeque = (Deque<Card>)session.getAttribute("fieldDeque");
+	int difficulty =(Integer)session.getAttribute("difficulty");
 	int x = (Integer)session.getAttribute("x");%>
 
 <div id="cpu-hand">
@@ -71,11 +72,12 @@ $(function () {
 	</div>
 </form>
 
-<div class="allConsole" style="position: fixed; background-color: black;width:200px; height:400px; margin-top:-650px;margin-left:950px;border-radius:8px;">
+<div class="allConsole" style="position: fixed; background-color: black;width:200px; height:400px; margin-top:-550px;margin-left:950px;border-radius:8px;">
+a<br>
 <% for(Card field : fieldDeque){
 	if(field.getCard_flag() == 3){ %>
 		<span class="console"><%= field.getNum() %>が出ました。</span><br>
-		<% if(field.getNum().equals("Jack")){ %>
+		<% if(field.getNum().equals("Jack")&& difficulty ==1){ %>
 			<span class="console">イレブンバック発動中<br></span>
 		<% }
 	}

@@ -71,6 +71,7 @@ public class HandIntegerServlet extends HttpServlet {
 //		}
 		
 		HttpSession session = request.getSession();
+		int difficulty =(Integer)session.getAttribute("difficulty");
 		session.setAttribute("index", index);
 		int x = (Integer)session.getAttribute("x");
 		x++;
@@ -86,16 +87,16 @@ public class HandIntegerServlet extends HttpServlet {
 		//10を選んだ時に捨てるカード選択画面に行きます
 		List<Card> deckList = (List<Card>)session.getAttribute("deckList");
 
-		if(index.get(0) == -1) {
+		if(index.get(0) == -1 ) {
 			RequestDispatcher rd = request.getRequestDispatcher("Processing_withOptionServlet");
 			rd.forward(request, response);
-		}else if(deckList.get(index.get(0)).getStrength()==7) {
+		}else if(deckList.get(index.get(0)).getStrength()==7 && difficulty ==1) {
 			RequestDispatcher rd = request.getRequestDispatcher("seven.jsp");
 			rd.forward(request, response);
-		}else if(deckList.get(index.get(0)).getStrength()==10) {
+		}else if(deckList.get(index.get(0)).getStrength()==10 && difficulty ==1) {
 			RequestDispatcher rd = request.getRequestDispatcher("ten.jsp");
 			rd.forward(request, response);
-		}else if(deckList.get(index.get(0)).getStrength()==12){
+		}else if(deckList.get(index.get(0)).getStrength()==12 && difficulty ==1){
 			RequestDispatcher rd = request.getRequestDispatcher("Queen.jsp");
 			rd.forward(request, response);
 		}else {
