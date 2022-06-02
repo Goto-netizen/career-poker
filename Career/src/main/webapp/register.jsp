@@ -4,20 +4,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="register.css">
 <title>会員登録</title>
 </head>
 <body>
-<h1>会員登録</h1><br>
+<div class = "top"><h1>会員登録</h1><br><hr><div>
 <form action="register-servlet" method="POST">
-ユーザーID:<input type="text" name="user_id"><br>
-パスワード:<input type="text" name="password"><br>
-氏名:<input type="text" name="name"><br>
-年齢:<select name="age">
+<div class = all>
+<div class= registform>
+<input type="text" class="hoge" name="user_id" placeholder="ユーザーID"><br>
+<input type="text" class="hoge" name="password" placeholder="パスワード"><br>
+<input type="text" class="hoge" name="name" placeholder="氏名"><br>
+<select name="age" class="hoge" placeholder="年齢">
 <%for(int i =3;i<=100;i++){ %>
 <option value="<%=i%>"><%=i%></option>
 <%} %>
 </select><br>
-<input type="submit" value="登録">
+<input type="submit" class="sub" value="登録">
+</div>
+</div>
 </form>
 </body>
 </html>
