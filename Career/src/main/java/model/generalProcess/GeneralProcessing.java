@@ -4,19 +4,21 @@ import java.util.Deque;
 import java.util.List;
 
 import model.item.Card;
-import model.players.CPU;
-import model.players.Player;
+import model.option.CardAbility;
+import model.players.CPU_forBeginerMode;
+import model.players.Player_forBeginerMode;
 
 public class GeneralProcessing {
 	List<Card> deckList;
 	Deque<Card> fieldDeque;
 	int cardFlag = 0;
 	boolean endGameFlag;
+	CardAbility ca;
 	
 	public GeneralProcessing(List<Card> deckList,Deque<Card> fieldDeque){
 		this.deckList = deckList;
 		this.fieldDeque = fieldDeque;
-		
+		ca = new CardAbility();
 	}
 	
 	public void generalProcess(int index) {
@@ -24,20 +26,20 @@ public class GeneralProcessing {
 		boolean canPlayFlag = false;
 		
 		try {
-			Player player = new Player(deckList,index,fieldDeque);
+			Player_forBeginerMode playerbm = new Player_forBeginerMode(deckList,index,fieldDeque);
 			if(index == -1) {//プレイヤーがパスをした時
 				System.out.println("プレイヤーがパスを行いました。");
 				endRound();
 				System.out.println("場をリセットしました。");
 				
-				CPU cpu = new CPU(deckList,fieldDeque);
+				CPU_forBeginerMode cpu_bm = new CPU_forBeginerMode(deckList,fieldDeque);
 				
-				cpu.CPUProcessSequence();//CPUの処理
+				cpu_bm.CPUProcessSequence();//CPUの処理
 				
-				deckList = cpu.getDeckList();
-				fieldDeque = cpu.getFieldDeque();
+				deckList = cpu_bm.getDeckList();
+				fieldDeque = cpu_bm.getFieldDeque();
 				System.out.println("CPUの処理が行われました。");
-				if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
+				if(cpu_bm.getCPUPassFlag() == true) {//CPUがパスをした時
 					endRound();
 				}
 				endGameFlag = checkHandSize();		
@@ -45,20 +47,20 @@ public class GeneralProcessing {
 				
 			}
 			else {
-				canPlayFlag = player.judge();
+				canPlayFlag = playerbm.judge();
 				System.out.println("P1➡canPlayFlagの値:"+canPlayFlag);
 				/*ここから*/
 				if(canPlayFlag) {//プレイヤーが出せるカードを選んだ時
 					
-					player.playMyHand();//プレイヤーの処理
-					deckList = player.getDeckList();
-					fieldDeque = player.getFieldDeque();
+					playerbm.playMyHand();//プレイヤーの処理
+					deckList = playerbm.getDeckList();
+					fieldDeque = playerbm.getFieldDeque();
 					
 				
 					System.out.println("deckList:"+deckList);
 					System.out.println("fieldDeque:"+fieldDeque);
 					System.out.println("プレイヤーの処理が行われました。");
-					if(player.getPlayerPassFlag() == true) {//プレイヤーがパスをした時
+					if(playerbm.getPlayerPassFlag() == true) {//プレイヤーがパスをした時
 						System.out.println("プレイヤーがパスを行いました。");
 						endRound();
 						System.out.println("場をリセットしました。");
@@ -67,14 +69,14 @@ public class GeneralProcessing {
 					endGameFlag = checkHandSize();//プレイヤーの手札が無くなったか判定
 					
 					System.out.println("endGameFlagの値:"+endGameFlag);
-					CPU cpu = new CPU(deckList,fieldDeque);
+					CPU_forBeginerMode cpu_bm = new CPU_forBeginerMode(deckList,fieldDeque);
 			
-					cpu.CPUProcessSequence(null);//CPUの処理
+					cpu_bm.CPUProcessSequence();//CPUの処理
 					
-					deckList = cpu.getDeckList();
-					fieldDeque = cpu.getFieldDeque();
+					deckList = cpu_bm.getDeckList();
+					fieldDeque = cpu_bm.getFieldDeque();
 					System.out.println("CPUの処理が行われました。");
-					if(cpu.getCPUPassFlag() == true) {//CPUがパスをした時
+					if(cpu_bm.getCPUPassFlag() == true) {//CPUがパスをした時
 						endRound();
 					}
 					endGameFlag = checkHandSize();		
