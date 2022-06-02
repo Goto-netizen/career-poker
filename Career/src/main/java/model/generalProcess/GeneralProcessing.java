@@ -69,7 +69,7 @@ public class GeneralProcessing {
 					System.out.println("endGameFlagの値:"+endGameFlag);
 					CPU cpu = new CPU(deckList,fieldDeque);
 			
-					cpu.CPUProcessSequence();//CPUの処理
+					cpu.CPUProcessSequence(null);//CPUの処理
 					
 					deckList = cpu.getDeckList();
 					fieldDeque = cpu.getFieldDeque();

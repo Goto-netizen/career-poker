@@ -60,6 +60,7 @@ public class NewDistributionServlet extends HttpServlet {
 	    session.setAttribute("fieldDeque", fieldDeque);
 	    session.setAttribute("x", x);
 
+
 		
 	    // リクエストの転送
 	 	RequestDispatcher rd = request.getRequestDispatcher("game.jsp");

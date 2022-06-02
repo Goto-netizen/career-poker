@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.generalProcess.GeneralProcessing;
 import model.generalProcess.GeneralProcessing_withOption;
 import model.item.Card;
 
@@ -54,10 +55,12 @@ request.setCharacterEncoding("UTF-8");
 		
 		List<Card> deckList = (List<Card>)session.getAttribute("deckList");
 		Deque<Card> fieldDeque =(Deque<Card>)session.getAttribute("fieldDeque");
-		
+		int difficulty =(Integer)session.getAttribute("difficulty");
+		System.out.println(difficulty);
+		if(difficulty==1) {
 		/*処理の依頼*/
 		GeneralProcessing_withOption gp = new GeneralProcessing_withOption(deckList,fieldDeque);
-		
+		System.out.println("上級");
 		try {
 			gp.generalProcess(index,abilityIndex);
 		} catch (Exception e) {
@@ -82,6 +85,36 @@ request.setCharacterEncoding("UTF-8");
 			RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
 			rd.forward(request, response);
 			
+		}
+		}else {
+			/*処理の依頼*/
+			GeneralProcessing gp = new GeneralProcessing(deckList,fieldDeque);
+			System.out.println("初級");
+			try {
+				gp.generalProcess(index);
+			} catch (Exception e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+			deckList = gp.getDeckList();
+			fieldDeque = gp.getFieldDeque();
+			
+			/*送信*/
+			session.setAttribute("deckList",deckList);
+			session.setAttribute("fieldDeque",fieldDeque);
+			session.setAttribute("winner", "CPU");
+			
+			//リクエストの転送
+			if(gp.getEndGameFlag() == true) {
+				RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
+				rd.forward(request, response);
+			}
+			else {
+	           
+				RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
+				rd.forward(request, response);
+				
+			}
 		}
 	}
 
