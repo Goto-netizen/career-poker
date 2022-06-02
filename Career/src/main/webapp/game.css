@@ -224,3 +224,8 @@ input[type="checkbox"]:checked{
 	font-family: sans-serif;
 	color: white;
 }
+
+.allConsole{
+	position: relative;
+	background-color: black;
+}

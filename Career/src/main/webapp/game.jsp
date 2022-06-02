@@ -9,6 +9,7 @@
 <style>
 </style>
 </head>
+
 <body>
 <% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); 
 	Deque<Card> fieldDeque = (Deque<Card>)session.getAttribute("fieldDeque");
@@ -40,7 +41,7 @@
 	
 	<input type="submit" value="出す">
 	</div>
-
+<div class="allConsole" style="position: relative; background-color: black;">
 <% for(Card field : fieldDeque){
 	if(field.getCard_flag() == 3){ %>
 		<span class="console"><%= field.getNum() %>が出ました。</span><br>
@@ -52,7 +53,7 @@
 <% if(fieldDeque.isEmpty() || fieldDeque.size() ==1){ if(x!=0){%>
 	<span class="console">場が流れました。</span><br>
 <% } }%>
-
+</div>
 </form>
 </body>
 </html>
