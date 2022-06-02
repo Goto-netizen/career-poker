@@ -149,13 +149,13 @@ public class GeneralProcessing_withOption {
 					
 				}
 				
-				if(!ca.cardNumber.equals("eight")) {
+				if(!ca.cardNumber.equals("eight")) {//場に出たカードが8じゃなかったらwhileを抜ける
 					break;
-				}else if(checkHandSize()) {
+				}else if(checkHandSize()) {//場に出たカードが8でも手札が0であればwhileを抜ける
 					break;
 				}
 				else {
-					endRound();
+					endRound();//場に出たカードが8で手札も0じゃなければ場を流しwhileを続行
 				}
 				
 			}
