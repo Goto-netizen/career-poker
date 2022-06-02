@@ -13,9 +13,9 @@
 <div class = "all">
 <div class= "registform">
 以下の項目を入力して「登録」ボタンをクリックしてください。
-<input type="text" class="hoge" name="user_id" placeholder="ユーザーID"><br>
-<input type="text" class="hoge" name="password" placeholder="パスワード"><br>
-<input type="text" class="hoge" name="name" placeholder="氏名"><br>
+<input type="text" class="hoge" name="user_id" placeholder="ユーザーID" maxlength="15"><br>
+<input type="password" class="hoge" name="password" placeholder="パスワード" maxlength="15"><br>
+<input type="text" class="hoge" name="name" placeholder="氏名" maxlength="10"><br>
 <select name="age" class="hoge" placeholder="年齢">
 <%for(int i =3;i<=100;i++){ %>
 <option value="<%=i%>"><%=i%></option>
