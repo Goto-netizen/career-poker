@@ -58,21 +58,7 @@ $(function () {
 		<% if(field.getCard_flag() == 3){ %>
 		<img src="./newTrump/<%= field.getCard_id() %>.png" width=72 height =128 class="a<%=a %>" >
 		<% }a++;} %></div>
-
-<form action="hand-integer-servlet" method="POST">
-<div id="player-hand" style="width:790px">
-<%int i = 0; %>
-	<% for(Card card : deckList){ %>
-		<% if(card.getCard_flag() == 0){ %>
-		<label for="check<%=i %>"><input type="checkbox" name="submission" id="check<%=i %>" value="<%= i %>"><img src="./newTrump/<%= card.getCard_id() %>.png" width=72 height =128 ></label>
-	<% }i++; } %>
-	<label for="check30"><input type="checkbox" name="submission" id="check30" value="-1">パス</label><br>
-	
-	<input type="submit" name="submit" id="submit" value="出す" class="send">
-	</div>
-</form>
-
-<div class="allConsole" style="position: fixed; background-color: black;width:200px; height:400px; margin-top:-550px;margin-left:950px;border-radius:8px;">
+<div class="allConsole" style="position: fixed; background-color: black;width:200px; height:400px; margin-top:-400px;margin-left:950px;border-radius:8px;">
 a<br>
 <% for(Card field : fieldDeque){
 	if(field.getCard_flag() == 3){ %>
@@ -86,5 +72,19 @@ a<br>
 	<span class="console">場が流れました。</span><br>
 <% } }%>
 </div>
+<form action="hand-integer-servlet" method="POST">
+<div id="player-hand" style="width:790px">
+<%int i = 0; %>
+	<% for(Card card : deckList){ %>
+		<% if(card.getCard_flag() == 0){ %>
+		<label for="check<%=i %>"><input type="checkbox" name="submission" id="check<%=i %>" value="<%= i %>"><img src="./newTrump/<%= card.getCard_id() %>.png" width=72 height =128 ></label>
+	<% }i++; } %>
+	<label for="check30"><input type="checkbox" name="submission" id="check30" value="-1">パス</label><br>
+	
+	<input type="submit" name="submit" id="submit" value="出す" class="send">
+	</div>
+</form>
+
+
 </body>
 </html>
