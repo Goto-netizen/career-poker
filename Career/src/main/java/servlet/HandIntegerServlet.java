@@ -44,17 +44,31 @@ public class HandIntegerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		String[] ask = request.getParameterValues("submission");
+		try {
+		String[] ask1 = new String[4];
+		ask1[0] = "0";
+		//String[] ask = request.getParameterValues("submission");
 		
+		String[] ask = request.getParameterValues("submission");
 		int number = 0;
 		
-		System.out.println("Arrays.toString"+Arrays.toString(ask));
+		if(ask == null) {
+			ask[0] = "";
+			System.out.println("Arrays.toString:"+Arrays.toString(ask));
+		}
+		
+		System.out.println("Arrays.toString:"+Arrays.toString(ask));
 		List<Integer> index = new ArrayList<Integer>();
 		for(int i=0;i<ask.length;i++) {
 			number = Integer.parseInt(ask[i]);
 			index.add(number);
 		}
 		System.out.println("手札リストの要素番号:"+index);
+		
+//		try {
+//		} catch(Exception e){
+//			e.printStackTrace();
+//		}
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("index", index);
@@ -88,8 +102,10 @@ public class HandIntegerServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Processing_withOptionServlet");
 			rd.forward(request, response);
 		}
-	
-
+		} catch(Exception e){
+		e.printStackTrace();
+	}
+		//catchとfinallyを上手く使う
 
 
 	}

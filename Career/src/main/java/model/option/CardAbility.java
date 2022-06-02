@@ -48,8 +48,10 @@ public class CardAbility {
 	
 	public void queenAbility(List<Card> deckList ,int selectedNum_id) {
 		for(Card card : deckList){
-			if(card.getNum_id() == selectedNum_id) {
-				card.setCard_flag(4);
+			if((card.getCard_flag() != 3)&&(card.getCard_flag() != 4)) {
+				if(card.getNum_id() == selectedNum_id) {
+					card.setCard_flag(4);
+				}
 			}
 		}
 	}
