@@ -9,7 +9,35 @@
 <style>
 </style>
 </head>
+<!-- jQueryの読み込み -->
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script>
+$(function () {
+	$('.send').prop("disabled", true); //送信ボタン非動作
+	//入力欄の操作時
+	$('form input').change(function () {
+		//必須項目が空かどうかフラグ
+		var $flag = true;
+		var $cbx_group = $('input:checkbox[name^="submission"]');
+		//チェックボックスグループの必須判定
+		$('[type="checkbox"]').each(function () {
+            if ($('input[type="checkbox"]:checked').length === 0) {
+                $flag = false;
+            }
+        });
 
+
+		//全て埋まっていたら
+		if ($flag) {
+			//送信ボタンを復活
+			$('.send').prop("disabled", false);
+		} else {
+			//送信ボタンを閉じる
+			$('.send').prop("disabled", true);
+		}
+	});
+});
+</script>
 <body>
 <% List<Card> deckList = (List<Card>)session.getAttribute("deckList"); 
 	Deque<Card> fieldDeque = (Deque<Card>)session.getAttribute("fieldDeque");
@@ -35,12 +63,14 @@
 <%int i = 0; %>
 	<% for(Card card : deckList){ %>
 		<% if(card.getCard_flag() == 0){ %>
-		<label><input type="checkbox" name="submission" value="<%= i %>"><img src="./newTrump/<%= card.getCard_id() %>.png" width=72 height =128 ></label>
+		<label for="check<%=i %>"><input type="checkbox" name="submission" id="check<%=i %>" value="<%= i %>"><img src="./newTrump/<%= card.getCard_id() %>.png" width=72 height =128 ></label>
 	<% }i++; } %>
-	<label><input type="checkbox" name="submission" value="-1">パス</label><br>
+	<label for="check30"><input type="checkbox" name="submission" id="check30" value="-1">パス</label><br>
 	
-	<input type="submit" value="出す">
+	<input type="submit" name="submit" id="submit" value="出す" class="send">
 	</div>
+</form>
+
 <div class="allConsole" style="position: fixed; background-color: black;width:200px; height:400px; margin-top:-650px;margin-left:950px;border-radius:8px;">
 <% for(Card field : fieldDeque){
 	if(field.getCard_flag() == 3){ %>
@@ -54,6 +84,5 @@
 	<span class="console">場が流れました。</span><br>
 <% } }%>
 </div>
-</form>
 </body>
 </html>
