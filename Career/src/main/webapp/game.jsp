@@ -21,7 +21,7 @@ $(function () {
 		var $cbx_group = $('input:checkbox[name^="submission"]');
 		//チェックボックスグループの必須判定
 		$('[type="checkbox"]').each(function () {
-            if ($('input[type="checkbox"]:checked').length === 0) {
+            if ($('input[type="checkbox"]:checked').length === 0 || $('input[type="checkbox"]:checked').length > 1) {
                 $flag = false;
             }
         });
