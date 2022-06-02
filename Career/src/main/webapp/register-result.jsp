@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="register-result.css">
 <title>登録結果</title>
 </head>
 <body>
-
+<div class="allregi">
 	<%
 		int count = (Integer) request.getAttribute("count");
 		if (count != 0) {
@@ -29,5 +30,6 @@
 
 
 	<a href="login1.html">ログイン画面へ戻る</a>
+	</div>
 </body>
 </html>

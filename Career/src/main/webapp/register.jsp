@@ -10,8 +10,8 @@
 <body>
 <div class = "top"><h1>会員登録</h1><br><hr><div>
 <form action="register-servlet" method="POST">
-<div class = all>
-<div class= registform>
+<div class = "all">
+<div class= "registform">
 以下の項目を入力して「登録」ボタンをクリックしてください。
 <input type="text" class="hoge" name="user_id" placeholder="ユーザーID"><br>
 <input type="text" class="hoge" name="password" placeholder="パスワード"><br>
