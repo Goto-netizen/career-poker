@@ -41,7 +41,7 @@
 	
 	<input type="submit" value="出す">
 	</div>
-<div class="allConsole" style="position: relative; background-color: black;">
+<div class="allConsole" style="position: fixed; background-color: black;width:200px; height:400px; margin-top:-650px;margin-left:950px;border-radius:8px;">
 <% for(Card field : fieldDeque){
 	if(field.getCard_flag() == 3){ %>
 		<span class="console"><%= field.getNum() %>が出ました。</span><br>

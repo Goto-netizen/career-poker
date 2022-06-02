@@ -12,6 +12,7 @@
 <form action="register-servlet" method="POST">
 <div class = all>
 <div class= registform>
+以下の項目を入力して「登録」ボタンをクリックしてください。
 <input type="text" class="hoge" name="user_id" placeholder="ユーザーID"><br>
 <input type="text" class="hoge" name="password" placeholder="パスワード"><br>
 <input type="text" class="hoge" name="name" placeholder="氏名"><br>

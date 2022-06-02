@@ -223,9 +223,7 @@ input[type="checkbox"]:checked{
 	margin-right: 0px;
 	font-family: sans-serif;
 	color: white;
+	margin-left:20px;
+	margin-top:20px;
 }
 
-.allConsole{
-	position: relative;
-	background-color: black;
-}
