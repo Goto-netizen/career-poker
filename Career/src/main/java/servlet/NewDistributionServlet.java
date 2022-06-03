@@ -49,18 +49,12 @@ public class NewDistributionServlet extends HttpServlet {
 		//List<Card> deckList = deck.distribution();
 		deck.distribution();
 		
-		//始まりの合図
-		int x = 0;
-		
 		//セッション
 	    HttpSession session = request.getSession();
 	    //session.setAttribute("deckList", deckList);
 	    session.setAttribute("deckList", deck.cardList);
 	    
 	    session.setAttribute("fieldDeque", fieldDeque);
-	    session.setAttribute("x", x);
-
-
 		
 	    // リクエストの転送
 	 	RequestDispatcher rd = request.getRequestDispatcher("game.jsp");
